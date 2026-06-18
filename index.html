@@ -35,6 +35,7 @@
 <script>
 /* ───────── PROGRAM (first-principles corrected) ───────── */
 const PROGRAM = {
+ 1: {
   Lower:[
     {id:"cb_squat",name:"CB Cable Squat",sets:3,reps:8,load:"kg",right:false,d:{why:"Routes load through the hips, not the right knee, so the squat returns without shearing the joint.",setup:["FT2 lowest pulley, single handle","25 mm under both heels","Handle to sternum, lats locked"],exec:["Break hips and knees together, pull hips straight down between the heels","Let knees travel over the toes — don't overprotect","Pause at honest depth, tension in glutes","Drive mid-foot; right leg owns 50%"],breath:"Brace at top, hold the bottom, exhale up.",flags:["Heels lifting","Right knee caving","Weight drifting left"],ok:"Even depth, glute-driven, no next-day knee ache."}},
     {id:"cable_rdl",name:"Cable RDL",sets:3,reps:10,load:"kg",right:false,d:{why:"Free path exposes and fixes the right-side asymmetry a Smith machine hides. Rebuilds the posterior engine.",setup:["Low pulley, rope/handles at thigh","Thumb alongside fingers, knuckles to floor","Soft knees, frozen"],exec:["Squeeze armpits, engage lats","Push hips straight back, handles slide down thighs","Stop at a deep hamstring stretch","Drive hips forward, squeeze glutes tall"],breath:"Brace at top, hold down, exhale at lockout.",flags:["Knees bending more on the way down","Low back rounding","Right hip shooting back first"],ok:"Hamstrings do the work, back flat, hips in sync."}},
@@ -54,8 +55,36 @@ const PROGRAM = {
     {id:"step_up",name:"Low Step-Up",sets:3,reps:10,load:"kg",right:true,d:{why:"The single most vital right-side drill. The slow descent is the exercise.",setup:["Low box (6–8 in)","Right foot flat on the box"],exec:["Weight over the right leg, drive up tall","Hover the free foot","Lower 4–5 s, control every inch","Tap and drive straight back up"],breath:"Exhale up, slow breath down.",flags:["Dropping fast","Bouncing off the bottom","Push-off cheat"],ok:"Silent descent owned by the right glute."}},
     {id:"pallof",name:"Pallof Press",sets:3,reps:12,load:"kg",right:false,d:{why:"Anti-rotation core — the protector under your hinge, squat, and sport.",setup:["Mid pulley, single handle, side-on"],exec:["Handle at sternum, step out to load","Press straight out, lock the arms","Resist the pull to rotate — brace hard","Return holding the brace"],breath:"Exhale on the press, keep bracing.",flags:["Hips shifting","Leaning away","Twisting toward the stack"],ok:"Torso dead still, work deep in the core."}}
   ]
+ },
+ 2: {
+  Lower:[
+    {id:"p2_goblet",name:"Goblet / Cable Squat",sets:3,reps:8,load:"kg",right:false,d:{why:"The heel lift has earned its way down — now load the squat bilaterally and build real leg strength on the stable base you proved.",setup:["Heavy DB at the chest, or front-rack cable","Heels flat if mobility allows, else a minimal lift"],exec:["Sit straight down, knees tracking the toes","Hit honest depth","Drive evenly through both mid-feet"],breath:"Brace top, exhale up.",flags:["Right knee caving","Heels rising","Chest dropping"],ok:"Full depth, even drive, no knee ache."}},
+    {id:"p2_dbrdl",name:"DB Romanian Deadlift",sets:3,reps:8,load:"kg",right:false,d:{why:"A free-weight hinge now the pattern is grooved — heavier posterior-chain strength with both sides kept honest.",setup:["DBs in front of the thighs","Knuckles down, lats packed"],exec:["Hips back, DBs slide down the legs","Stop at a deep hamstring stretch","Drive the hips through, squeeze glutes"],breath:"Brace down, exhale at top.",flags:["Back rounding","Right hip leading","Knees re-bending"],ok:"Hamstring-driven, flat back, symmetric."}},
+    {id:"p2_bulgarian",name:"Bulgarian Split Squat",sets:3,reps:8,load:"bw",right:true,d:{why:"The assisted split squat graduates: rear foot elevated raises the right leg's stability and strength demand.",setup:["Rear foot on the bench, right foot forward","Light DBs once stable"],exec:["Drop straight down, front shin near-vertical","Control the depth","Drive through the front (right) foot"],breath:"Inhale down, exhale up.",flags:["Wobbling","Front knee collapsing in","Pushing off the back foot"],ok:"Right leg owns it, torso tall."}},
+    {id:"p2_loadstep",name:"Loaded Step-Up",sets:3,reps:8,load:"kg",right:true,d:{why:"Add iron to the step-up — the right glute now controls bodyweight plus load through the full range.",setup:["Box/bench mid-shin to knee height","DBs in hands, right foot flat on top"],exec:["Drive up tall on the right leg","Hover the free foot","Lower 3–4s under control"],breath:"Exhale up, slow down.",flags:["Push-off cheat","Fast drop","Knee caving"],ok:"Controlled up and down, no shear."}}
+  ],
+  Upper:[
+    {id:"ext_rot",name:"Cable External Rotation (R)",sets:3,reps:12,load:"kg",right:true,d:{why:"Keystone work continues — keep building the cuff that stabilizes the whole right side. Progress load only when pain-free.",setup:["Mid pulley, towel pinned at the elbow"],exec:["Elbow glued, rotate the forearm out","Painless range only","Return slow"],breath:"Never hold.",flags:["Elbow drifting","Shrugging","Sharp pain — stop"],ok:"Clean, painless, elbow glued."}},
+    {id:"p2_pushup",name:"Push-up Progression",sets:3,reps:8,load:"bw",right:false,d:{why:"Drives your push-up test directly — the most relevant marker of pressing strength and shoulder integrity.",setup:["Incline on the bench → floor as you get strong","Blades set down and back"],exec:["Lower with elbows ~45°","Full range, chest to target","Press symmetrically"],breath:"Inhale down, exhale press.",flags:["Hips sagging","Right arm lagging","Elbows flaring wide"],ok:"Even, full-range reps; lower the surface over time."}},
+    {id:"cable_row",name:"Seated Cable Row",sets:3,reps:10,load:"kg",right:false,d:{why:"Heavier horizontal pull — keep building the retractors that hold your posture and shoulder back.",setup:["Low pulley, V-grip, tall spine"],exec:["Elbows to the ribs, handle to navel","Pinch the blades, hold","Return slow, no collapse"],breath:"Exhale on the pull.",flags:["Shrugging","Momentum","Low back rounding"],ok:"Mid-back driven, torso quiet."}},
+    {id:"p2_pulldown",name:"Lat Pulldown",sets:3,reps:10,load:"kg",right:false,d:{why:"Re-introduced now the cuff is solid — vertical pulling that builds straight toward your first pull-up.",setup:["High pulley, shoulder-width grip"],exec:["Set the blades down first","Pull to the upper chest, elbows down","Control the bar back up"],breath:"Exhale on the pull.",flags:["Shrugging at the top","Leaning back for momentum","Right side under-pulling"],ok:"Lats driven, both sides even."}},
+    {id:"face_pull",name:"Face Pull",sets:3,reps:12,load:"kg",right:false,d:{why:"Rear-delt and external-rotation maintenance keeps the shoulder balanced as pressing and pulling load climb.",setup:["Rope at forehead height"],exec:["Pull to the forehead, split the hands","Elbows high, blades back and down"],breath:"Exhale on the pull.",flags:["Neck working","Momentum","Elbows dropping"],ok:"Rear shoulder and mid-back felt, not the neck."}}
+  ],
+  Athletic:[
+    {id:"box_squat",name:"Box Squat (to bench)",sets:3,reps:6,load:"kg",right:false,d:{why:"Heavier dead-stop strength with symmetric drive — your bench is the box.",setup:["Bench at ~parallel","Smith bar or DBs, heavier than Phase 1"],exec:["Sit back to the bench, no bounce","Re-brace, drive up evenly"],breath:"Brace, hold, exhale up.",flags:["Left-leg shift","Bouncing","Knee strain"],ok:"Even drive, controlled sit."}},
+    {id:"sl_rdl",name:"Single-Leg RDL (R)",sets:3,reps:8,load:"kg",right:true,d:{why:"Loaded unilateral hinge — right-hip strength and balance under real load, feeding your balance test.",setup:["DB in the left hand, stand on the right leg"],exec:["Hinge the right hip back, hips square","Right hamstring stretch","Drive up balanced"],breath:"Brace down, exhale up.",flags:["Hips opening","Rounding","Wobble"],ok:"Level hips, right glute drives."}},
+    {id:"p2_chop",name:"Cable Chop + Lift",sets:3,reps:10,load:"kg",right:true,d:{why:"Controlled rotation introduced — anti-rotation graduates to producing rotation: the bridge to a bat and a paddle swing.",setup:["High pulley for the chop, low for the lift, single handle"],exec:["Rotate from the hips, arms passive","Spine tall, no lumbar twist","Control both directions"],breath:"Exhale through the rotation.",flags:["Twisting the low back","Arms doing the work","Hips static"],ok:"Power from the hips, spine quiet."}},
+    {id:"p2_pullneg",name:"Assisted Pull-up Negative",sets:3,reps:5,load:"bw",right:false,d:{why:"Eccentric pull-ups build the exact strength your pull-up test needs — the fastest route to rep one.",setup:["Bar or Smith; jump/step to the top"],exec:["Start chin over the bar","Lower 3–5s under full control","Reset and repeat"],breath:"Slow breath down.",flags:["Dropping fast","Right shoulder shrugging","Half range"],ok:"Slow, even 3–5s negatives."}}
+  ]
+ }
+};
+const PHASE_OUTLINE={
+ 3:{Lower:["Heavier hinge (trap-bar / DB deadlift)","Full-depth or front-foot-elevated squat","Explosive step-up / low box jump (once knee-cleared)","Lateral bound + reactive balance"],Upper:["Pull-ups (weighted progression)","Weighted push-up / dip","Landmine press (shoulder-safe overhead)","Heavy row + face-pull maintenance"],Athletic:["Fast cable rotational power","Cable / med-ball-style throws","Lateral lunge + agility","Throwing prep + locomotion intervals"]},
+ 4:{Lower:["Periodized strength blocks","Mobility maintenance (GMB)","Sport-specific lower power"],Upper:["Strength + pull-up volume","Shoulder durability work"],Athletic:["Sport peaks for cricket / pickleball","Power + conditioning","Body-composition phases as goals shift"]}
 };
 const ROTATION=["Lower","Upper","Athletic"];
+function prog(phase,day){return (PROGRAM[phase]||PROGRAM[2])[day]}
+function findEx(id){for(const p of Object.keys(PROGRAM)){for(const dk of ROTATION){const f=PROGRAM[p][dk].find(x=>x.id===id);if(f)return f}}return null}
 const DAY={Lower:{icon:"🦵",tint:"#5B7CB8",label:"Lower Day"},Upper:{icon:"🫳",tint:"#5C9E7E",label:"Upper Day"},Athletic:{icon:"⚡",tint:"#D99A4E",label:"Athletic Day"}};
 const HABITS=[{id:"balance",label:"Balance (R 3 · L 2)",e:"🦩"},{id:"crawl",label:"Crawling 3 min",e:"🐾"},{id:"squat",label:"Deep squat hold 1 min",e:"🧘"},{id:"ankle",label:"Ankle drill",e:"🦶"},{id:"walk",label:"Walk",e:"🚶"}];
 const MILES=[{id:"first",l:"First session",n:s=>s.history.length>=1},{id:"st3",l:"3-day streak",n:s=>s.bestStreak>=3},{id:"s5",l:"5 sessions",n:s=>s.history.length>=5},{id:"st7",l:"7-day streak",n:s=>s.bestStreak>=7},{id:"s10",l:"10 sessions",n:s=>s.history.length>=10},{id:"s25",l:"25 sessions",n:s=>s.history.length>=25}];
@@ -96,7 +125,7 @@ function latestTest(id){const a=(S.assessments&&S.assessments[id])||[];return a.
 function testCurrent(t){const v=latestTest(t.id);return v==null?t.base:v}
 function gateMet(t,phase){const g=t.gates[phase];if(g==null)return true;const c=testCurrent(t);return t.dir==="up"?c>=g:c<=g}
 function phaseProgress(phase){const rel=TESTS.filter(t=>t.gates[phase]!=null);const met=rel.filter(t=>gateMet(t,phase)).length;return{met,total:rel.length,ready:met===rel.length}}
-function freshSession(type){const e={};PROGRAM[type].forEach(x=>e[x.id]=Array.from({length:x.sets},()=>null));return{type,date:todayStr(),entries:e,effort:{}}}
+function freshSession(type){const e={};prog(S.phase,type).forEach(x=>e[x.id]=Array.from({length:x.sets},()=>null));return{type,date:todayStr(),entries:e,effort:{}}}
 function computeStreak(dates){if(!dates.length)return 0;const set=new Set(dates);let cur=todayStr();if(!set.has(cur)){const y=new Date();y.setDate(y.getDate()-1);cur=y.toISOString().slice(0,10);if(!set.has(cur))return 0}let n=0;while(set.has(cur)){n++;const d=new Date(cur);d.setDate(d.getDate()-1);cur=d.toISOString().slice(0,10)}return n}
 
 /* ───────── STATE ───────── */
@@ -104,7 +133,7 @@ let S={...blank(),...(DB.read()||{})};
 if(S.current){ S.drafts=S.drafts||{}; if(!S.drafts[S.current.type]) S.drafts[S.current.type]=S.current; delete S.current; }
 if(!S.drafts) S.drafts={}; if(!S.assessments) S.assessments={}; if(!S.phase) S.phase=1;
 function draft(type){ if(!S.drafts[type]) S.drafts[type]=freshSession(type); return S.drafts[type]; }
-let UI={tab:"today",activeSet:null,detail:null,viewDay:ROTATION[S.rotationIndex%3],testDraft:{}};
+let UI={tab:"today",activeSet:null,detail:null,viewDay:ROTATION[S.rotationIndex%3],testDraft:{},previewPhase:S.phase};
 function cur(){ return draft(UI.viewDay); }
 function save(){DB.write(S)}
 function setS(fn){fn(S);save();render()}
@@ -129,7 +158,7 @@ const app=()=>document.getElementById("app");
 const ov=()=>document.getElementById("overlay");
 
 function render(){
-  const type=UI.viewDay, meta=DAY[type], ex=PROGRAM[type]; const d=draft(type);
+  const type=UI.viewDay, meta=DAY[type], ex=prog(S.phase,type); const d=draft(type);
   const level=Math.floor(S.xp/300)+1, levelPct=(S.xp%300)/300*100, streak=computeStreak(S.activeDates);
   const logged=Object.values(d.entries).flat().filter(x=>x&&x.reps).length;
   const total=ex.reduce((a,e)=>a+e.sets,0);
@@ -257,7 +286,7 @@ function detailHTML(ex){
 
 function testPct(t,phase){const g=t.gates[phase];const c=testCurrent(t);if(g==null)return 100;if(t.dir==="up"){return Math.max(0,Math.min(100,(c-t.base)/((g-t.base)||1)*100))}return Math.max(0,Math.min(100,(t.base-c)/((t.base-g)||1)*100))}
 function planHTML(){
-  const ph=S.phase, P=PHASES[ph], prog=phaseProgress(ph);
+  const ph=S.phase, P=PHASES[ph], pp=phaseProgress(ph);
   const tests=TESTS.map(t=>{
     const c=testCurrent(t), g=t.gates[ph], met=gateMet(t,ph), pct=testPct(t,ph);
     const v=UI.testDraft[t.id]??c;
@@ -290,24 +319,34 @@ function planHTML(){
       <div style="font-size:22px;font-weight:800;margin:2px 0 8px">${P.name}</div>
       <div style="font-size:13.5px;line-height:1.5;opacity:.92">${P.why}</div>
       <div style="margin-top:14px;display:flex;align-items:center;gap:10px">
-        <div style="flex:1;height:8px;background:rgba(255,255,255,.2);border-radius:999px;overflow:hidden"><div style="width:${prog.total?prog.met/prog.total*100:0}%;height:100%;background:#fff"></div></div>
-        <span class="tnum" style="font-size:12px;font-weight:700">${prog.met}/${prog.total} tests passed</span>
+        <div style="flex:1;height:8px;background:rgba(255,255,255,.2);border-radius:999px;overflow:hidden"><div style="width:${pp.total?pp.met/pp.total*100:0}%;height:100%;background:#fff"></div></div>
+        <span class="tnum" style="font-size:12px;font-weight:700">${pp.met}/${pp.total} tests passed</span>
       </div>
     </div>
 
-    ${prog.ready?`<div style="background:var(--greenSoft);border:1px solid #BFE0CE;border-radius:16px;padding:16px;margin-bottom:16px">
+    ${pp.ready?`<div style="background:var(--greenSoft);border:1px solid #BFE0CE;border-radius:16px;padding:16px;margin-bottom:16px">
       <div style="font-weight:800;color:#3F6F58;margin-bottom:4px">🎯 Phase ${ph} complete — foundation proven</div>
-      <div style="font-size:13.5px;color:#3F6F58;line-height:1.5">Every gate is green. Message your coach: <b>"Ready for Phase ${ph+1}"</b> and I'll re-program your exercises for ${PHASES[ph+1]?PHASES[ph+1].name:"the next floor"} — with the reasons. We climb to the next floor only now that this one holds.</div></div>`:""}
+      <div style="font-size:13.5px;color:#3F6F58;line-height:1.5">Every gate is green. ${PROGRAM[ph+1]?`You've earned <b>Phase ${ph+1} — ${PHASES[ph+1].name}</b>. Tap below to level up; your exercises switch and the reasons are saved in your log.`:`Message your coach: <b>"Ready for Phase ${ph+1}"</b> and I'll program ${PHASES[ph+1]?PHASES[ph+1].name:"the next floor"} from your real numbers — with reasons.`}</div>
+      ${PROGRAM[ph+1]?`<button data-advance="1" style="width:100%;margin-top:12px;padding:14px;border:none;border-radius:12px;background:var(--green);color:#fff;font-weight:800;font-size:15px">Begin Phase ${ph+1} →</button>`:""}</div>`:""}
 
     <div style="font-size:12px;font-weight:800;color:var(--sub);text-transform:uppercase;letter-spacing:.6px;margin:6px 2px 10px">Your tests — measurable proof</div>
     <div style="font-size:12.5px;color:var(--sub);margin-bottom:12px;line-height:1.5">Re-test every 2–4 weeks. These numbers — not how long you've trained — decide when you level up.</div>
     ${tests}
 
-    <div style="font-size:12px;font-weight:800;color:var(--sub);text-transform:uppercase;letter-spacing:.6px;margin:18px 2px 10px">The road ahead</div>
-    ${Object.keys(PHASES).map(k=>{const on=+k===ph,done=+k<ph;return `<div style="background:${on?'#fff':'transparent'};border:1px solid ${on?'var(--navy)':'var(--line)'};border-radius:14px;padding:13px 14px;margin-bottom:8px;${done?'opacity:.55':''}">
-      <div style="display:flex;justify-content:space-between"><span style="font-weight:700;font-size:14px">${done?'✓ ':''}Phase ${k} · ${PHASES[k].name}</span><span style="font-size:11px;color:var(--sub);font-weight:700">${PHASES[k].floor}</span></div>
-      ${on?`<div style="font-size:12.5px;color:var(--sub);margin-top:4px">Gates: ${TESTS.filter(t=>t.gates[ph]!=null).map(t=>`${t.name.split(" ")[0]} ${t.gates[ph]}${t.unit}`).join(" · ")}</div>`:""}
-    </div>`}).join("")}
+    <div style="font-size:12px;font-weight:800;color:var(--sub);text-transform:uppercase;letter-spacing:.6px;margin:18px 2px 10px">The staircase — tap a phase to preview</div>
+    <div style="display:flex;gap:8px;margin-bottom:12px">
+      ${[1,2,3,4].map(k=>{const sel=UI.previewPhase===k;return `<button data-pphase="${k}" style="flex:1;padding:9px 4px;border-radius:11px;font-size:13px;font-weight:700;border:1.5px solid ${sel?'var(--navy)':'var(--line)'};background:${sel?'var(--navy)':'#fff'};color:${sel?'#fff':'var(--sub)'}">${k<ph?'✓ ':''}P${k}</button>`}).join("")}
+    </div>
+    ${(()=>{const pv=UI.previewPhase,PP=PHASES[pv];
+      const body=PROGRAM[pv]
+        ? ROTATION.map(dn=>`<div style="margin-top:10px"><div style="font-size:12px;font-weight:700;color:var(--sub)">${DAY[dn].icon} ${dn}</div>${prog(pv,dn).map(x=>`<button data-detail="${x.id}" style="width:100%;text-align:left;background:#fff;border:1px solid var(--line);border-radius:10px;padding:9px 12px;margin-top:6px;display:flex;justify-content:space-between"><span style="font-size:13.5px;font-weight:600">${x.name}</span><span style="font-size:12px;color:var(--sub)">${x.sets}×${x.reps} ℹ️</span></button>`).join("")}</div>`).join("")
+        : (PHASE_OUTLINE[pv]?ROTATION.map(dn=>`<div style="margin-top:10px"><div style="font-size:12px;font-weight:700;color:var(--sub)">${DAY[dn].icon} ${dn}</div>${(PHASE_OUTLINE[pv][dn]||[]).map(s=>`<div style="font-size:13px;color:var(--ink);padding:6px 12px;background:#fff;border:1px solid var(--line);border-radius:10px;margin-top:6px">• ${s}</div>`).join("")}</div>`).join(""):"");
+      return `<div style="background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:14px">
+        <div style="font-size:15px;font-weight:800">${PP.floor} · ${PP.name}</div>
+        <div style="font-size:12.5px;color:var(--sub);line-height:1.5;margin:4px 0 2px">${PP.why}</div>
+        ${PROGRAM[pv]?"":'<div style="font-size:12px;color:var(--amber);font-weight:700;margin-top:8px">Direction shown — the exact exercises get finalized from your real test data when you arrive. That\'s coaching, not guessing.</div>'}
+        ${body}
+      </div>`;})()}
 
     <div style="font-size:12px;font-weight:800;color:var(--sub);text-transform:uppercase;letter-spacing:.6px;margin:18px 2px 10px">Why your plan looks like this</div>
     ${CHANGELOG.map(c=>`<div style="background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px 14px;margin-bottom:8px">
@@ -370,7 +409,7 @@ function chartSVG(data){
 
 /* ───────── ACTIONS ───────── */
 function finish(){
-  const type=UI.viewDay, ex=PROGRAM[type], d=draft(type);let vol=0,sd=0;
+  const type=UI.viewDay, ex=prog(S.phase,type), d=draft(type);let vol=0,sd=0;
   ex.forEach(e=>{const arr=d.entries[e.id];arr.forEach(c=>{if(c&&c.reps){vol+=(c.kg||0)*c.reps||c.reps;sd++}});S.exHistory[e.id]=S.exHistory[e.id]||[];S.exHistory[e.id].push({date:todayStr(),sets:arr,effort:d.effort[e.id]||null})});
   if(sd===0)return;
   S.history.push({date:todayStr(),type,volume:Math.round(vol),sets:sd});
@@ -389,12 +428,14 @@ function importBackup(file){
 
 /* ───────── EVENTS (delegation) ───────── */
 document.body.addEventListener("click",e=>{
-  const t=e.target.closest("[data-tab],[data-day],[data-set],[data-step],[data-clear],[data-done],[data-eff],[data-habit],[data-detail],[data-finish],[data-export],[data-close],[data-stop],[data-tstep],[data-logtest]");
+  const t=e.target.closest("[data-tab],[data-day],[data-set],[data-step],[data-clear],[data-done],[data-eff],[data-habit],[data-detail],[data-finish],[data-export],[data-close],[data-stop],[data-tstep],[data-logtest],[data-pphase],[data-advance]");
   if(!t)return;
   if(t.dataset.stop!==undefined&&t===e.target)return;
   if(t.dataset.tab){UI.tab=t.dataset.tab;UI.activeSet=null;render();return}
+  if(t.dataset.pphase){UI.previewPhase=+t.dataset.pphase;render();return}
+  if(t.dataset.advance){const np=S.phase+1;if(PROGRAM[np]){S.phase=np;S.drafts={};UI.viewDay=ROTATION[S.rotationIndex%3];UI.previewPhase=np;UI.tab="today";save();render();}return}
   if(t.dataset.day){UI.viewDay=t.dataset.day;UI.activeSet=null;render();return}
-  if(t.dataset.detail){UI.detail=PROGRAM[UI.viewDay].find(x=>x.id===t.dataset.detail);render();return}
+  if(t.dataset.detail){UI.detail=findEx(t.dataset.detail);render();return}
   if(t.dataset.close!==undefined){UI.detail=null;render();return}
   if(t.dataset.set){UI.activeSet=UI.activeSet===t.dataset.set?null:t.dataset.set;render();return}
   if(t.dataset.done){UI.activeSet=null;render();return}
@@ -405,11 +446,11 @@ document.body.addEventListener("click",e=>{
   if(t.dataset.clear){const[id,i]=t.dataset.clear.split(":");setS(()=>{cur().entries[id][+i]=null});return}
   if(t.dataset.habit){const d=todayStr();setS(()=>{S.habits[d]=S.habits[d]||{};S.habits[d][t.dataset.habit]=!S.habits[d][t.dataset.habit];const any=Object.values(S.habits[d]).some(Boolean);if(any&&!S.activeDates.includes(d))S.activeDates.push(d);if(!any&&!S.history.some(h=>h.date===d))S.activeDates=S.activeDates.filter(x=>x!==d);S.xp=Math.max(0,S.xp+(S.habits[d][t.dataset.habit]?5:-5));S.bestStreak=Math.max(S.bestStreak,computeStreak(S.activeDates))});return}
   if(t.dataset.eff){const[id,v]=t.dataset.eff.split(":");setS(()=>{cur().effort[id]=cur().effort[id]===v?null:v});return}
-  if(t.dataset.step){const[id,i,field,delta]=t.dataset.step.split(":");setS(()=>{const arr=cur().entries[id];const cell=arr[+i]||{};const ex=PROGRAM[UI.viewDay].find(x=>x.id===id);const t2=targetFor(ex);let base=cell[field];if(base==null)base=field==="kg"?(t2.kg||0):t2.reps;let nv=Math.max(0,+(base+ +delta).toFixed(2));const patch={};patch[field]=nv;if(field==="reps"&&ex.load==="kg"&&cell.kg==null)patch.kg=t2.kg||0;if(field==="kg"&&cell.reps==null)patch.reps=t2.reps;arr[+i]={...cell,...patch}});return}
+  if(t.dataset.step){const[id,i,field,delta]=t.dataset.step.split(":");setS(()=>{const arr=cur().entries[id];const cell=arr[+i]||{};const ex=prog(S.phase,UI.viewDay).find(x=>x.id===id);const t2=targetFor(ex);let base=cell[field];if(base==null)base=field==="kg"?(t2.kg||0):t2.reps;let nv=Math.max(0,+(base+ +delta).toFixed(2));const patch={};patch[field]=nv;if(field==="reps"&&ex.load==="kg"&&cell.kg==null)patch.kg=t2.kg||0;if(field==="kg"&&cell.reps==null)patch.reps=t2.reps;arr[+i]={...cell,...patch}});return}
 });
 document.body.addEventListener("change",e=>{
   const inp=e.target.closest("[data-input]");
-  if(inp){const[id,i,field]=inp.dataset.input.split(":");const v=parseFloat(inp.value);setS(()=>{const arr=cur().entries[id];const cell=arr[+i]||{};const ex=PROGRAM[UI.viewDay].find(x=>x.id===id);const t2=targetFor(ex);const patch={};patch[field]=isNaN(v)?0:v;if(field==="reps"&&ex.load==="kg"&&cell.kg==null)patch.kg=t2.kg||0;if(field==="kg"&&cell.reps==null)patch.reps=t2.reps;arr[+i]={...cell,...patch}})}
+  if(inp){const[id,i,field]=inp.dataset.input.split(":");const v=parseFloat(inp.value);setS(()=>{const arr=cur().entries[id];const cell=arr[+i]||{};const ex=prog(S.phase,UI.viewDay).find(x=>x.id===id);const t2=targetFor(ex);const patch={};patch[field]=isNaN(v)?0:v;if(field==="reps"&&ex.load==="kg"&&cell.kg==null)patch.kg=t2.kg||0;if(field==="kg"&&cell.reps==null)patch.reps=t2.reps;arr[+i]={...cell,...patch}})}
   const imp=e.target.closest("[data-import]");
   if(imp&&imp.files[0])importBackup(imp.files[0]);
   const tin=e.target.closest("[data-tinput]");
