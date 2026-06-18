@@ -113,6 +113,7 @@ const CHANGELOG=[
 ];
 
 /* ───────── STORAGE (durable on device; memory fallback in preview) ───────── */
+const APP_VERSION="v2 · 18 Jun 2026";
 let mem=null;
 const DB={
   read(){ try{const r=localStorage.getItem("scos_v1");return r?JSON.parse(r):null}catch(e){return mem} },
@@ -356,6 +357,7 @@ function planHTML(){
     <div style="background:var(--blueSoft);border-radius:14px;padding:14px;margin-top:14px;font-size:12.5px;color:var(--navy);line-height:1.55">
       <b>Principles this app follows:</b> exercises are chosen by real need, not by what gear you own. Foundation before progression — no skipping floors. Bodyweight & GMB-style mobility count fully where they serve the goal. Goals can change; the base never gets skipped.
     </div>
+    <div style="text-align:center;font-size:11px;color:var(--sub);margin-top:16px">Strength Code OS · ${APP_VERSION}</div>
   </div>`;
 }
 function progressHTML(streak,level,levelPct){
