@@ -351,11 +351,15 @@ function homeHTML(){
   const balT=TESTS.find(t=>t.id==="balance"),bal=testCurrent(balT);
   const pct=pp.total?pp.met/pp.total*100:0;
   const hr=now.getHours(),greet=hr<12?"Good morning":hr<17?"Good afternoon":"Good evening";
+  const HEROES=["Build what lasts.","Small reps, long arc.","Move with intent.","Earn the next floor.","Strong — and staying that way.","The work compounds.","Forward, one set at a time."];
+  const doy=Math.floor((Date.now()-new Date(now.getFullYear(),0,0))/864e5);
+  const hero=HEROES[doy%HEROES.length];
   const fg=fuelGrams(todayStr()),fhit=fuelHit(todayStr()),fstreak=fuelStreak();
   return `<div class="rise">
-    <div style="padding:26px 20px 6px">
-      <div style="font-size:13px;color:var(--sub);font-weight:600">${greet} · ${fmtDay(todayStr())}</div>
-      <div style="font-size:23px;font-weight:800;letter-spacing:-.5px;line-height:1.25;margin-top:8px">Restore the right side.<br>Build a lean, athletic, durable body.</div>
+    <div style="padding:40px 22px 14px">
+      <div style="font-size:12.5px;font-weight:600;color:var(--sub);letter-spacing:.2px">${greet}</div>
+      <div style="margin-top:13px;font-size:38px;font-weight:800;letter-spacing:-1.6px;line-height:1.02;background:linear-gradient(118deg,#171F30 0%,#46698F 78%);-webkit-background-clip:text;background-clip:text;color:transparent">${hero}</div>
+      <div style="margin-top:11px;font-size:13px;font-weight:500;color:var(--sub)">${fmtDay(todayStr())}<span style="opacity:.45"> · </span>${P.name}<span style="opacity:.45"> · </span>Floor ${ph} of 4</div>
     </div>
     <div style="margin:14px 16px;background:#fff;border:1px solid var(--line);border-radius:22px;padding:20px;display:flex;align-items:center;gap:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)">
       ${ring(pct,'P'+ph,pp.met+'/'+pp.total+' gates',112,11,'#1E2A44')}
