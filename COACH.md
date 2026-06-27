@@ -46,13 +46,13 @@ Re-test every 2–4 weeks. All gates for a phase must pass to advance.
 Full cues live in `index.html`. Rotation is **Lower → Upper → Athletic** (not weekday-bound; the next undone session waits).
 
 **Phase 1 — Restore**
-- *Lower:* **Ankle Unlock** · CB Cable Squat · Cable RDL · Assisted Split Squat · Farmer Carry
+- *Lower:* **Ankle Rock** · CB Cable Squat · Cable RDL · Assisted Split Squat · Farmer Carry
 - *Upper:* Wall Slide + Serratus Punch · Cable External Rotation (R) · Face Pull · Incline DB Press · Seated Cable Row
 - *Athletic:* **Lateral Step-Down (R)** · Single-Leg RDL (R) · Low Step-Up · Pallof Press
 - *Daily:* R/L balance (3:2) · Crawling · Deep-squat hold · Ankle dorsiflexion drill · Walking progression
 
 **Phase 2 — Build** (unlocks when P1 gates pass)
-- *Lower:* **Ankle Unlock** · Goblet/Cable Squat · DB RDL · Bulgarian Split Squat · Loaded Step-Up
+- *Lower:* **Ankle Rock** · Goblet/Cable Squat · DB RDL · Bulgarian Split Squat · Loaded Step-Up
 - *Upper:* Cable ER (R) · Push-up Progression · Seated Cable Row · Lat Pulldown · Face Pull
 - *Athletic:* **Loaded Lateral Lunge** · Single-Leg RDL (R) · Cable Chop + Lift · Assisted Pull-up Negative
 
@@ -66,7 +66,7 @@ Full cues live in `index.html`. Rotation is **Lower → Upper → Athletic** (no
 3. **Duplicate Smith RDL → Single-Leg RDL (R)** — removed redundancy, added a unilateral hinge that trains the balance test.
 4. **Box squat → uses the bench** — no box to buy; equipment follows need.
 5. **Parked Lat Pulldown & 1-Arm Press in Phase 1** — deferred until the cuff foundation passes its tests; pulldown reintroduced in Phase 2.
-6. **Added Ankle Unlock (loaded, tracked)** — the app had a heel-lift *test* (25→0 mm) but nothing *training* it, only a daily checkbox. Loaded eccentric-calf + knee-to-wall opens both Lower days so the restriction gets a progressive stimulus and the test number can actually move. Doubles as the warm-up.
+6. **Added Ankle Rock (Knee-to-Wall)** — the app had a heel-lift *test* (25→0 mm) but nothing *training* it, only a daily checkbox. Added one clean movement (drive the knee forward over a planted, heel-down foot) to both Lower days; it maps directly onto the heel-lift test so the number can move. (First version mashed two drills into one card and confused the user; simplified to a single movement, foot flat on the floor.)
 7. **Box Squat → Lateral Step-Down (P1) / Loaded Lateral Lunge (P2)** — the program was 100% sagittal + anti-rotation, zero frontal-plane work, which is the plane cricket/pickleball live in and the plane the right knee fails in (caving inward). Box squat was also a duplicate bilateral squat. Lat pulldown deliberately kept parked (vertical pull belongs in P2; time budget is tight).
 8. **Added the Fuel tab** — fat-loss (32→15%) was a primary goal with no app support. Two first-principles rules + a weekly-weight instrument, no calorie counting. The ~40 g/day protein was the real threat to muscle in a deficit; veg anchors fix it with no weighing.
 9. **OHP stays parked; heavy leg press deferred** — OHP loads the shoulder near the apprehension position; heavy leg press drives the knee through a stiff ankle with the back supported, hiding the fault. Trap-bar deadlift, rows and DB pressing carry the load instead.

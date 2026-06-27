@@ -43,7 +43,7 @@ Test-gated phase progression (you level up on numbers, not time), a "why" behind
 3. **Duplicate hinge → Single-Leg RDL (R)** — removed redundancy, added a unilateral hinge that also trains the balance test.
 4. **Box squat uses the bench** — no box to buy; equipment follows need.
 5. **Lat pulldown & 1-arm press parked in Phase 1** — foundation before load; pulldown returns in Phase 2.
-6. **Added Ankle Unlock (loaded eccentric calf + knee-to-wall)** — there was a heel-lift *test* but nothing *training* it. The stiff ankle is the bottom-up driver under the right knee; unloaded drills plateau, so loaded end-range work was added to both Lower days. (~80% this was the single highest-value change.)
+6. **Added Ankle Rock (Knee-to-Wall)** — there was a heel-lift *test* but nothing *training* it. The stiff ankle is the bottom-up driver under the right knee; unloaded drills plateau, so loaded end-range work was added to both Lower days. (~80% this was the single highest-value change.)
 7. **Box Squat → Lateral Step-Down (P1) / Loaded Lateral Lunge (P2)** — the whole program was sagittal + anti-rotation, with **zero frontal-plane work** — the exact plane cricket/pickleball live in and the plane the right knee fails in (caving inward). Box squat was also a duplicate bilateral squat. The step-down doubles as a knee-tracking drill. (~70% confidence; the main risk is frontal-plane loading on the knee, so it's low, slow, and pain-gated.) Lat pulldown deliberately kept parked — restraint, not oversight.
 8. **Added the Fuel tab** — fat loss had no support in the app. Two rules + weekly weight, gamified into the same XP/streak engine as training so nutrition consistency levels you up too.
 
@@ -51,7 +51,7 @@ Test-gated phase progression (you level up on numbers, not time), a "why" behind
 The Upper days, the hinge selection, the single-leg work, and the test gates were already well-built. Churning them would have been theater. The discipline here is doing the few changes that are defensible on first principles and naming the restraint out loud.
 
 ## Falsification triggers (when to rethink)
-- If Ankle Unlock runs consistently for 3–4 weeks and the heel-lift test doesn't drop, the restriction may be structural (bony block / old fusion) → physio/imaging, not more load.
+- If Ankle Rock runs consistently for 3–4 weeks and the heel-lift test doesn't drop, the restriction may be structural (bony block / old fusion) → physio/imaging, not more load.
 - If Lateral Step-Down provokes right-knee pain > 3/10, regress the height or pull it.
 - If the daily-rotating program ever drifts from movement-quality-first, stop and re-anchor on the principles.
 

@@ -37,7 +37,7 @@
 const PROGRAM = {
  1: {
   Lower:[
-    {id:"ank_load",name:"Ankle Unlock",sets:3,reps:10,load:"kg",right:true,d:{why:"Your 25 mm heel lift accommodates a stiff right ankle — it doesn't fix it. A locked ankle is the bottom-up driver squeezing your right knee, and unloaded drills plateau. Loaded end-range work is what actually shifts a stubborn restriction. This opens the session (doubles as your warm-up) and drives your heel-lift test straight down.",setup:["Off a step or low plate","A wall for the knee-to-wall drive","Light DB in hand once bodyweight is easy"],exec:["Knee-to-wall: drive the right knee forward over the toes, heel glued down, to honest end range — 5 slow reps","Eccentric calf: rise on both feet, shift onto the right, lower over 4–5 s to a deep stretch below the step","Keep the heel tracking straight, no rolling to the outside","Add the DB only when the slow lower is easy and pain-free"],breath:"Easy and continuous — never hold.",flags:["Heel lifting early on the lower","Foot rolling to the outside","Pinch at the front of the ankle (ease the range)","Sharp pain — stop"],ok:"Knee clears further past the toes over weeks, heel stays planted, and the test heel-lift drops."}},
+    {id:"ank_rock",name:"Ankle Rock (Knee-to-Wall)",sets:3,reps:8,load:"bw",right:true,d:{why:"Your 25 mm heel lift accommodates a stiff right ankle — this fixes it. A locked ankle is the bottom-up driver squeezing your right knee. Driving the knee forward over a planted foot is the most direct way to open the joint, and it maps one-to-one onto your heel-lift test. ONE movement, foot flat on the floor — that's the whole thing.",setup:["Stand facing a wall, right foot flat on the floor, toes a few cm from the wall","Hands lightly on the wall for balance only","Left foot back and out of the way"],exec:["1 · Keep the right HEEL glued to the floor — it never lifts","2 · Drive the right KNEE forward over the toes, toward the wall","3 · Go until the heel is just about to lift — that's your end range; hold 1 second","4 · Feel the stretch deep in the calf and the front of the ankle, then return slow"],breath:"Easy and continuous — never hold your breath.",flags:["Heel lifting (back the knee off until the heel stays down)","Knee caving inward — track it straight over the 2nd toe","Foot rolling onto its outer edge"],ok:"Over the weeks the knee travels further past the toes with the heel still planted — and your heel-lift test drops."}},
     {id:"cb_squat",name:"CB Cable Squat",sets:3,reps:8,load:"kg",right:false,d:{why:"Routes load through the hips, not the right knee, so the squat returns without shearing the joint.",setup:["FT2 lowest pulley, single handle","25 mm under both heels","Handle to sternum, lats locked"],exec:["Break hips and knees together, pull hips straight down between the heels","Let knees travel over the toes — don't overprotect","Pause at honest depth, tension in glutes","Drive mid-foot; right leg owns 50%"],breath:"Brace at top, hold the bottom, exhale up.",flags:["Heels lifting","Right knee caving","Weight drifting left"],ok:"Even depth, glute-driven, no next-day knee ache."}},
     {id:"cable_rdl",name:"Cable RDL",sets:3,reps:10,load:"kg",right:false,d:{why:"Free path exposes and fixes the right-side asymmetry a Smith machine hides. Rebuilds the posterior engine.",setup:["Low pulley, rope/handles at thigh","Thumb alongside fingers, knuckles to floor","Soft knees, frozen"],exec:["Squeeze armpits, engage lats","Push hips straight back, handles slide down thighs","Stop at a deep hamstring stretch","Drive hips forward, squeeze glutes tall"],breath:"Brace at top, hold down, exhale at lockout.",flags:["Knees bending more on the way down","Low back rounding","Right hip shooting back first"],ok:"Hamstrings do the work, back flat, hips in sync."}},
     {id:"split_squat",name:"Assisted Split Squat",sets:3,reps:8,load:"bw",right:true,d:{why:"Removes the balance panic so the right ankle and hip confidently load. Bridge to single-leg strength.",setup:["Beside the FT2 upright","Right foot forward, back foot on toes","One hand on upright for balance only"],exec:["Drop the back knee straight down over 4s","Torso tall, front shin vertical","Pause before the knee touches","Drive up through the front (right) foot"],breath:"Inhale down, exhale up.",flags:["Pulling up with the arm","Front knee past toes","Trunk twisting"],ok:"Right leg drives it, silent descent, light hand."}},
@@ -59,7 +59,7 @@ const PROGRAM = {
  },
  2: {
   Lower:[
-    {id:"ank_load",name:"Ankle Unlock",sets:3,reps:10,load:"kg",right:true,d:{why:"With the heel lift mostly gone, this keeps the right ankle's range open under load so the flat-foot squat stays honest — restrictions creep back if you stop. Heavier eccentric now; the goblet squat does the rest.",setup:["Off a step, DB in hand","Wall for the knee-to-wall check"],exec:["Knee-to-wall: 5 slow reps to end range, heel down","Loaded eccentric calf: lower over 4–5 s under the DB","Track the heel straight, full stretch at the bottom"],breath:"Easy and continuous — never hold.",flags:["Heel lifting early","Rolling to the outside","Front-of-ankle pinch","Sharp pain — stop"],ok:"Range holds or improves under heavier load; the squat stays heels-flat."}},
+    {id:"ank_rock",name:"Ankle Rock (Knee-to-Wall)",sets:2,reps:8,load:"bw",right:true,d:{why:"With the heel lift mostly gone, a short set keeps the right ankle's range open so the flat-foot squat stays honest — stiffness creeps back if you stop. Same single movement, foot flat on the floor.",setup:["Face a wall, right foot flat, toes a few cm from it","Hands on the wall for balance only"],exec:["1 · Heel glued to the floor","2 · Drive the knee forward over the toes to end range","3 · Hold 1 second, then return slow"],breath:"Easy and continuous — never hold your breath.",flags:["Heel lifting","Knee caving inward","Foot rolling onto its outer edge"],ok:"Range holds or improves; the squat stays heels-flat."}},
     {id:"p2_goblet",name:"Goblet / Cable Squat",sets:3,reps:8,load:"kg",right:false,d:{why:"The heel lift has earned its way down — now load the squat bilaterally and build real leg strength on the stable base you proved.",setup:["Heavy DB at the chest, or front-rack cable","Heels flat if mobility allows, else a minimal lift"],exec:["Sit straight down, knees tracking the toes","Hit honest depth","Drive evenly through both mid-feet"],breath:"Brace top, exhale up.",flags:["Right knee caving","Heels rising","Chest dropping"],ok:"Full depth, even drive, no knee ache."}},
     {id:"p2_dbrdl",name:"DB Romanian Deadlift",sets:3,reps:8,load:"kg",right:false,d:{why:"A free-weight hinge now the pattern is grooved — heavier posterior-chain strength with both sides kept honest.",setup:["DBs in front of the thighs","Knuckles down, lats packed"],exec:["Hips back, DBs slide down the legs","Stop at a deep hamstring stretch","Drive the hips through, squeeze glutes"],breath:"Brace down, exhale at top.",flags:["Back rounding","Right hip leading","Knees re-bending"],ok:"Hamstring-driven, flat back, symmetric."}},
     {id:"p2_bulgarian",name:"Bulgarian Split Squat",sets:3,reps:8,load:"bw",right:true,d:{why:"The assisted split squat graduates: rear foot elevated raises the right leg's stability and strength demand.",setup:["Rear foot on the bench, right foot forward","Light DBs once stable"],exec:["Drop straight down, front shin near-vertical","Control the depth","Drive through the front (right) foot"],breath:"Inhale down, exhale up.",flags:["Wobbling","Front knee collapsing in","Pushing off the back foot"],ok:"Right leg owns it, torso tall."}},
@@ -136,7 +136,7 @@ const CHANGELOG=[
   {date:"Jun 2026",title:"Parked Lat Pulldown & 1-Arm Press",reason:"Overhead pulling and extra pressing deferred until the cuff foundation passes its tests — foundation before load."},
   {date:"Jun 2026",title:"Added the Fuel tab (protein + weekly weight)",reason:"Fat loss 32%→15% was a primary goal with zero support in the app. Instead of calorie-counting, Fuel runs two first-principles rules: a protein anchor every meal (protects muscle, which protects BMR) and smaller portions of everything else (the whole deficit). The weekly weight trend is the only instrument. Your ~40 g/day protein was the real threat to muscle in a deficit — the veg anchors fix it with no weighing."},
   {date:"Jun 2026",title:"Overhead press stays parked; heavy leg press deferred",reason:"OHP loads the shoulder near the apprehension position — highest dislocation risk on the board. Heavy leg press drives the knee through a stiff ankle with the back supported, hiding the fault. Both wait behind the test gates; trap-bar deadlift, rows and DB pressing carry the strength load meanwhile."},
-  {date:"Jun 2026",title:"Added Ankle Unlock — a tracked, loaded ankle lift",reason:"The app had a heel-lift TEST (25→0 mm) but nothing in the program training it — only a daily checkbox. A stiff right ankle is the bottom-up driver squeezing your right knee, and unloaded mobility plateaus. Added a loaded eccentric-calf + knee-to-wall primer to the start of both Lower days so the restriction gets a real, progressive stimulus and the test number can actually move. It opens the session, so it doubles as your warm-up."},
+  {date:"Jun 2026",title:"Added Ankle Rock (Knee-to-Wall) — a tracked ankle drill",reason:"The app had a heel-lift TEST (25→0 mm) but nothing in the program training it — only a daily checkbox. A stiff right ankle is the bottom-up driver squeezing your right knee. Added one clean movement — drive the knee forward over a planted, heel-down foot — to the start of both Lower days. It maps directly onto the heel-lift test, so the number can actually move. (First version mashed two drills into one card and was confusing; simplified to a single movement, foot flat on the floor.)"},
   {date:"Jun 2026",title:"Box Squat → Lateral Step-Down / Lateral Lunge",reason:"The whole program was sagittal (front-to-back) plus anti-rotation — zero frontal-plane work, the one plane cricket and pickleball live in, and the one your right knee fails in (caving inward). The box squat was also a second bilateral squat already covered on Lower day. Swapped it for frontal-plane control: Lateral Step-Down in Phase 1 (also a knee-tracking drill), Loaded Lateral Lunge in Phase 2. Lat pulldown stays parked — vertical pulling still belongs in Phase 2, and the session time budget is tight."}
 ];
 
@@ -320,6 +320,443 @@ function stepperHTML(id,i,field,label,val,step){
     </div></div>`;
 }
 
+/* ───────── EXERCISE ILLUSTRATIONS (inline SVG, keyed by id) ───────── */
+const ILLUS={
+ ank_rock:`<svg viewBox="0 0 360 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;font-family:ui-sans-serif,system-ui,sans-serif">
+  <line x1="34" y1="248" x2="320" y2="248" stroke="#D9D5CE" stroke-width="3.5" stroke-linecap="round"/>
+  <line x1="290" y1="78" x2="290" y2="248" stroke="#D9D5CE" stroke-width="3.5" stroke-linecap="round"/>
+  <text x="298" y="172" font-size="10" fill="#C3BEB6" transform="rotate(90 298 172)" letter-spacing="1">WALL</text>
+  <path d="M152 248 L240 248 L238 234 Q204 228 184 226 L200 142 Q226 136 223 110 L204 70 L180 70 L172 144 Q152 167 162 218 Q153 232 152 248 Z" fill="#DCE2EC" stroke="#9AA8BF" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M172 226 Q155 196 168 150 Q182 168 180 208 Q178 222 172 226 Z" fill="#F4D7A6" stroke="#D99A4E" stroke-width="2"/>
+  <circle cx="154" cy="248" r="6" fill="#5C9E7E"/>
+  <path d="M218 92 Q252 94 252 122" fill="none" stroke="#1E2A44" stroke-width="3" stroke-linecap="round"/>
+  <path d="M252 122 l-7 -5 1 11 Z" fill="#1E2A44"/>
+  <line x1="120" y1="186" x2="170" y2="184" stroke="#D99A4E" stroke-width="1.5"/>
+  <text x="20" y="176" font-size="11" font-weight="800" fill="#B07A2E">CALF + ACHILLES</text>
+  <text x="20" y="190" font-size="10.5" fill="#8C8881">feel the stretch</text>
+  <line x1="118" y1="268" x2="152" y2="252" stroke="#5C9E7E" stroke-width="1.5"/>
+  <text x="14" y="282" font-size="11" font-weight="800" fill="#3F6F58">HEEL STAYS DOWN</text>
+  <text x="206" y="80" font-size="11" font-weight="800" fill="#1E2A44">DRIVE KNEE</text>
+  <text x="206" y="93" font-size="10.5" fill="#5b6477">over the toes →</text>
+ </svg>`,
+ lat_stepdown:`<svg viewBox="0 0 360 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;font-family:ui-sans-serif,system-ui,sans-serif">
+  <line x1="30" y1="262" x2="330" y2="262" stroke="#D9D5CE" stroke-width="3.5" stroke-linecap="round"/>
+  <rect x="196" y="214" width="86" height="48" rx="4" fill="#EFECE6" stroke="#D9D5CE" stroke-width="2"/>
+  <text x="239" y="243" font-size="10" fill="#B7B2AA" text-anchor="middle" letter-spacing="1">STEP</text>
+  <circle cx="214" cy="60" r="17" fill="#DCE2EC" stroke="#9AA8BF" stroke-width="2"/>
+  <path d="M196 92 L232 92 L226 150 L202 150 Z" fill="#DCE2EC" stroke="#9AA8BF" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M222 150 L236 196 L236 214" fill="none" stroke="#2B3550" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M204 150 L176 196 L150 244" fill="none" stroke="#2B3550" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+  <line x1="236" y1="120" x2="236" y2="262" stroke="#5B7CB8" stroke-width="2" stroke-dasharray="5 5"/>
+  <path d="M236 178 a16 16 0 0 1 16 16" fill="none" stroke="#5C9E7E" stroke-width="6" stroke-linecap="round"/>
+  <path d="M150 214 l0 26" fill="none" stroke="#1E2A44" stroke-width="3" stroke-linecap="round"/>
+  <path d="M150 240 l-5 -7 11 0 Z" fill="#1E2A44"/>
+  <line x1="300" y1="186" x2="252" y2="190" stroke="#5C9E7E" stroke-width="1.5"/>
+  <text x="262" y="168" font-size="11" font-weight="800" fill="#3F6F58">RIGHT GLUTE</text>
+  <text x="262" y="182" font-size="10.5" fill="#8C8881">drives + controls</text>
+  <text x="244" y="116" font-size="11" font-weight="800" fill="#3E5A86">KNEE TRACKS</text>
+  <text x="244" y="129" font-size="10.5" fill="#5b6477">straight — no cave-in</text>
+  <text x="40" y="206" font-size="11" font-weight="800" fill="#1E2A44">LEFT FOOT</text>
+  <text x="40" y="219" font-size="10.5" fill="#5b6477">lowers slow 4–5s,</text>
+  <text x="40" y="232" font-size="10.5" fill="#5b6477">taps &amp; lifts</text>
+ </svg>`,
+ ext_rot:`<svg viewBox="0 0 360 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;font-family:ui-sans-serif,system-ui,sans-serif">
+  <text x="14" y="24" font-size="12" font-weight="700" fill="#8C8881">Top-down view · elbow pinned to your side</text>
+  <ellipse cx="150" cy="150" rx="70" ry="42" fill="#DCE2EC" stroke="#9AA8BF" stroke-width="2"/>
+  <text x="150" y="155" font-size="11" fill="#8C8881" text-anchor="middle">your body</text>
+  <path d="M196 124 Q206 132 200 150" fill="none" stroke="#D99A4E" stroke-width="6" stroke-linecap="round"/>
+  <rect x="210" y="140" width="16" height="22" rx="3" fill="#EFE2C7" stroke="#D99A4E" stroke-width="1.5"/>
+  <line x1="218" y1="150" x2="218" y2="178" stroke="#2B3550" stroke-width="11" stroke-linecap="round"/>
+  <line x1="218" y1="178" x2="150" y2="190" stroke="#9AA8BF" stroke-width="10" stroke-linecap="round" stroke-dasharray="2 7"/>
+  <line x1="218" y1="178" x2="286" y2="172" stroke="#2B3550" stroke-width="11" stroke-linecap="round"/>
+  <path d="M168 196 Q220 210 272 184" fill="none" stroke="#5C9E7E" stroke-width="3" stroke-linecap="round"/>
+  <path d="M272 184 l-3 -8 9 4 Z" fill="#5C9E7E"/>
+  <circle cx="218" cy="178" r="5" fill="#1E2A44"/>
+  <line x1="120" y1="118" x2="196" y2="132" stroke="#D99A4E" stroke-width="1.5"/>
+  <text x="20" y="110" font-size="11" font-weight="800" fill="#B07A2E">REAR-SHOULDER CUFF</text>
+  <text x="20" y="124" font-size="10.5" fill="#8C8881">rotates the forearm out</text>
+  <text x="150" y="210" font-size="10.5" fill="#8C8881" text-anchor="middle" font-style="italic">start (across belly)</text>
+  <text x="286" y="158" font-size="10.5" fill="#3F6F58" font-weight="700">end</text>
+  <text x="40" y="262" font-size="11" font-weight="800" fill="#1E2A44">Elbow never leaves your side · move from the shoulder, not the wrist</text>
+ </svg>`,
+ cb_squat:`<svg viewBox="0 0 360 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;font-family:ui-sans-serif,system-ui,sans-serif">
+  <text x="14" y="22" font-size="12" font-weight="700" fill="#8C8881">Side view · hips sink straight down</text>
+  <line x1="30" y1="252" x2="330" y2="252" stroke="#D9D5CE" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M150 252 L184 252 L184 242 Z" fill="#EFE2C7" stroke="#D99A4E" stroke-width="1.5"/>
+  <line x1="206" y1="150" x2="74" y2="244" stroke="#9AA8BF" stroke-width="2"/>
+  <circle cx="74" cy="244" r="6" fill="#B9C2D2"/>
+  <circle cx="150" cy="80" r="14" fill="#DCE2EC" stroke="#9AA8BF" stroke-width="2"/>
+  <path d="M150 94 L170 160" stroke="#2B3550" stroke-width="15" stroke-linecap="round"/>
+  <path d="M170 160 L216 170" stroke="#2B3550" stroke-width="14" stroke-linecap="round"/>
+  <path d="M216 170 L198 246" stroke="#2B3550" stroke-width="14" stroke-linecap="round"/>
+  <path d="M153 106 L206 150" stroke="#2B3550" stroke-width="11" stroke-linecap="round"/>
+  <rect x="198" y="142" width="18" height="16" rx="3" fill="#46698F"/>
+  <ellipse cx="164" cy="162" rx="15" ry="12" fill="#F4D7A6" stroke="#D99A4E" stroke-width="2"/>
+  <path d="M252 150 L252 198" stroke="#1E2A44" stroke-width="3" stroke-linecap="round"/>
+  <path d="M252 198 l-5 -7 11 0 Z" fill="#1E2A44"/>
+  <text x="260" y="178" font-size="10.5" fill="#5b6477">hips sink</text>
+  <line x1="112" y1="172" x2="152" y2="164" stroke="#D99A4E" stroke-width="1.5"/>
+  <text x="20" y="162" font-size="11" font-weight="800" fill="#B07A2E">GLUTES drive</text>
+  <text x="14" y="284" font-size="11" font-weight="800" fill="#3F6F58">Right leg owns 50% · heel wedge keeps you tall</text>
+ </svg>`,
+ cable_rdl:`<svg viewBox="0 0 360 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;font-family:ui-sans-serif,system-ui,sans-serif">
+  <text x="14" y="22" font-size="12" font-weight="700" fill="#8C8881">Side view · hips push BACK, back stays flat</text>
+  <line x1="30" y1="256" x2="330" y2="256" stroke="#D9D5CE" stroke-width="3.5" stroke-linecap="round"/>
+  <circle cx="118" cy="96" r="14" fill="#DCE2EC" stroke="#9AA8BF" stroke-width="2"/>
+  <path d="M128 106 L196 150" stroke="#2B3550" stroke-width="15" stroke-linecap="round"/>
+  <line x1="124" y1="100" x2="204" y2="152" stroke="#5B7CB8" stroke-width="2" stroke-dasharray="5 5"/>
+  <path d="M196 150 L202 204" stroke="#2B3550" stroke-width="14" stroke-linecap="round"/>
+  <path d="M202 204 L196 250" stroke="#2B3550" stroke-width="14" stroke-linecap="round"/>
+  <path d="M150 128 L186 196" stroke="#2B3550" stroke-width="11" stroke-linecap="round"/>
+  <rect x="180" y="188" width="16" height="14" rx="3" fill="#46698F"/>
+  <line x1="188" y1="196" x2="92" y2="250" stroke="#9AA8BF" stroke-width="2"/>
+  <circle cx="92" cy="250" r="6" fill="#B9C2D2"/>
+  <path d="M194 178 Q182 196 188 214 Q200 200 200 180 Z" fill="#F4D7A6" stroke="#D99A4E" stroke-width="2"/>
+  <path d="M214 150 Q244 150 244 178" fill="none" stroke="#1E2A44" stroke-width="3" stroke-linecap="round"/>
+  <path d="M214 150 l9 -3 -4 9 Z" fill="#1E2A44"/>
+  <text x="226" y="146" font-size="10.5" fill="#5b6477">hips back</text>
+  <line x1="232" y1="200" x2="206" y2="196" stroke="#D99A4E" stroke-width="1.5"/>
+  <text x="238" y="196" font-size="11" font-weight="800" fill="#B07A2E">HAMSTRINGS</text>
+  <text x="238" y="210" font-size="10.5" fill="#8C8881">do the work</text>
+  <text x="14" y="284" font-size="11" font-weight="800" fill="#3E5A86">Flat back (dashed line) · only a soft knee bend</text>
+ </svg>`,
+ split_squat:`<svg viewBox="0 0 360 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;font-family:ui-sans-serif,system-ui,sans-serif">
+  <text x="14" y="22" font-size="12" font-weight="700" fill="#8C8881">Side view · back knee drops straight down</text>
+  <line x1="30" y1="256" x2="330" y2="256" stroke="#D9D5CE" stroke-width="3.5" stroke-linecap="round"/>
+  <line x1="300" y1="60" x2="300" y2="256" stroke="#D9D5CE" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="178" cy="74" r="14" fill="#DCE2EC" stroke="#9AA8BF" stroke-width="2"/>
+  <path d="M178 88 L182 156" stroke="#2B3550" stroke-width="15" stroke-linecap="round"/>
+  <path d="M182 156 L214 188" stroke="#2B3550" stroke-width="14" stroke-linecap="round"/>
+  <path d="M214 188 L214 252" stroke="#2B3550" stroke-width="14" stroke-linecap="round"/>
+  <line x1="214" y1="184" x2="214" y2="252" stroke="#5B7CB8" stroke-width="2" stroke-dasharray="5 5"/>
+  <path d="M182 156 L150 196 L150 224" stroke="#B9C2D2" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M150 224 L168 234" stroke="#B9C2D2" stroke-width="13" stroke-linecap="round"/>
+  <path d="M182 100 L298 130" stroke="#2B3550" stroke-width="10" stroke-linecap="round"/>
+  <ellipse cx="200" cy="172" rx="13" ry="11" fill="#F4D7A6" stroke="#D99A4E" stroke-width="2"/>
+  <line x1="248" y1="172" x2="214" y2="172" stroke="#D99A4E" stroke-width="1.5"/>
+  <text x="252" y="168" font-size="11" font-weight="800" fill="#B07A2E">FRONT (R)</text>
+  <text x="252" y="182" font-size="10.5" fill="#8C8881">leg drives up</text>
+  <text x="226" y="120" font-size="10.5" fill="#3E5A86">front shin vertical</text>
+  <text x="14" y="284" font-size="11" font-weight="800" fill="#3F6F58">Hand on the upright for balance only — don't pull up</text>
+ </svg>`,
+ farmer:`<svg viewBox="0 0 360 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;font-family:ui-sans-serif,system-ui,sans-serif">
+  <text x="14" y="22" font-size="12" font-weight="700" fill="#8C8881">Front view · walk tall, braced</text>
+  <line x1="30" y1="256" x2="330" y2="256" stroke="#D9D5CE" stroke-width="3.5" stroke-linecap="round"/>
+  <circle cx="180" cy="64" r="15" fill="#DCE2EC" stroke="#9AA8BF" stroke-width="2"/>
+  <path d="M180 80 L180 170" stroke="#2B3550" stroke-width="17" stroke-linecap="round"/>
+  <path d="M180 96 L146 168" stroke="#2B3550" stroke-width="11" stroke-linecap="round"/>
+  <path d="M180 96 L214 168" stroke="#2B3550" stroke-width="11" stroke-linecap="round"/>
+  <rect x="138" y="166" width="18" height="30" rx="4" fill="#46698F"/>
+  <rect x="206" y="166" width="18" height="30" rx="4" fill="#46698F"/>
+  <path d="M180 170 L166 214 L160 252" stroke="#2B3550" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M180 170 L196 212 L204 250" stroke="#2B3550" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="170" y="118" width="20" height="34" rx="6" fill="#F4D7A6" stroke="#D99A4E" stroke-width="2"/>
+  <path d="M250 150 L286 150" stroke="#1E2A44" stroke-width="3" stroke-linecap="round"/>
+  <path d="M286 150 l-7 -5 0 11 Z" fill="#1E2A44"/>
+  <text x="250" y="142" font-size="10.5" fill="#5b6477">walk forward</text>
+  <line x1="208" y1="135" x2="190" y2="135" stroke="#D99A4E" stroke-width="1.5"/>
+  <text x="214" y="132" font-size="11" font-weight="800" fill="#B07A2E">CORE braced</text>
+  <text x="214" y="146" font-size="10.5" fill="#8C8881">like taking a punch</text>
+  <text x="14" y="284" font-size="11" font-weight="800" fill="#3F6F58">Stand maximally tall · let the right arm swing with your stride</text>
+ </svg>`,
+ wall_slide:`<svg viewBox="0 0 360 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;font-family:ui-sans-serif,system-ui,sans-serif">
+  <text x="14" y="22" font-size="12" font-weight="700" fill="#8C8881">Facing wall · slide up, reach long, punch through</text>
+  <line x1="232" y1="44" x2="232" y2="262" stroke="#D9D5CE" stroke-width="4" stroke-linecap="round"/>
+  <line x1="30" y1="262" x2="330" y2="262" stroke="#D9D5CE" stroke-width="3.5" stroke-linecap="round"/>
+  <circle cx="168" cy="92" r="14" fill="#DCE2EC" stroke="#9AA8BF" stroke-width="2"/>
+  <path d="M168 106 L168 200" stroke="#2B3550" stroke-width="16" stroke-linecap="round"/>
+  <path d="M168 118 L210 92" stroke="#2B3550" stroke-width="11" stroke-linecap="round"/>
+  <path d="M210 92 L228 70" stroke="#2B3550" stroke-width="11" stroke-linecap="round"/>
+  <path d="M168 200 L160 262" stroke="#2B3550" stroke-width="13" stroke-linecap="round"/>
+  <path d="M168 200 L184 262" stroke="#2B3550" stroke-width="13" stroke-linecap="round"/>
+  <path d="M218 96 L218 60" stroke="#1E2A44" stroke-width="3" stroke-linecap="round"/>
+  <path d="M218 60 l-5 7 11 0 Z" fill="#1E2A44"/>
+  <text x="226" y="74" font-size="10.5" fill="#5b6477">reach long</text>
+  <ellipse cx="178" cy="138" rx="11" ry="16" fill="#F4D7A6" stroke="#D99A4E" stroke-width="2"/>
+  <line x1="86" y1="138" x2="167" y2="138" stroke="#D99A4E" stroke-width="1.5"/>
+  <text x="20" y="128" font-size="11" font-weight="800" fill="#B07A2E">SERRATUS</text>
+  <text x="20" y="142" font-size="10.5" fill="#8C8881">wraps the blade forward</text>
+  <text x="14" y="288" font-size="11" font-weight="800" fill="#3F6F58">No shrug — reach, don't hike the shoulders</text>
+ </svg>`,
+ face_pull:`<svg viewBox="0 0 360 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;font-family:ui-sans-serif,system-ui,sans-serif">
+  <text x="14" y="22" font-size="12" font-weight="700" fill="#8C8881">Pull rope to the forehead · elbows HIGH</text>
+  <line x1="30" y1="262" x2="330" y2="262" stroke="#D9D5CE" stroke-width="3.5" stroke-linecap="round"/>
+  <circle cx="190" cy="96" r="15" fill="#DCE2EC" stroke="#9AA8BF" stroke-width="2"/>
+  <path d="M190 112 L190 200" stroke="#2B3550" stroke-width="17" stroke-linecap="round"/>
+  <path d="M190 124 L150 110 L120 116" stroke="#2B3550" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M190 124 L230 110 L260 116" stroke="#2B3550" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="120" y1="116" x2="74" y2="96" stroke="#9AA8BF" stroke-width="2"/>
+  <line x1="260" y1="116" x2="74" y2="96" stroke="#9AA8BF" stroke-width="2"/>
+  <circle cx="74" cy="96" r="6" fill="#B9C2D2"/>
+  <path d="M190 200 L176 262" stroke="#2B3550" stroke-width="13" stroke-linecap="round"/>
+  <path d="M190 200 L204 262" stroke="#2B3550" stroke-width="13" stroke-linecap="round"/>
+  <ellipse cx="190" cy="150" rx="16" ry="11" fill="#F4D7A6" stroke="#D99A4E" stroke-width="2"/>
+  <line x1="252" y1="150" x2="206" y2="150" stroke="#D99A4E" stroke-width="1.5"/>
+  <text x="256" y="146" font-size="11" font-weight="800" fill="#B07A2E">REAR DELTS</text>
+  <text x="256" y="160" font-size="10.5" fill="#8C8881">+ mid-back</text>
+  <text x="14" y="288" font-size="11" font-weight="800" fill="#3F6F58">Split the hands apart · keep it off the neck/traps</text>
+ </svg>`,
+ incline_press:`<svg viewBox="0 0 360 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;font-family:ui-sans-serif,system-ui,sans-serif">
+  <text x="14" y="22" font-size="12" font-weight="700" fill="#8C8881">Side view · blades pinned, press both arms together</text>
+  <line x1="30" y1="262" x2="330" y2="262" stroke="#D9D5CE" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M120 244 L236 158 L236 200 L150 262 Z" fill="#EFECE6" stroke="#D9D5CE" stroke-width="2" stroke-linejoin="round"/>
+  <circle cx="216" cy="150" r="13" fill="#DCE2EC" stroke="#9AA8BF" stroke-width="2"/>
+  <path d="M206 162 L150 210" stroke="#2B3550" stroke-width="16" stroke-linecap="round"/>
+  <path d="M200 168 L210 120" stroke="#2B3550" stroke-width="11" stroke-linecap="round"/>
+  <path d="M188 178 L198 122" stroke="#2B3550" stroke-width="11" stroke-linecap="round"/>
+  <rect x="202" y="108" width="16" height="14" rx="3" fill="#46698F"/>
+  <rect x="190" y="110" width="16" height="14" rx="3" fill="#46698F"/>
+  <path d="M232 96 L232 66" stroke="#1E2A44" stroke-width="3" stroke-linecap="round"/>
+  <path d="M232 66 l-5 7 11 0 Z" fill="#1E2A44"/>
+  <text x="240" y="80" font-size="10.5" fill="#5b6477">press up</text>
+  <ellipse cx="188" cy="158" rx="14" ry="11" fill="#F4D7A6" stroke="#D99A4E" stroke-width="2"/>
+  <line x1="120" y1="150" x2="176" y2="156" stroke="#D99A4E" stroke-width="1.5"/>
+  <text x="22" y="146" font-size="11" font-weight="800" fill="#B07A2E">CHEST</text>
+  <text x="22" y="160" font-size="10.5" fill="#8C8881">elbows ~45°, tucked</text>
+  <text x="14" y="288" font-size="11" font-weight="800" fill="#3F6F58">Watch the right arm keeps pace — don't let it lag</text>
+ </svg>`,
+ cable_row:`<svg viewBox="0 0 360 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;font-family:ui-sans-serif,system-ui,sans-serif">
+  <text x="14" y="22" font-size="12" font-weight="700" fill="#8C8881">Side view · tall spine, drive elbows back</text>
+  <line x1="30" y1="256" x2="330" y2="256" stroke="#D9D5CE" stroke-width="3.5" stroke-linecap="round"/>
+  <circle cx="168" cy="84" r="14" fill="#DCE2EC" stroke="#9AA8BF" stroke-width="2"/>
+  <path d="M168 98 L172 168" stroke="#2B3550" stroke-width="16" stroke-linecap="round"/>
+  <path d="M172 168 L232 176" stroke="#2B3550" stroke-width="14" stroke-linecap="round"/>
+  <path d="M232 176 L246 198" stroke="#2B3550" stroke-width="14" stroke-linecap="round"/>
+  <path d="M170 116 L210 150 L266 168" stroke="#2B3550" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="210" y1="150" x2="320" y2="170" stroke="#9AA8BF" stroke-width="2"/>
+  <circle cx="320" cy="172" r="6" fill="#B9C2D2"/>
+  <ellipse cx="162" cy="138" rx="11" ry="16" fill="#F4D7A6" stroke="#D99A4E" stroke-width="2"/>
+  <path d="M196 138 L160 138" stroke="#1E2A44" stroke-width="3" stroke-linecap="round"/>
+  <path d="M160 138 l7 -5 0 11 Z" fill="#1E2A44"/>
+  <text x="120" y="122" font-size="10.5" fill="#5b6477">elbows back</text>
+  <line x1="92" y1="150" x2="150" y2="142" stroke="#D99A4E" stroke-width="1.5"/>
+  <text x="22" y="160" font-size="11" font-weight="800" fill="#B07A2E">MID-BACK</text>
+  <text x="14" y="284" font-size="11" font-weight="800" fill="#3F6F58">Pinch the blades — crush a walnut — torso stays quiet</text>
+ </svg>`,
+ sl_rdl:`<svg viewBox="0 0 360 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;font-family:ui-sans-serif,system-ui,sans-serif">
+  <text x="14" y="22" font-size="12" font-weight="700" fill="#8C8881">Side view · balance on the RIGHT leg, hips square</text>
+  <line x1="30" y1="256" x2="330" y2="256" stroke="#D9D5CE" stroke-width="3.5" stroke-linecap="round"/>
+  <circle cx="120" cy="100" r="14" fill="#DCE2EC" stroke="#9AA8BF" stroke-width="2"/>
+  <path d="M130 110 L190 150" stroke="#2B3550" stroke-width="15" stroke-linecap="round"/>
+  <line x1="126" y1="104" x2="198" y2="152" stroke="#5B7CB8" stroke-width="2" stroke-dasharray="5 5"/>
+  <path d="M190 150 L196 202 L192 252" stroke="#2B3550" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M190 150 L250 152" stroke="#B9C2D2" stroke-width="13" stroke-linecap="round"/>
+  <path d="M150 128 L184 188" stroke="#2B3550" stroke-width="10" stroke-linecap="round"/>
+  <rect x="178" y="180" width="15" height="13" rx="3" fill="#46698F"/>
+  <path d="M198 178 Q186 196 192 214 Q204 200 204 180 Z" fill="#F4D7A6" stroke="#D99A4E" stroke-width="2"/>
+  <text x="252" y="148" font-size="10.5" fill="#8C8881">left leg counters</text>
+  <line x1="238" y1="200" x2="206" y2="196" stroke="#D99A4E" stroke-width="1.5"/>
+  <text x="244" y="196" font-size="11" font-weight="800" fill="#B07A2E">RIGHT</text>
+  <text x="244" y="210" font-size="11" font-weight="800" fill="#B07A2E">HAMSTRING</text>
+  <text x="14" y="284" font-size="11" font-weight="800" fill="#3E5A86">Keep hips level (dashed) — don't let the left hip open up</text>
+ </svg>`,
+ step_up:`<svg viewBox="0 0 360 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;font-family:ui-sans-serif,system-ui,sans-serif">
+  <text x="14" y="22" font-size="12" font-weight="700" fill="#8C8881">Side view · the SLOW lower is the exercise</text>
+  <line x1="30" y1="256" x2="330" y2="256" stroke="#D9D5CE" stroke-width="3.5" stroke-linecap="round"/>
+  <rect x="190" y="214" width="90" height="42" rx="4" fill="#EFECE6" stroke="#D9D5CE" stroke-width="2"/>
+  <text x="235" y="240" font-size="10" fill="#B7B2AA" text-anchor="middle" letter-spacing="1">BOX</text>
+  <circle cx="180" cy="78" r="14" fill="#DCE2EC" stroke="#9AA8BF" stroke-width="2"/>
+  <path d="M180 92 L196 156" stroke="#2B3550" stroke-width="15" stroke-linecap="round"/>
+  <path d="M196 156 L224 188 L224 214" stroke="#2B3550" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M196 156 L168 196 L150 232" stroke="#B9C2D2" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="210" cy="172" rx="13" ry="11" fill="#F4D7A6" stroke="#D99A4E" stroke-width="2"/>
+  <path d="M150 200 L150 232" stroke="#1E2A44" stroke-width="3" stroke-linecap="round"/>
+  <path d="M150 232 l-5 -7 11 0 Z" fill="#1E2A44"/>
+  <text x="106" y="200" font-size="10.5" fill="#5b6477">free foot</text>
+  <text x="106" y="213" font-size="10.5" fill="#5b6477">lowers 4–5s</text>
+  <line x1="262" y1="172" x2="224" y2="172" stroke="#D99A4E" stroke-width="1.5"/>
+  <text x="266" y="168" font-size="11" font-weight="800" fill="#B07A2E">RIGHT</text>
+  <text x="266" y="182" font-size="11" font-weight="800" fill="#B07A2E">GLUTE</text>
+  <text x="14" y="284" font-size="11" font-weight="800" fill="#3F6F58">No bounce, no push-off cheat — silent descent</text>
+ </svg>`,
+ pallof:`<svg viewBox="0 0 360 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;font-family:ui-sans-serif,system-ui,sans-serif">
+  <text x="14" y="22" font-size="12" font-weight="700" fill="#8C8881">Top-down view · resist the twist, press straight out</text>
+  <ellipse cx="180" cy="150" rx="44" ry="64" fill="#DCE2EC" stroke="#9AA8BF" stroke-width="2"/>
+  <text x="180" y="120" font-size="10" fill="#8C8881" text-anchor="middle">you</text>
+  <line x1="180" y1="150" x2="270" y2="150" stroke="#2B3550" stroke-width="11" stroke-linecap="round"/>
+  <rect x="262" y="142" width="16" height="16" rx="3" fill="#46698F"/>
+  <line x1="270" y1="150" x2="346" y2="150" stroke="#9AA8BF" stroke-width="2"/>
+  <line x1="346" y1="130" x2="346" y2="170" stroke="#9AA8BF" stroke-width="4" stroke-linecap="round"/>
+  <text x="330" y="186" font-size="9" fill="#B7B2AA">cable pulls →</text>
+  <path d="M150 226 Q180 244 210 226" fill="none" stroke="#D17C6E" stroke-width="3" stroke-linecap="round" stroke-dasharray="4 5"/>
+  <line x1="150" y1="206" x2="210" y2="246" stroke="#D17C6E" stroke-width="2.5"/>
+  <ellipse cx="180" cy="186" rx="30" ry="16" fill="#F4D7A6" stroke="#D99A4E" stroke-width="2"/>
+  <line x1="96" y1="186" x2="150" y2="186" stroke="#D99A4E" stroke-width="1.5"/>
+  <text x="20" y="182" font-size="11" font-weight="800" fill="#B07A2E">DEEP CORE</text>
+  <text x="20" y="196" font-size="10.5" fill="#8C8881">refuses to rotate</text>
+  <text x="14" y="284" font-size="11" font-weight="800" fill="#3F6F58">Torso dead still · the cable wants to twist you — don't let it</text>
+ </svg>`,
+ p2_goblet:`<svg viewBox="0 0 360 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;font-family:ui-sans-serif,system-ui,sans-serif">
+  <text x="14" y="22" font-size="12" font-weight="700" fill="#8C8881">Front view · DB at chest, knees track over toes</text>
+  <line x1="30" y1="258" x2="330" y2="258" stroke="#D9D5CE" stroke-width="3.5" stroke-linecap="round"/>
+  <circle cx="180" cy="66" r="14" fill="#DCE2EC" stroke="#9AA8BF" stroke-width="2"/>
+  <path d="M180 80 L180 150" stroke="#2B3550" stroke-width="17" stroke-linecap="round"/>
+  <path d="M180 150 L150 188 L150 254" stroke="#2B3550" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M180 150 L210 188 L210 254" stroke="#2B3550" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="150" y1="150" x2="150" y2="258" stroke="#5B7CB8" stroke-width="2" stroke-dasharray="5 5"/>
+  <line x1="210" y1="150" x2="210" y2="258" stroke="#5B7CB8" stroke-width="2" stroke-dasharray="5 5"/>
+  <rect x="170" y="100" width="20" height="24" rx="4" fill="#46698F"/>
+  <ellipse cx="158" cy="170" rx="11" ry="14" fill="#F4D7A6" stroke="#D99A4E" stroke-width="2"/>
+  <ellipse cx="202" cy="170" rx="11" ry="14" fill="#F4D7A6" stroke="#D99A4E" stroke-width="2"/>
+  <path d="M250 154 L250 200" stroke="#1E2A44" stroke-width="3" stroke-linecap="round"/>
+  <path d="M250 200 l-5 -7 11 0 Z" fill="#1E2A44"/>
+  <text x="258" y="182" font-size="10.5" fill="#5b6477">sit down</text>
+  <text x="222" y="138" font-size="10.5" fill="#3E5A86">knees over toes</text>
+  <text x="14" y="286" font-size="11" font-weight="800" fill="#3F6F58">Heels flat now · drive evenly through both mid-feet</text>
+ </svg>`,
+ p2_dbrdl:`<svg viewBox="0 0 360 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;font-family:ui-sans-serif,system-ui,sans-serif">
+  <text x="14" y="22" font-size="12" font-weight="700" fill="#8C8881">Side view · DBs slide down the legs, back flat</text>
+  <line x1="30" y1="256" x2="330" y2="256" stroke="#D9D5CE" stroke-width="3.5" stroke-linecap="round"/>
+  <circle cx="120" cy="96" r="14" fill="#DCE2EC" stroke="#9AA8BF" stroke-width="2"/>
+  <path d="M130 106 L198 150" stroke="#2B3550" stroke-width="15" stroke-linecap="round"/>
+  <line x1="126" y1="100" x2="206" y2="152" stroke="#5B7CB8" stroke-width="2" stroke-dasharray="5 5"/>
+  <path d="M198 150 L204 204 L198 250" stroke="#2B3550" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M152 128 L190 200" stroke="#2B3550" stroke-width="11" stroke-linecap="round"/>
+  <rect x="182" y="196" width="16" height="14" rx="3" fill="#46698F"/>
+  <path d="M196 178 Q184 196 190 214 Q202 200 202 180 Z" fill="#F4D7A6" stroke="#D99A4E" stroke-width="2"/>
+  <path d="M216 150 Q246 150 246 178" fill="none" stroke="#1E2A44" stroke-width="3" stroke-linecap="round"/>
+  <path d="M216 150 l9 -3 -4 9 Z" fill="#1E2A44"/>
+  <text x="228" y="146" font-size="10.5" fill="#5b6477">hips back</text>
+  <line x1="236" y1="200" x2="206" y2="196" stroke="#D99A4E" stroke-width="1.5"/>
+  <text x="240" y="196" font-size="11" font-weight="800" fill="#B07A2E">HAMSTRINGS</text>
+  <text x="14" y="284" font-size="11" font-weight="800" fill="#3E5A86">Flat back (dashed) · both sides stay symmetric</text>
+ </svg>`,
+ p2_bulgarian:`<svg viewBox="0 0 360 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;font-family:ui-sans-serif,system-ui,sans-serif">
+  <text x="14" y="22" font-size="12" font-weight="700" fill="#8C8881">Side view · rear foot on the bench, drop straight down</text>
+  <line x1="30" y1="256" x2="330" y2="256" stroke="#D9D5CE" stroke-width="3.5" stroke-linecap="round"/>
+  <rect x="92" y="204" width="78" height="20" rx="4" fill="#EFECE6" stroke="#D9D5CE" stroke-width="2"/>
+  <circle cx="200" cy="78" r="14" fill="#DCE2EC" stroke="#9AA8BF" stroke-width="2"/>
+  <path d="M200 92 L204 158" stroke="#2B3550" stroke-width="15" stroke-linecap="round"/>
+  <path d="M204 158 L230 192 L230 252" stroke="#2B3550" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="230" y1="188" x2="230" y2="252" stroke="#5B7CB8" stroke-width="2" stroke-dasharray="5 5"/>
+  <path d="M204 158 L168 188 L130 202" stroke="#B9C2D2" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="218" cy="174" rx="13" ry="11" fill="#F4D7A6" stroke="#D99A4E" stroke-width="2"/>
+  <path d="M250 158 L250 200" stroke="#1E2A44" stroke-width="3" stroke-linecap="round"/>
+  <path d="M250 200 l-5 -7 11 0 Z" fill="#1E2A44"/>
+  <text x="258" y="184" font-size="10.5" fill="#5b6477">drop down</text>
+  <line x1="270" y1="174" x2="230" y2="174" stroke="#D99A4E" stroke-width="1.5"/>
+  <text x="272" y="170" font-size="11" font-weight="800" fill="#B07A2E">FRONT (R)</text>
+  <text x="272" y="184" font-size="10.5" fill="#8C8881">leg owns it</text>
+  <text x="14" y="284" font-size="11" font-weight="800" fill="#3F6F58">Front shin near-vertical · don't push off the back foot</text>
+ </svg>`,
+ p2_loadstep:`<svg viewBox="0 0 360 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;font-family:ui-sans-serif,system-ui,sans-serif">
+  <text x="14" y="22" font-size="12" font-weight="700" fill="#8C8881">Side view · same step-up, now with DBs</text>
+  <line x1="30" y1="256" x2="330" y2="256" stroke="#D9D5CE" stroke-width="3.5" stroke-linecap="round"/>
+  <rect x="190" y="206" width="90" height="50" rx="4" fill="#EFECE6" stroke="#D9D5CE" stroke-width="2"/>
+  <text x="235" y="236" font-size="10" fill="#B7B2AA" text-anchor="middle" letter-spacing="1">BOX</text>
+  <circle cx="178" cy="72" r="14" fill="#DCE2EC" stroke="#9AA8BF" stroke-width="2"/>
+  <path d="M178 86 L196 150" stroke="#2B3550" stroke-width="15" stroke-linecap="round"/>
+  <path d="M196 150 L224 182 L224 206" stroke="#2B3550" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M196 150 L168 190 L150 226" stroke="#B9C2D2" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M178 96 L160 150" stroke="#2B3550" stroke-width="10" stroke-linecap="round"/>
+  <path d="M178 96 L196 150" stroke="#2B3550" stroke-width="10" stroke-linecap="round"/>
+  <rect x="152" y="146" width="15" height="13" rx="3" fill="#46698F"/>
+  <rect x="190" y="146" width="15" height="13" rx="3" fill="#46698F"/>
+  <ellipse cx="210" cy="166" rx="13" ry="11" fill="#F4D7A6" stroke="#D99A4E" stroke-width="2"/>
+  <path d="M150 196 L150 226" stroke="#1E2A44" stroke-width="3" stroke-linecap="round"/>
+  <path d="M150 226 l-5 -7 11 0 Z" fill="#1E2A44"/>
+  <text x="100" y="206" font-size="10.5" fill="#5b6477">lower 3–4s</text>
+  <line x1="262" y1="166" x2="224" y2="166" stroke="#D99A4E" stroke-width="1.5"/>
+  <text x="266" y="162" font-size="11" font-weight="800" fill="#B07A2E">RIGHT</text>
+  <text x="266" y="176" font-size="11" font-weight="800" fill="#B07A2E">GLUTE</text>
+  <text x="14" y="284" font-size="11" font-weight="800" fill="#3F6F58">Controlled up AND down — no shear, no bounce</text>
+ </svg>`,
+ p2_pushup:`<svg viewBox="0 0 360 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;font-family:ui-sans-serif,system-ui,sans-serif">
+  <text x="14" y="22" font-size="12" font-weight="700" fill="#8C8881">Side view · body is ONE straight line</text>
+  <line x1="30" y1="262" x2="330" y2="262" stroke="#D9D5CE" stroke-width="3.5" stroke-linecap="round"/>
+  <rect x="80" y="150" width="70" height="20" rx="4" fill="#EFECE6" stroke="#D9D5CE" stroke-width="2"/>
+  <circle cx="118" cy="138" r="13" fill="#DCE2EC" stroke="#9AA8BF" stroke-width="2"/>
+  <path d="M128 144 L250 214" stroke="#2B3550" stroke-width="16" stroke-linecap="round"/>
+  <line x1="120" y1="132" x2="258" y2="212" stroke="#5B7CB8" stroke-width="2" stroke-dasharray="6 6"/>
+  <path d="M134 150 L120 166" stroke="#2B3550" stroke-width="11" stroke-linecap="round"/>
+  <path d="M250 214 L262 262" stroke="#2B3550" stroke-width="13" stroke-linecap="round"/>
+  <path d="M250 214 L240 262" stroke="#2B3550" stroke-width="13" stroke-linecap="round"/>
+  <ellipse cx="160" cy="166" rx="14" ry="10" fill="#F4D7A6" stroke="#D99A4E" stroke-width="2"/>
+  <path d="M150 110 L150 138" stroke="#1E2A44" stroke-width="3" stroke-linecap="round"/>
+  <path d="M150 138 l-5 -7 11 0 Z" fill="#1E2A44"/>
+  <text x="158" y="120" font-size="10.5" fill="#5b6477">lower to bench</text>
+  <line x1="200" y1="120" x2="164" y2="160" stroke="#D99A4E" stroke-width="1.5"/>
+  <text x="200" y="116" font-size="11" font-weight="800" fill="#B07A2E">CHEST · elbows ~45°</text>
+  <text x="14" y="288" font-size="11" font-weight="800" fill="#3F6F58">No sagging hips · lower the bench height as you get strong</text>
+ </svg>`,
+ p2_pulldown:`<svg viewBox="0 0 360 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;font-family:ui-sans-serif,system-ui,sans-serif">
+  <text x="14" y="22" font-size="12" font-weight="700" fill="#8C8881">Front view · pull the bar to the upper chest</text>
+  <line x1="30" y1="262" x2="330" y2="262" stroke="#D9D5CE" stroke-width="3.5" stroke-linecap="round"/>
+  <line x1="130" y1="92" x2="230" y2="92" stroke="#2B3550" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="180" cy="110" r="14" fill="#DCE2EC" stroke="#9AA8BF" stroke-width="2"/>
+  <path d="M180 124 L180 196" stroke="#2B3550" stroke-width="17" stroke-linecap="round"/>
+  <path d="M180 134 L150 104 L138 92" stroke="#2B3550" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M180 134 L210 104 L222 92" stroke="#2B3550" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M180 196 L160 254" stroke="#2B3550" stroke-width="13" stroke-linecap="round"/>
+  <path d="M180 196 L200 254" stroke="#2B3550" stroke-width="13" stroke-linecap="round"/>
+  <ellipse cx="180" cy="160" rx="22" ry="14" fill="#F4D7A6" stroke="#D99A4E" stroke-width="2"/>
+  <path d="M268 100 L268 150" stroke="#1E2A44" stroke-width="3" stroke-linecap="round"/>
+  <path d="M268 150 l-5 -7 11 0 Z" fill="#1E2A44"/>
+  <text x="252" y="92" font-size="10.5" fill="#5b6477">pull down</text>
+  <line x1="232" y1="160" x2="202" y2="160" stroke="#D99A4E" stroke-width="1.5"/>
+  <text x="236" y="156" font-size="11" font-weight="800" fill="#B07A2E">LATS</text>
+  <text x="236" y="170" font-size="10.5" fill="#8C8881">elbows drive down</text>
+  <text x="14" y="288" font-size="11" font-weight="800" fill="#3F6F58">Set blades down first · no leaning back for momentum</text>
+ </svg>`,
+ lat_lunge:`<svg viewBox="0 0 360 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;font-family:ui-sans-serif,system-ui,sans-serif">
+  <text x="14" y="22" font-size="12" font-weight="700" fill="#8C8881">Front view · step wide, sit the RIGHT hip back</text>
+  <line x1="30" y1="258" x2="330" y2="258" stroke="#D9D5CE" stroke-width="3.5" stroke-linecap="round"/>
+  <circle cx="172" cy="70" r="14" fill="#DCE2EC" stroke="#9AA8BF" stroke-width="2"/>
+  <path d="M172 84 L186 146" stroke="#2B3550" stroke-width="16" stroke-linecap="round"/>
+  <path d="M186 146 L224 184 L226 254" stroke="#2B3550" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M186 146 L140 196 L112 254" stroke="#2B3550" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="226" y1="150" x2="226" y2="258" stroke="#5B7CB8" stroke-width="2" stroke-dasharray="5 5"/>
+  <rect x="166" y="104" width="20" height="22" rx="4" fill="#46698F"/>
+  <ellipse cx="212" cy="170" rx="13" ry="12" fill="#F4D7A6" stroke="#D99A4E" stroke-width="2"/>
+  <path d="M252 190 L252 158" fill="none" stroke="#1E2A44" stroke-width="3" stroke-linecap="round"/>
+  <path d="M252 158 l-5 7 11 0 Z" fill="#1E2A44"/>
+  <text x="258" y="184" font-size="10.5" fill="#5b6477">push back up</text>
+  <line x1="270" y1="170" x2="226" y2="170" stroke="#D99A4E" stroke-width="1.5"/>
+  <text x="272" y="166" font-size="11" font-weight="800" fill="#B07A2E">RIGHT</text>
+  <text x="272" y="180" font-size="11" font-weight="800" fill="#B07A2E">GLUTE</text>
+  <text x="118" y="150" font-size="10.5" fill="#3E5A86">left leg long</text>
+  <text x="14" y="286" font-size="11" font-weight="800" fill="#3F6F58">Right knee tracks over the toes (dashed) — never caves in</text>
+ </svg>`,
+ p2_chop:`<svg viewBox="0 0 360 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;font-family:ui-sans-serif,system-ui,sans-serif">
+  <text x="14" y="22" font-size="12" font-weight="700" fill="#8C8881">Front view · rotate from the HIPS, spine tall</text>
+  <line x1="30" y1="262" x2="330" y2="262" stroke="#D9D5CE" stroke-width="3.5" stroke-linecap="round"/>
+  <line x1="300" y1="44" x2="300" y2="120" stroke="#9AA8BF" stroke-width="2"/>
+  <circle cx="300" cy="44" r="5" fill="#B9C2D2"/>
+  <circle cx="170" cy="84" r="14" fill="#DCE2EC" stroke="#9AA8BF" stroke-width="2"/>
+  <path d="M170 98 L170 176" stroke="#2B3550" stroke-width="17" stroke-linecap="round"/>
+  <path d="M170 112 L230 124 L296 110" stroke="#2B3550" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="240" y1="123" x2="300" y2="112" stroke="#9AA8BF" stroke-width="2"/>
+  <path d="M170 176 L150 254" stroke="#2B3550" stroke-width="14" stroke-linecap="round"/>
+  <path d="M170 176 L196 254" stroke="#2B3550" stroke-width="14" stroke-linecap="round"/>
+  <ellipse cx="170" cy="150" rx="20" ry="15" fill="#F4D7A6" stroke="#D99A4E" stroke-width="2"/>
+  <path d="M232 150 Q210 196 168 210" fill="none" stroke="#1E2A44" stroke-width="3" stroke-linecap="round"/>
+  <path d="M168 210 l9 -3 -3 -9 Z" fill="#1E2A44"/>
+  <line x1="96" y1="150" x2="150" y2="150" stroke="#D99A4E" stroke-width="1.5"/>
+  <text x="20" y="146" font-size="11" font-weight="800" fill="#B07A2E">OBLIQUES</text>
+  <text x="20" y="160" font-size="10.5" fill="#8C8881">turn the trunk</text>
+  <text x="14" y="288" font-size="11" font-weight="800" fill="#3F6F58">Arms stay long &amp; passive · no twisting the low back</text>
+ </svg>`,
+ p2_pullneg:`<svg viewBox="0 0 360 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;font-family:ui-sans-serif,system-ui,sans-serif">
+  <text x="14" y="22" font-size="12" font-weight="700" fill="#8C8881">Front view · start at the top, lower SLOW (3–5s)</text>
+  <line x1="60" y1="56" x2="300" y2="56" stroke="#2B3550" stroke-width="6" stroke-linecap="round"/>
+  <line x1="30" y1="276" x2="330" y2="276" stroke="#D9D5CE" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M152 56 L168 100" stroke="#2B3550" stroke-width="11" stroke-linecap="round"/>
+  <path d="M208 56 L192 100" stroke="#2B3550" stroke-width="11" stroke-linecap="round"/>
+  <circle cx="180" cy="86" r="14" fill="#DCE2EC" stroke="#9AA8BF" stroke-width="2"/>
+  <path d="M180 100 L180 184" stroke="#2B3550" stroke-width="17" stroke-linecap="round"/>
+  <path d="M180 184 L166 240" stroke="#2B3550" stroke-width="13" stroke-linecap="round"/>
+  <path d="M180 184 L194 240" stroke="#2B3550" stroke-width="13" stroke-linecap="round"/>
+  <ellipse cx="180" cy="138" rx="21" ry="15" fill="#F4D7A6" stroke="#D99A4E" stroke-width="2"/>
+  <path d="M256 96 L256 150" stroke="#1E2A44" stroke-width="3" stroke-linecap="round"/>
+  <path d="M256 150 l-5 -7 11 0 Z" fill="#1E2A44"/>
+  <text x="240" y="92" font-size="10.5" fill="#5b6477">lower slow</text>
+  <line x1="234" y1="138" x2="202" y2="138" stroke="#D99A4E" stroke-width="1.5"/>
+  <text x="238" y="134" font-size="11" font-weight="800" fill="#B07A2E">LATS</text>
+  <text x="238" y="148" font-size="10.5" fill="#8C8881">control the drop</text>
+  <text x="14" y="298" font-size="11" font-weight="800" fill="#3F6F58">Jump/step to the top · the slow lower builds the pull-up</text>
+ </svg>`
+};
+
 function detailHTML(ex){
   const d=ex.d;
   return `<div data-close="1" style="position:fixed;inset:0;background:rgba(20,24,34,.4);z-index:50;display:flex;flex-direction:column;justify-content:flex-end">
@@ -328,6 +765,7 @@ function detailHTML(ex){
         <button data-close="1" style="background:#fff;border:1px solid var(--line);border-radius:10px;padding:6px 10px;font-size:16px">‹</button>
         <div style="font-weight:800;font-size:17px">${ex.name}</div></div>
       <div style="padding:16px 18px 40px">
+        ${ILLUS[ex.id]?`<div style="background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 12px 6px;margin-bottom:14px"><div style="font-size:11px;font-weight:800;color:var(--sub);text-transform:uppercase;letter-spacing:.6px;margin:0 2px 6px">How it should look</div>${ILLUS[ex.id]}</div>`:''}
         <div style="background:var(--blueSoft);color:var(--navy);border-radius:14px;padding:14px;font-size:14px;line-height:1.5"><b>Why this exists.</b> ${d.why}</div>
         <div style="margin-top:18px"><div style="font-size:12px;font-weight:800;color:var(--sub);text-transform:uppercase;letter-spacing:.6px;margin-bottom:8px">Setup</div>
           ${d.setup.map(x=>`<div style="display:flex;gap:10px;margin-bottom:7px"><span style="width:6px;height:6px;border-radius:999px;background:var(--blue);margin-top:7px;flex-shrink:0"></span><span style="font-size:14.5px;line-height:1.45">${x}</span></div>`).join("")}</div>
