@@ -37,6 +37,7 @@
 const PROGRAM = {
  1: {
   Lower:[
+    {id:"ank_load",name:"Ankle Unlock",sets:3,reps:10,load:"kg",right:true,d:{why:"Your 25 mm heel lift accommodates a stiff right ankle — it doesn't fix it. A locked ankle is the bottom-up driver squeezing your right knee, and unloaded drills plateau. Loaded end-range work is what actually shifts a stubborn restriction. This opens the session (doubles as your warm-up) and drives your heel-lift test straight down.",setup:["Off a step or low plate","A wall for the knee-to-wall drive","Light DB in hand once bodyweight is easy"],exec:["Knee-to-wall: drive the right knee forward over the toes, heel glued down, to honest end range — 5 slow reps","Eccentric calf: rise on both feet, shift onto the right, lower over 4–5 s to a deep stretch below the step","Keep the heel tracking straight, no rolling to the outside","Add the DB only when the slow lower is easy and pain-free"],breath:"Easy and continuous — never hold.",flags:["Heel lifting early on the lower","Foot rolling to the outside","Pinch at the front of the ankle (ease the range)","Sharp pain — stop"],ok:"Knee clears further past the toes over weeks, heel stays planted, and the test heel-lift drops."}},
     {id:"cb_squat",name:"CB Cable Squat",sets:3,reps:8,load:"kg",right:false,d:{why:"Routes load through the hips, not the right knee, so the squat returns without shearing the joint.",setup:["FT2 lowest pulley, single handle","25 mm under both heels","Handle to sternum, lats locked"],exec:["Break hips and knees together, pull hips straight down between the heels","Let knees travel over the toes — don't overprotect","Pause at honest depth, tension in glutes","Drive mid-foot; right leg owns 50%"],breath:"Brace at top, hold the bottom, exhale up.",flags:["Heels lifting","Right knee caving","Weight drifting left"],ok:"Even depth, glute-driven, no next-day knee ache."}},
     {id:"cable_rdl",name:"Cable RDL",sets:3,reps:10,load:"kg",right:false,d:{why:"Free path exposes and fixes the right-side asymmetry a Smith machine hides. Rebuilds the posterior engine.",setup:["Low pulley, rope/handles at thigh","Thumb alongside fingers, knuckles to floor","Soft knees, frozen"],exec:["Squeeze armpits, engage lats","Push hips straight back, handles slide down thighs","Stop at a deep hamstring stretch","Drive hips forward, squeeze glutes tall"],breath:"Brace at top, hold down, exhale at lockout.",flags:["Knees bending more on the way down","Low back rounding","Right hip shooting back first"],ok:"Hamstrings do the work, back flat, hips in sync."}},
     {id:"split_squat",name:"Assisted Split Squat",sets:3,reps:8,load:"bw",right:true,d:{why:"Removes the balance panic so the right ankle and hip confidently load. Bridge to single-leg strength.",setup:["Beside the FT2 upright","Right foot forward, back foot on toes","One hand on upright for balance only"],exec:["Drop the back knee straight down over 4s","Torso tall, front shin vertical","Pause before the knee touches","Drive up through the front (right) foot"],breath:"Inhale down, exhale up.",flags:["Pulling up with the arm","Front knee past toes","Trunk twisting"],ok:"Right leg drives it, silent descent, light hand."}},
@@ -46,11 +47,11 @@ const PROGRAM = {
     {id:"wall_slide",name:"Wall Slide + Serratus Punch",sets:3,reps:8,load:"bw",right:false,d:{why:"Anchors the shoulder blade and kills winging — earns you the right to press.",setup:["Face wall, forearms on it, elbows shoulder height"],exec:["Slide forearms up, reach long at the top","Punch into the wall — blades wrap forward","Slide down with control"],breath:"Exhale on the reach and punch.",flags:["Shrugging instead of reaching","Low back arching","Losing wall contact"],ok:"Smooth blade glide, wrap-around feel, no shrug."}},
     {id:"ext_rot",name:"Cable External Rotation (R)",sets:3,reps:12,load:"kg",right:true,d:{why:"The keystone. Rebuilds the rotator cuff your dislocations switched off — safely, at the side.",setup:["Mid pulley, single handle, right hand","Rolled towel pinned at the elbow","Elbow 90°, forearm across belly"],exec:["Elbow glued to the towel","Rotate the forearm outward","Open only as far as painless","Return slowly"],breath:"Easy and continuous — never hold.",flags:["Elbow drifting","Shrugging","Momentum","⛔ No 90°-abduction until your physio clears it"],ok:"Clean rotation, elbow pinned, zero pain."}},
     {id:"face_pull",name:"Face Pull",sets:3,reps:12,load:"kg",right:false,d:{why:"Rebuilds the rear delt and external rotators — the antidote to a rolled-forward shoulder.",setup:["Pulley at forehead height, rope"],exec:["Thumbs back, step back to load","Pull to the forehead, split the hands","Elbows high, blades down and back","Return slow"],breath:"Exhale on the pull.",flags:["Neck/traps working","Jerking the torso","Elbows dropping low"],ok:"Felt in the rear shoulder and mid-back, not the neck."}},
-    {id:"incline_press",name:"Incline DB Press",sets:3,reps:8,load:"kg",right:false,d:{why:"Your single press — placed last, after the cuff is awake. Elbows tucked to protect the joint.",setup:["Bench 30–45°, light DBs (start 5 kg)"],exec:["Pin blades down into the bench","Lower to outer chest, elbows ~45°","Pause at a comfortable stretch","Press symmetrically, lock out together"],breath:"Inhale down, exhale press.",flags:["Right arm lagging","Elbows flaring wide","Shoulders lifting off bench"],ok:"Blades pinned, both arms in sync, no pinch."}},
+    {id:"incline_press",name:"Incline DB Press",sets:3,reps:8,load:"kg",right:false,d:{why:"Your single press — placed last, after the cuff is awake. Elbows tucked to protect the joint. DBs let the right side work alone, so the early-failing tricep can't drag the bar off-path.",setup:["Bench 30–45°, light DBs (start 5 kg)"],exec:["Pin blades down into the bench","Lower to outer chest, elbows ~45°","Pause at a comfortable stretch","Press symmetrically, lock out together"],breath:"Inhale down, exhale press.",flags:["Right arm lagging (a signal, not a flaw — the shoulder isn't sharing load yet)","Elbows flaring wide","Shoulders lifting off bench"],ok:"Blades pinned, both arms in sync, no pinch."}},
     {id:"cable_row",name:"Seated Cable Row",sets:3,reps:12,load:"kg",right:false,d:{why:"Primary horizontal pull — trains the retractors that fight rounded posture.",setup:["Lowest pulley, V-grip, sit tall"],exec:["Neutral spine, chest up","Drive elbows back to the navel","Pinch blades — crush a walnut","Return slow without collapsing"],breath:"Exhale on the pull.",flags:["Shrugging","Jerking for momentum","Low back rounding"],ok:"Mid-back drives it, torso quiet."}}
   ],
   Athletic:[
-    {id:"box_squat",name:"Box Squat (to bench)",sets:3,reps:8,load:"kg",right:false,d:{why:"Dead-stop onto your bench removes the balance variable so you drive evenly through both legs. A confidence builder — no box to buy; your bench at parallel does the same job.",setup:["Your gym bench set to ~parallel height (no special box needed)","Smith bar on traps, or hold DBs (start 20 kg)"],exec:["Push glutes back to the box, chest tall","Sit fully, don't bounce","Re-brace, drive up evenly through both heels"],breath:"Brace top, hold to box, exhale up.",flags:["Shifting to the left leg","Bouncing","Knee strain"],ok:"Symmetrical drive, no left-side shift."}},
+    {id:"lat_stepdown",name:"Lateral Step-Down (R)",sets:3,reps:8,load:"bw",right:true,d:{why:"Every other lift here runs front-to-back. Cricket and pickleball run side-to-side — and your right knee collapses inward under load. This is the one move that trains the frontal plane: right hip and knee control sideways, plus ankle stability. The slow lower is the exercise, and it's a proven knee-tracking drill — it builds the joint it challenges.",setup:["Stand on the right foot on a low step (10–15 cm to start)","Left foot hovers off the side","Hands free, or lightly on a rail for balance only"],exec:["Bend the right knee and slowly lower the left heel toward the floor, out to the side","4–5 s down, right knee tracking over the 2nd toe — never caving in","Tap lightly, don't dump weight onto the floor foot","Drive back up through the right heel"],breath:"Inhale down, exhale up.",flags:["Right knee caving inward (regress the height)","Dropping fast instead of lowering","Trunk collapsing sideways","Knee pain >3/10 — lower the step or stop"],ok:"Silent, controlled descent, knee tracking straight with no inward collapse, no knee pain."}},
     {id:"sl_rdl",name:"Single-Leg RDL (R)",sets:3,reps:8,load:"kg",right:true,d:{why:"Replaces a redundant lift — trains right-hip stability and balance together.",setup:["Light DB in the left hand (or hold upright)","Stand on the right leg, soft knee"],exec:["Hinge the right hip back, left leg counters","Keep hips square — don't let the left open","Lower to a right-hamstring stretch","Drive the hip forward, finish balanced"],breath:"Brace down, exhale up.",flags:["Hips rotating open","Spine rounding","Big wobble (regress)"],ok:"Hips level, right glute drives it."}},
     {id:"step_up",name:"Low Step-Up",sets:3,reps:10,load:"kg",right:true,d:{why:"The single most vital right-side drill. The slow descent is the exercise.",setup:["Low box (6–8 in)","Right foot flat on the box"],exec:["Weight over the right leg, drive up tall","Hover the free foot","Lower 4–5 s, control every inch","Tap and drive straight back up"],breath:"Exhale up, slow breath down.",flags:["Dropping fast","Bouncing off the bottom","Push-off cheat"],ok:"Silent descent owned by the right glute."}},
     {id:"pallof",name:"Pallof Press",sets:3,reps:12,load:"kg",right:false,d:{why:"Anti-rotation core — the protector under your hinge, squat, and sport.",setup:["Mid pulley, single handle, side-on"],exec:["Handle at sternum, step out to load","Press straight out, lock the arms","Resist the pull to rotate — brace hard","Return holding the brace"],breath:"Exhale on the press, keep bracing.",flags:["Hips shifting","Leaning away","Twisting toward the stack"],ok:"Torso dead still, work deep in the core."}}
@@ -58,6 +59,7 @@ const PROGRAM = {
  },
  2: {
   Lower:[
+    {id:"ank_load",name:"Ankle Unlock",sets:3,reps:10,load:"kg",right:true,d:{why:"With the heel lift mostly gone, this keeps the right ankle's range open under load so the flat-foot squat stays honest — restrictions creep back if you stop. Heavier eccentric now; the goblet squat does the rest.",setup:["Off a step, DB in hand","Wall for the knee-to-wall check"],exec:["Knee-to-wall: 5 slow reps to end range, heel down","Loaded eccentric calf: lower over 4–5 s under the DB","Track the heel straight, full stretch at the bottom"],breath:"Easy and continuous — never hold.",flags:["Heel lifting early","Rolling to the outside","Front-of-ankle pinch","Sharp pain — stop"],ok:"Range holds or improves under heavier load; the squat stays heels-flat."}},
     {id:"p2_goblet",name:"Goblet / Cable Squat",sets:3,reps:8,load:"kg",right:false,d:{why:"The heel lift has earned its way down — now load the squat bilaterally and build real leg strength on the stable base you proved.",setup:["Heavy DB at the chest, or front-rack cable","Heels flat if mobility allows, else a minimal lift"],exec:["Sit straight down, knees tracking the toes","Hit honest depth","Drive evenly through both mid-feet"],breath:"Brace top, exhale up.",flags:["Right knee caving","Heels rising","Chest dropping"],ok:"Full depth, even drive, no knee ache."}},
     {id:"p2_dbrdl",name:"DB Romanian Deadlift",sets:3,reps:8,load:"kg",right:false,d:{why:"A free-weight hinge now the pattern is grooved — heavier posterior-chain strength with both sides kept honest.",setup:["DBs in front of the thighs","Knuckles down, lats packed"],exec:["Hips back, DBs slide down the legs","Stop at a deep hamstring stretch","Drive the hips through, squeeze glutes"],breath:"Brace down, exhale at top.",flags:["Back rounding","Right hip leading","Knees re-bending"],ok:"Hamstring-driven, flat back, symmetric."}},
     {id:"p2_bulgarian",name:"Bulgarian Split Squat",sets:3,reps:8,load:"bw",right:true,d:{why:"The assisted split squat graduates: rear foot elevated raises the right leg's stability and strength demand.",setup:["Rear foot on the bench, right foot forward","Light DBs once stable"],exec:["Drop straight down, front shin near-vertical","Control the depth","Drive through the front (right) foot"],breath:"Inhale down, exhale up.",flags:["Wobbling","Front knee collapsing in","Pushing off the back foot"],ok:"Right leg owns it, torso tall."}},
@@ -71,7 +73,7 @@ const PROGRAM = {
     {id:"face_pull",name:"Face Pull",sets:3,reps:12,load:"kg",right:false,d:{why:"Rear-delt and external-rotation maintenance keeps the shoulder balanced as pressing and pulling load climb.",setup:["Rope at forehead height"],exec:["Pull to the forehead, split the hands","Elbows high, blades back and down"],breath:"Exhale on the pull.",flags:["Neck working","Momentum","Elbows dropping"],ok:"Rear shoulder and mid-back felt, not the neck."}}
   ],
   Athletic:[
-    {id:"box_squat",name:"Box Squat (to bench)",sets:3,reps:6,load:"kg",right:false,d:{why:"Heavier dead-stop strength with symmetric drive — your bench is the box.",setup:["Bench at ~parallel","Smith bar or DBs, heavier than Phase 1"],exec:["Sit back to the bench, no bounce","Re-brace, drive up evenly"],breath:"Brace, hold, exhale up.",flags:["Left-leg shift","Bouncing","Knee strain"],ok:"Even drive, controlled sit."}},
+    {id:"lat_lunge",name:"Loaded Lateral Lunge",sets:3,reps:8,load:"kg",right:true,d:{why:"Progresses your frontal-plane control into loaded strength and range — the split-step and lunge-to-the-ball in pickleball, the lateral push-off in cricket, trained directly. Now the knee tracks cleanly, we add load and depth.",setup:["Stand tall, feet together, DB at the chest (goblet) or one in each hand","Room to step wide to the side"],exec:["Step wide to the right, sit the right hip back and down — left leg stays long","Right knee tracks over the toes, chest tall","Push hard through the right foot to return to standing","Control the depth, don't bounce out of the bottom"],breath:"Inhale into the lunge, exhale to drive up.",flags:["Right knee caving in","Rounding forward over the thigh","Working heel lifting","Knee pain — cut depth or load"],ok:"Deep, controlled lunge, knee tracking straight, strong drive up — both sides feel even."}},
     {id:"sl_rdl",name:"Single-Leg RDL (R)",sets:3,reps:8,load:"kg",right:true,d:{why:"Loaded unilateral hinge — right-hip strength and balance under real load, feeding your balance test.",setup:["DB in the left hand, stand on the right leg"],exec:["Hinge the right hip back, hips square","Right hamstring stretch","Drive up balanced"],breath:"Brace down, exhale up.",flags:["Hips opening","Rounding","Wobble"],ok:"Level hips, right glute drives."}},
     {id:"p2_chop",name:"Cable Chop + Lift",sets:3,reps:10,load:"kg",right:true,d:{why:"Controlled rotation introduced — anti-rotation graduates to producing rotation: the bridge to a bat and a paddle swing.",setup:["High pulley for the chop, low for the lift, single handle"],exec:["Rotate from the hips, arms passive","Spine tall, no lumbar twist","Control both directions"],breath:"Exhale through the rotation.",flags:["Twisting the low back","Arms doing the work","Hips static"],ok:"Power from the hips, spine quiet."}},
     {id:"p2_pullneg",name:"Assisted Pull-up Negative",sets:3,reps:5,load:"bw",right:false,d:{why:"Eccentric pull-ups build the exact strength your pull-up test needs — the fastest route to rep one.",setup:["Bar or Smith; jump/step to the top"],exec:["Start chin over the bar","Lower 3–5s under full control","Reset and repeat"],breath:"Slow breath down.",flags:["Dropping fast","Right shoulder shrugging","Half range"],ok:"Slow, even 3–5s negatives."}}
@@ -88,7 +90,20 @@ function findEx(id){for(const p of Object.keys(PROGRAM)){for(const dk of ROTATIO
 const DAY={Lower:{icon:"🦵",tint:"#5B7CB8",label:"Lower Day"},Upper:{icon:"🫳",tint:"#5C9E7E",label:"Upper Day"},Athletic:{icon:"⚡",tint:"#D99A4E",label:"Athletic Day"}};
 const SESSION_WHY={Lower:"Rebuild right-side stability from the ground up — ankle, knee, hip.",Upper:"Restore the shoulder that anchors your whole right side.",Athletic:"Tie it together — single-leg control, rotation, and carry."};
 const HABITS=[{id:"balance",label:"Balance (R 3 · L 2)",e:"🦩"},{id:"crawl",label:"Crawling 3 min",e:"🐾"},{id:"squat",label:"Deep squat hold 1 min",e:"🧘"},{id:"ankle",label:"Ankle drill",e:"🦶"},{id:"walk",label:"Walk",e:"🚶"}];
-const MILES=[{id:"first",l:"First session",n:s=>s.history.length>=1},{id:"st3",l:"3-day streak",n:s=>s.bestStreak>=3},{id:"s5",l:"5 sessions",n:s=>s.history.length>=5},{id:"st7",l:"7-day streak",n:s=>s.bestStreak>=7},{id:"s10",l:"10 sessions",n:s=>s.history.length>=10},{id:"s25",l:"25 sessions",n:s=>s.history.length>=25}];
+const MILES=[{id:"first",l:"First session",n:s=>s.history.length>=1},{id:"st3",l:"3-day streak",n:s=>s.bestStreak>=3},{id:"s5",l:"5 sessions",n:s=>s.history.length>=5},{id:"st7",l:"7-day streak",n:s=>s.bestStreak>=7},{id:"s10",l:"10 sessions",n:s=>s.history.length>=10},{id:"s25",l:"25 sessions",n:s=>s.history.length>=25},{id:"fuel1",l:"First 100g protein day",n:s=>((s.nutrition&&s.nutrition.xpDays)||[]).length>=1},{id:"fuel7",l:"7-day fuel streak",n:s=>((s.nutrition&&s.nutrition.bestFuelStreak)||0)>=7}];
+
+/* ───────── NUTRITION (Fuel) data ───────── */
+const PROTEIN_TARGET=100, ANCHOR_TARGET=4, FUEL_XP=20;
+const ANCHORS=[
+  {id:"soy",   e:"🥣", name:"Soy chunks bowl",     g:25, note:"50 g dry · the cheapest big lever"},
+  {id:"whey",  e:"🥛", name:"Whey + Greek yogurt", g:24, note:"1 scoop + a bowl of hung curd"},
+  {id:"paneer",e:"🧀", name:"Paneer palm",         g:19, note:"~100 g, palm-size"},
+  {id:"dal",   e:"🍲", name:"Dal + curd",          g:14, note:"a bowl of dal + a cup of curd"},
+  {id:"tofu",  e:"⬜", name:"Tofu block",          g:12, note:"~100 g"},
+  {id:"rajma", e:"🫘", name:"Rajma / chana bowl",  g:13, note:"a bowl, cooked"},
+  {id:"milk",  e:"🥛", name:"Glass of milk",       g:8,  note:"~250 ml"},
+  {id:"whey2", e:"🥄", name:"Extra whey scoop",    g:24, note:"the top-up when short"}
+];
 
 /* ───────── LIFETIME ENGINE: phases, tests, change log ───────── */
 const PHASES={
@@ -118,11 +133,15 @@ const CHANGELOG=[
   {date:"Jun 2026",title:"Smith RDL → Cable RDL",reason:"A fixed bar path lets the right side cheat invisibly. The cable forces both sides to stabilize honestly — the asymmetry can't hide, so we can actually correct it."},
   {date:"Jun 2026",title:"Duplicate Smith RDL → Single-Leg RDL (R)",reason:"The plan ran the same hinge twice a week. Replaced one with a unilateral hinge that also trains your balance test directly. No redundancy, more signal."},
   {date:"Jun 2026",title:"Box squat now uses your bench",reason:"You don't own a box, and buying one isn't justified. A bench at ~parallel achieves the same dead-stop depth and bilateral drive. Equipment follows need, never the reverse."},
-  {date:"Jun 2026",title:"Parked Lat Pulldown & 1-Arm Press",reason:"Overhead pulling and extra pressing deferred until the cuff foundation passes its tests — foundation before load."}
+  {date:"Jun 2026",title:"Parked Lat Pulldown & 1-Arm Press",reason:"Overhead pulling and extra pressing deferred until the cuff foundation passes its tests — foundation before load."},
+  {date:"Jun 2026",title:"Added the Fuel tab (protein + weekly weight)",reason:"Fat loss 32%→15% was a primary goal with zero support in the app. Instead of calorie-counting, Fuel runs two first-principles rules: a protein anchor every meal (protects muscle, which protects BMR) and smaller portions of everything else (the whole deficit). The weekly weight trend is the only instrument. Your ~40 g/day protein was the real threat to muscle in a deficit — the veg anchors fix it with no weighing."},
+  {date:"Jun 2026",title:"Overhead press stays parked; heavy leg press deferred",reason:"OHP loads the shoulder near the apprehension position — highest dislocation risk on the board. Heavy leg press drives the knee through a stiff ankle with the back supported, hiding the fault. Both wait behind the test gates; trap-bar deadlift, rows and DB pressing carry the strength load meanwhile."},
+  {date:"Jun 2026",title:"Added Ankle Unlock — a tracked, loaded ankle lift",reason:"The app had a heel-lift TEST (25→0 mm) but nothing in the program training it — only a daily checkbox. A stiff right ankle is the bottom-up driver squeezing your right knee, and unloaded mobility plateaus. Added a loaded eccentric-calf + knee-to-wall primer to the start of both Lower days so the restriction gets a real, progressive stimulus and the test number can actually move. It opens the session, so it doubles as your warm-up."},
+  {date:"Jun 2026",title:"Box Squat → Lateral Step-Down / Lateral Lunge",reason:"The whole program was sagittal (front-to-back) plus anti-rotation — zero frontal-plane work, the one plane cricket and pickleball live in, and the one your right knee fails in (caving inward). The box squat was also a second bilateral squat already covered on Lower day. Swapped it for frontal-plane control: Lateral Step-Down in Phase 1 (also a knee-tracking drill), Loaded Lateral Lunge in Phase 2. Lat pulldown stays parked — vertical pulling still belongs in Phase 2, and the session time budget is tight."}
 ];
 
 /* ───────── STORAGE (durable on device; memory fallback in preview) ───────── */
-const APP_VERSION="v3 · 18 Jun 2026";
+const APP_VERSION="v4 · 27 Jun 2026 · Fuel added";
 let mem=null;
 const DB={
   read(){ try{const r=localStorage.getItem("scos_v1");return r?JSON.parse(r):null}catch(e){return mem} },
@@ -130,7 +149,8 @@ const DB={
 };
 const todayStr=()=>new Date().toISOString().slice(0,10);
 const fmtDay=d=>new Date(d).toLocaleDateString(undefined,{weekday:"short",day:"numeric",month:"short"});
-function blank(){return{v:3,rotationIndex:0,xp:0,history:[],exHistory:{},activeDates:[],bestStreak:0,drafts:{},habits:{},phase:1,assessments:{}}}
+const fmtShort=d=>new Date(d).toLocaleDateString(undefined,{day:"numeric",month:"short"});
+function blank(){return{v:4,rotationIndex:0,xp:0,history:[],exHistory:{},activeDates:[],bestStreak:0,drafts:{},habits:{},phase:1,assessments:{},nutrition:{logs:{},weights:[],xpDays:[],bestFuelStreak:0}}}
 function latestTest(id){const a=(S.assessments&&S.assessments[id])||[];return a.length?a[a.length-1].val:null}
 function testCurrent(t){const v=latestTest(t.id);return v==null?t.base:v}
 function gateMet(t,phase){const g=t.gates[phase];if(g==null)return true;const c=testCurrent(t);return t.dir==="up"?c>=g:c<=g}
@@ -138,12 +158,37 @@ function phaseProgress(phase){const rel=TESTS.filter(t=>t.gates[phase]!=null);co
 function freshSession(type){const e={};prog(S.phase,type).forEach(x=>e[x.id]=Array.from({length:x.sets},()=>null));return{type,date:todayStr(),entries:e,effort:{}}}
 function computeStreak(dates){if(!dates.length)return 0;const set=new Set(dates);let cur=todayStr();if(!set.has(cur)){const y=new Date();y.setDate(y.getDate()-1);cur=y.toISOString().slice(0,10);if(!set.has(cur))return 0}let n=0;while(set.has(cur)){n++;const d=new Date(cur);d.setDate(d.getDate()-1);cur=d.toISOString().slice(0,10)}return n}
 
+/* ───────── NUTRITION helpers ───────── */
+function nut(){return S.nutrition}
+function fuelLog(d){return nut().logs[d]||[]}
+function fuelGrams(d){return fuelLog(d).reduce((a,id)=>{const x=ANCHORS.find(z=>z.id===id);return a+(x?x.g:0)},0)}
+function fuelHit(d){return fuelGrams(d)>=PROTEIN_TARGET}
+function fuelStreak(){const set=new Set(nut().xpDays||[]);let cur=todayStr();if(!set.has(cur)){const y=new Date();y.setDate(y.getDate()-1);cur=y.toISOString().slice(0,10);if(!set.has(cur))return 0}let n=0;while(set.has(cur)){n++;const d=new Date(cur);d.setDate(d.getDate()-1);cur=d.toISOString().slice(0,10)}return n}
+function recomputeFuelXP(d){
+  const n=nut(); n.xpDays=n.xpDays||[];
+  const hit=fuelHit(d), inList=n.xpDays.includes(d);
+  if(hit&&!inList){n.xpDays.push(d);S.xp+=FUEL_XP;if(!S.activeDates.includes(d))S.activeDates.push(d);}
+  if(!hit&&inList){n.xpDays=n.xpDays.filter(x=>x!==d);S.xp=Math.max(0,S.xp-FUEL_XP);if(!S.history.some(h=>h.date===d)&&!Object.values(S.habits[d]||{}).some(Boolean))S.activeDates=S.activeDates.filter(x=>x!==d);}
+  n.bestFuelStreak=Math.max(n.bestFuelStreak||0,fuelStreak());
+  S.bestStreak=Math.max(S.bestStreak,computeStreak(S.activeDates));
+}
+function weightTrend(){
+  const w=(nut().weights||[]).slice(-4);
+  if(w.length<2)return{state:"new",msg:"Log a weight each week. Two points and the trend appears."};
+  const delta=+(w[w.length-1].kg-w[0].kg).toFixed(1);
+  if(delta<=-0.3)return{state:"down",delta,msg:"Down "+Math.abs(delta)+" kg across "+w.length+" weigh-ins — you're in a deficit. Change nothing."};
+  if(delta>=0.3)return{state:"up",delta,msg:"Up "+delta+" kg. Trim portions of everything that isn't a protein anchor — keep the anchors."};
+  return{state:"flat",delta,msg:"Flat across the last "+w.length+" weigh-ins. Quietly shrink the non-protein portions. Don't touch protein."};
+}
+
 /* ───────── STATE ───────── */
 let S={...blank(),...(DB.read()||{})};
 if(S.current){ S.drafts=S.drafts||{}; if(!S.drafts[S.current.type]) S.drafts[S.current.type]=S.current; delete S.current; }
 if(!S.drafts) S.drafts={}; if(!S.assessments) S.assessments={}; if(!S.phase) S.phase=1;
+if(!S.nutrition) S.nutrition={logs:{},weights:[],xpDays:[],bestFuelStreak:0};
+S.nutrition.logs=S.nutrition.logs||{}; S.nutrition.weights=S.nutrition.weights||[]; S.nutrition.xpDays=S.nutrition.xpDays||[]; if(S.nutrition.bestFuelStreak==null)S.nutrition.bestFuelStreak=0;
 function draft(type){ if(!S.drafts[type]) S.drafts[type]=freshSession(type); return S.drafts[type]; }
-let UI={tab:"home",activeSet:null,detail:null,viewDay:ROTATION[S.rotationIndex%3],testDraft:{},previewPhase:S.phase};
+let UI={tab:"home",activeSet:null,detail:null,viewDay:ROTATION[S.rotationIndex%3],testDraft:{},previewPhase:S.phase,fuelKg:"",fuelWhy:null};
 function cur(){ return draft(UI.viewDay); }
 function save(){DB.write(S)}
 function setS(fn){fn(S);save();render()}
@@ -174,17 +219,18 @@ function render(){
   const total=ex.reduce((a,e)=>a+e.sets,0);
   app().innerHTML = UI.tab==="home" ? homeHTML()
     : UI.tab==="today" ? todayHTML(type,meta,ex,streak,level,levelPct,logged,total)
+    : UI.tab==="fuel" ? fuelHTML()
     : UI.tab==="plan" ? planHTML() : progressHTML(streak,level,levelPct);
   app().className="rise";
   renderTabbar();
-  ov().innerHTML = UI.detail ? detailHTML(UI.detail) : UI.testHow ? testSheetHTML(UI.testHow) : "";
+  ov().innerHTML = UI.detail ? detailHTML(UI.detail) : UI.testHow ? testSheetHTML(UI.testHow) : UI.fuelWhy ? fuelWhyHTML() : "";
 }
 
 function renderTabbar(){
   let bar=document.getElementById("tabbar");
   if(!bar){bar=document.createElement("div");bar.id="tabbar";document.body.appendChild(bar);}
   bar.style.cssText="position:fixed;bottom:0;left:0;right:0;background:rgba(255,255,255,.86);backdrop-filter:blur(12px);border-top:1px solid var(--line)";
-  const tabs=[["home","Home","🏠"],["today","Train","🏋️"],["progress","Progress","📈"],["plan","Plan","🧭"]];
+  const tabs=[["home","Home","🏠"],["today","Train","🏋️"],["fuel","Fuel","🥗"],["progress","Progress","📈"],["plan","Plan","🧭"]];
   bar.innerHTML=`<div style="max-width:480px;margin:0 auto;display:flex">
     ${tabs.map(([id,label,ic])=>`<button data-tab="${id}" style="flex:1;padding:12px 0 16px;background:none;border:none;display:flex;flex-direction:column;align-items:center;gap:4px;color:${UI.tab===id?'var(--navy)':'var(--sub)'}">
       <span style="font-size:20px">${ic}</span><span style="font-size:11px;font-weight:${UI.tab===id?700:500}">${label}</span></button>`).join("")}
@@ -305,6 +351,7 @@ function homeHTML(){
   const balT=TESTS.find(t=>t.id==="balance"),bal=testCurrent(balT);
   const pct=pp.total?pp.met/pp.total*100:0;
   const hr=now.getHours(),greet=hr<12?"Good morning":hr<17?"Good afternoon":"Good evening";
+  const fg=fuelGrams(todayStr()),fhit=fuelHit(todayStr()),fstreak=fuelStreak();
   return `<div class="rise">
     <div style="padding:26px 20px 6px">
       <div style="font-size:13px;color:var(--sub);font-weight:600">${greet} · ${fmtDay(todayStr())}</div>
@@ -328,9 +375,109 @@ function homeHTML(){
       <div style="font-size:13.5px;opacity:.9;line-height:1.45">${SESSION_WHY[type]}</div>
       <button data-start="1" style="width:100%;margin-top:16px;padding:15px;border:none;border-radius:14px;background:#fff;color:var(--navy);font-weight:800;font-size:15.5px">Start ${meta.label} →</button>
     </div>
+    <div data-tab="fuel" style="margin:0 16px 8px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 16px;display:flex;align-items:center;gap:12px;box-shadow:0 1px 3px rgba(0,0,0,.03)">
+      <span style="font-size:20px">🥗</span>
+      <div style="flex:1"><div style="font-size:14px;font-weight:700">Fuel · <span class="tnum">${fg}g</span> / ${PROTEIN_TARGET}g protein</div>
+      <div style="font-size:12px;color:var(--sub)">${fhit?'Target hit — muscle protected today 💪':'Tap to log anchors · '+fstreak+'-day fuel streak'}</div></div>
+      <span style="color:var(--sub);font-size:18px">›</span>
+    </div>
     <div style="text-align:center;font-size:12px;color:var(--sub);padding:0 24px 8px;line-height:1.5">Right-leg balance ${bal}s today → ${balT.gates[ph]}s clears this floor.</div>
   </div>`;
 }
+
+/* ───────── FUEL tab ───────── */
+function fstat(ic,val,label){return `<div style="flex:1;background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 8px;text-align:center"><div style="font-size:16px">${ic}</div><div class="tnum" style="font-size:21px;font-weight:800;margin-top:2px">${val}</div><div style="font-size:11px;color:var(--sub);font-weight:600">${label}</div></div>`}
+function wtrendSVG(data){
+  const W=400,H=120,P=14,vals=data.map(d=>d.kg),max=Math.max(...vals),min=Math.min(...vals),span=(max-min)||1;
+  const x=i=>P+i*(W-2*P)/Math.max(1,data.length-1),y=v=>H-P-(v-min)/span*(H-2*P);
+  const pts=data.map((d,i)=>`${x(i)},${y(d.kg)}`);
+  const line=pts.map((p,i)=>(i?"L":"M")+p).join(" ");
+  const area=`M${x(0)},${H-P} L`+pts.join(" L")+` L${x(data.length-1)},${H-P} Z`;
+  return `<svg viewBox="0 0 ${W} ${H}" style="width:100%;height:120px" preserveAspectRatio="none"><defs><linearGradient id="wg" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#5B7CB8" stop-opacity=".30"/><stop offset="100%" stop-color="#5B7CB8" stop-opacity=".02"/></linearGradient></defs><path d="${area}" fill="url(#wg)"/><path d="${line}" fill="none" stroke="#1E2A44" stroke-width="2.5" stroke-linejoin="round"/>${data.map((d,i)=>`<circle cx="${x(i)}" cy="${y(d.kg)}" r="3" fill="#1E2A44"/>`).join("")}</svg>
+  <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--sub);margin-top:2px"><span>${fmtShort(data[0].date)} · ${data[0].kg}kg</span><span>${fmtShort(data[data.length-1].date)} · ${data[data.length-1].kg}kg</span></div>`;
+}
+function fuelHTML(){
+  const d=todayStr(), grams=fuelGrams(d), anchors=fuelLog(d).length, hit=grams>=PROTEIN_TARGET;
+  const gp=Math.min(100,grams/PROTEIN_TARGET*100);
+  const streak=fuelStreak(), best=nut().bestFuelStreak||0, days=(nut().xpDays||[]).length;
+  const tr=weightTrend();
+  return `<div style="padding:22px 18px 6px">
+    <div style="font-size:26px;font-weight:800;letter-spacing:-.4px">Fuel</div>
+    <div style="font-size:13px;color:var(--sub)">Two rules. One instrument. No counting.</div>
+  </div>
+
+  <div style="margin:14px 16px;background:var(--navy);color:#fff;border-radius:18px;padding:18px">
+    <div style="display:flex;gap:10px;margin-bottom:9px"><span style="font-size:16px">①</span><div style="font-size:14px;line-height:1.45"><b>Protein anchor every meal.</b> It protects muscle — and muscle is what protects your BMR. This rule does the real work.</div></div>
+    <div style="display:flex;gap:10px"><span style="font-size:16px">②</span><div style="font-size:14px;line-height:1.45"><b>Smaller everything else.</b> Rice, oil, sugar, snacks — that's the entire deficit. Nothing to weigh.</div></div>
+    <button data-fuelwhy="1" style="margin-top:13px;width:100%;background:rgba(255,255,255,.12);border:none;color:#fff;border-radius:10px;padding:11px;font-weight:700;font-size:13px">Why these two rules work →</button>
+  </div>
+
+  <div style="padding:0 16px">
+    <div style="display:flex;gap:8px;margin-bottom:12px">
+      ${fstat('🔥',streak,'fuel streak')}${fstat('🎯',days,'100g days')}${fstat('🏅',best,'best streak')}
+    </div>
+  </div>
+
+  <div style="margin:4px 16px 0;background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)">
+    <div style="display:flex;align-items:center;gap:16px">
+      ${ring(gp,grams+'g','of '+PROTEIN_TARGET+'g',96,10,hit?'#5C9E7E':'#1E2A44')}
+      <div style="flex:1">
+        <div style="font-size:12px;font-weight:700;color:var(--sub);text-transform:uppercase;letter-spacing:.6px">Protein today</div>
+        <div style="font-size:18px;font-weight:800;margin:2px 0 4px">${anchors} anchor${anchors===1?'':'s'} logged</div>
+        <div style="font-size:12.5px;color:${hit?'var(--green)':'var(--sub)'};line-height:1.4">${hit?'Target cleared — +'+FUEL_XP+' XP, muscle protected for today.':'~'+Math.max(0,PROTEIN_TARGET-grams)+'g to go — usually one or two more anchors.'}</div>
+      </div>
+    </div>
+    ${anchors?`<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:14px">${fuelLog(d).map((id,i)=>{const x=ANCHORS.find(z=>z.id===id);return `<button data-undo="${i}" class="pop" style="display:flex;align-items:center;gap:5px;background:var(--greenSoft);border:1px solid #BFE0CE;color:#3F6F58;border-radius:999px;padding:6px 11px;font-size:12.5px;font-weight:700">${x?x.e:''} ${x?x.name:id} <span style="opacity:.55">×</span></button>`}).join("")}</div>`:''}
+  </div>
+
+  <div style="padding:0 18px">
+    <div style="font-size:12px;font-weight:800;color:var(--sub);text-transform:uppercase;letter-spacing:.6px;margin:14px 2px 4px">Tap what you ate · aim 4–5 a day</div>
+    <div style="font-size:12px;color:var(--sub);margin:0 2px 10px;line-height:1.45">Each is one anchor. Pick the bigger ones (soy, whey, paneer) and four clears the ring.</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      ${ANCHORS.map(a=>`<button data-add="${a.id}" style="text-align:left;background:#fff;border:1px solid var(--line);border-radius:16px;padding:13px;display:flex;gap:10px;align-items:flex-start">
+        <span style="font-size:18px">${a.e}</span>
+        <span style="flex:1"><span style="display:block;font-size:14px;font-weight:700;line-height:1.2">${a.name}</span>
+        <span style="display:block;font-size:11px;color:var(--sub);margin-top:2px">${a.note}</span>
+        <span style="display:inline-block;margin-top:6px;font-size:11px;font-weight:800;color:var(--blue);background:var(--blueSoft);border-radius:999px;padding:2px 8px">~${a.g}g</span></span></button>`).join("")}
+    </div>
+  </div>
+
+  <div style="margin:18px 16px 0;background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px">
+    <div style="font-size:12px;font-weight:800;color:var(--sub);text-transform:uppercase;letter-spacing:.6px;margin-bottom:4px">The only instrument</div>
+    <div style="font-size:14px;font-weight:700;margin-bottom:12px">Weekly weight — one number, no math</div>
+    ${(nut().weights||[]).length?wtrendSVG(nut().weights.slice(-12)):`<div style="padding:14px 0;text-align:center;color:var(--sub);font-size:13px">No weigh-ins yet. Same scale, same time of day, once a week.</div>`}
+    <div style="background:${tr.state==='down'?'var(--greenSoft)':tr.state==='up'?'#FBEEEA':'var(--bg)'};border:1px solid ${tr.state==='down'?'#BFE0CE':tr.state==='up'?'#F0D7D0':'var(--line)'};border-radius:12px;padding:12px;margin:12px 0;font-size:13px;line-height:1.45;color:${tr.state==='down'?'#3F6F58':tr.state==='up'?'#9A4B3D':'var(--ink)'}">${tr.state==='down'?'📉 ':tr.state==='up'?'📈 ':''}${tr.msg}</div>
+    <div style="display:flex;gap:8px">
+      <div style="display:flex;align-items:center;background:var(--bg);border:1px solid var(--line);border-radius:12px;overflow:hidden;flex:1">
+        <input data-wkg inputmode="decimal" placeholder="84.5" value="${UI.fuelKg}" class="tnum" style="flex:1;width:100%;text-align:center;border:none;outline:none;font-size:20px;font-weight:800;background:transparent;color:var(--ink);padding:11px 0"/>
+        <span style="font-size:13px;color:var(--sub);font-weight:700;padding-right:14px">kg</span>
+      </div>
+      <button data-logw="1" style="border:none;border-radius:12px;background:var(--navy);color:#fff;font-weight:800;font-size:14px;padding:0 20px">Log week</button>
+    </div>
+  </div>
+
+  <div style="margin:16px;background:var(--blueSoft);border-radius:14px;padding:14px;font-size:12.5px;color:var(--navy);line-height:1.55">
+    <b>The honest target.</b> 32% → 15% is roughly 17 kg of fat — about a year at a safe pace, faster early, slower near the end. Body-fat % is hard to measure accurately, so trust your waist, your push-up count and your walk tolerance over any single number. The weekly trend above is the only thing that proves the deficit is real.
+  </div>
+  <div style="text-align:center;font-size:11px;color:var(--sub);padding:0 24px 8px">Consistency clears the ring. Quality means real protein, not just calories.</div>`;
+}
+function fuelWhyHTML(){
+  return `<div data-close="1" style="position:fixed;inset:0;background:rgba(20,24,34,.4);z-index:50;display:flex;flex-direction:column;justify-content:flex-end">
+    <div class="rise" data-stop="1" style="background:var(--bg);border-radius:24px 24px 0 0;max-height:92dvh;overflow-y:auto;max-width:480px;margin:0 auto;width:100%">
+      <div style="position:sticky;top:0;background:var(--bg);padding:14px 18px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--line)">
+        <button data-close="1" style="background:#fff;border:1px solid var(--line);border-radius:10px;padding:6px 10px;font-size:16px">‹</button>
+        <div style="font-weight:800;font-size:17px">Why fat loss works this way</div></div>
+      <div style="padding:16px 18px 40px">
+        <div style="background:var(--blueSoft);color:var(--navy);border-radius:14px;padding:14px;font-size:14px;line-height:1.5"><b>One law, no exceptions.</b> Fat loss needs an energy deficit — eat a bit less than you burn. Every "fat-loss diet" is just a different route to that one thing. So you can skip the rules and tricks and go straight to the cause: smaller portions of everything that isn't protein.</div>
+        <div style="margin-top:18px"><div style="font-size:12px;font-weight:800;color:var(--sub);text-transform:uppercase;letter-spacing:.6px;margin-bottom:8px">Why protein is rule #1</div>
+          <div style="font-size:14.5px;line-height:1.5">In a deficit your body burns muscle for fuel unless two things are true: you're lifting (you are), and protein is high enough (~100 g for you). Lose muscle and your BMR drops — the exact thing you're trying to avoid. So protein isn't a "diet tip", it's the lever that keeps your engine running while fat comes off. At ~40 g you were starving that lever; soy chunks, paneer, hung curd and a second whey scoop fix it with zero weighing.</div></div>
+        <div style="margin-top:18px"><div style="font-size:12px;font-weight:800;color:var(--sub);text-transform:uppercase;letter-spacing:.6px;margin-bottom:8px">Why a weekly weigh-in, not daily counting</div>
+          <div style="font-size:14.5px;line-height:1.5">You don't need calorie math to know if you're in a deficit — the scale answers it. Day-to-day weight is mostly water and noise, so we read the <b>trend across 3–4 weeks</b>. Down = deficit is real, do nothing. Flat = shrink portions a little. That's the whole feedback loop, one number a week.</div></div>
+        <div style="background:var(--greenSoft);border-radius:14px;padding:14px;margin-top:18px"><div style="font-size:13px;font-weight:800;color:var(--green);margin-bottom:4px">On your BMR fear</div><div style="font-size:14.5px;color:#3F6F58;line-height:1.5">The metabolic slowdown people fear is real but small, and it mostly tracks lost muscle. You blunt it with protein + lifting + daily walking — not with fancy diets. Your instinct to cut the noise was right; these are the only pieces that aren't noise.</div></div>
+        <button data-close="1" style="width:100%;margin-top:20px;padding:15px;border-radius:14px;border:none;background:var(--navy);color:#fff;font-weight:800;font-size:15px">Got it — back to Fuel</button>
+      </div></div></div>`;
+}
+
 function testSheetHTML(id){
   const h=TEST_HOW[id],t=TESTS.find(x=>x.id===id);
   return `<div data-close="1" style="position:fixed;inset:0;background:rgba(20,24,34,.4);z-index:50;display:flex;flex-direction:column;justify-content:flex-end">
@@ -487,30 +634,34 @@ function exportBackup(){
   const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="strength-backup-"+todayStr()+".json";a.click();
 }
 function importBackup(file){
-  const r=new FileReader();r.onload=()=>{try{const j=JSON.parse(r.result);if(!j.history)throw 0;S={...blank(),...j};if(S.current){S.drafts=S.drafts||{};if(!S.drafts[S.current.type])S.drafts[S.current.type]=S.current;delete S.current;}if(!S.drafts)S.drafts={};UI.viewDay=ROTATION[S.rotationIndex%3];UI.activeSet=null;save();render();alert("Backup restored — "+S.history.length+" sessions.")}catch(e){alert("That file didn't look like a valid backup.")}};r.readAsText(file);
+  const r=new FileReader();r.onload=()=>{try{const j=JSON.parse(r.result);if(!j.history)throw 0;S={...blank(),...j};if(S.current){S.drafts=S.drafts||{};if(!S.drafts[S.current.type])S.drafts[S.current.type]=S.current;delete S.current;}if(!S.drafts)S.drafts={};if(!S.nutrition)S.nutrition={logs:{},weights:[],xpDays:[],bestFuelStreak:0};S.nutrition.logs=S.nutrition.logs||{};S.nutrition.weights=S.nutrition.weights||[];S.nutrition.xpDays=S.nutrition.xpDays||[];if(S.nutrition.bestFuelStreak==null)S.nutrition.bestFuelStreak=0;UI.viewDay=ROTATION[S.rotationIndex%3];UI.activeSet=null;save();render();alert("Backup restored — "+S.history.length+" sessions.")}catch(e){alert("That file didn't look like a valid backup.")}};r.readAsText(file);
 }
 
 /* ───────── EVENTS (delegation) ───────── */
 document.body.addEventListener("click",e=>{
-  const t=e.target.closest("[data-tab],[data-day],[data-set],[data-step],[data-clear],[data-done],[data-eff],[data-habit],[data-detail],[data-finish],[data-export],[data-close],[data-stop],[data-tstep],[data-logtest],[data-pphase],[data-advance],[data-start],[data-howtest]");
+  const t=e.target.closest("[data-tab],[data-day],[data-set],[data-step],[data-clear],[data-done],[data-eff],[data-habit],[data-detail],[data-finish],[data-export],[data-close],[data-stop],[data-tstep],[data-logtest],[data-pphase],[data-advance],[data-start],[data-howtest],[data-add],[data-undo],[data-logw],[data-fuelwhy]");
   if(!t)return;
   if(t.dataset.stop!==undefined&&t===e.target)return;
   if(t.dataset.tab){UI.tab=t.dataset.tab;UI.activeSet=null;render();return}
   if(t.dataset.start!==undefined){UI.viewDay=ROTATION[S.rotationIndex%3];UI.tab="today";UI.activeSet=null;render();return}
   if(t.dataset.howtest){UI.testHow=t.dataset.howtest;render();return}
+  if(t.dataset.fuelwhy){UI.fuelWhy=t.dataset.fuelwhy;render();return}
   if(t.dataset.pphase){UI.previewPhase=+t.dataset.pphase;render();return}
   if(t.dataset.advance){const np=S.phase+1;if(PROGRAM[np]){S.phase=np;S.drafts={};UI.viewDay=ROTATION[S.rotationIndex%3];UI.previewPhase=np;UI.tab="today";save();render();}return}
   if(t.dataset.day){UI.viewDay=t.dataset.day;UI.activeSet=null;render();return}
   if(t.dataset.detail){UI.detail=findEx(t.dataset.detail);render();return}
-  if(t.dataset.close!==undefined){UI.detail=null;UI.testHow=null;render();return}
+  if(t.dataset.close!==undefined){UI.detail=null;UI.testHow=null;UI.fuelWhy=null;render();return}
   if(t.dataset.set){UI.activeSet=UI.activeSet===t.dataset.set?null:t.dataset.set;render();return}
   if(t.dataset.done){UI.activeSet=null;render();return}
   if(t.dataset.finish!==undefined){finish();return}
   if(t.dataset.export!==undefined){exportBackup();return}
+  if(t.dataset.add){const d=todayStr();nut().logs[d]=nut().logs[d]||[];nut().logs[d].push(t.dataset.add);recomputeFuelXP(d);save();render();return}
+  if(t.dataset.undo!==undefined){const d=todayStr();(nut().logs[d]||[]).splice(+t.dataset.undo,1);recomputeFuelXP(d);save();render();return}
+  if(t.dataset.logw!==undefined){const inp=document.querySelector("[data-wkg]");const v=parseFloat(inp&&inp.value);if(isNaN(v)||v<=0){if(inp)inp.focus();return}const d=todayStr();nut().weights=(nut().weights||[]).filter(w=>w.date!==d);nut().weights.push({date:d,kg:+v.toFixed(1)});nut().weights.sort((a,b)=>a.date<b.date?-1:1);UI.fuelKg="";save();render();return}
   if(t.dataset.tstep){const[id,delta]=t.dataset.tstep.split(":");const tt=TESTS.find(x=>x.id===id);const base=UI.testDraft[id]??testCurrent(tt);UI.testDraft[id]=Math.max(0,+(base+ +delta).toFixed(2));render();return}
   if(t.dataset.logtest){const id=t.dataset.logtest;const tt=TESTS.find(x=>x.id===id);const val=UI.testDraft[id]??testCurrent(tt);S.assessments[id]=S.assessments[id]||[];S.assessments[id].push({date:todayStr(),val});delete UI.testDraft[id];save();render();return}
   if(t.dataset.clear){const[id,i]=t.dataset.clear.split(":");setS(()=>{cur().entries[id][+i]=null});return}
-  if(t.dataset.habit){const d=todayStr();setS(()=>{S.habits[d]=S.habits[d]||{};S.habits[d][t.dataset.habit]=!S.habits[d][t.dataset.habit];const any=Object.values(S.habits[d]).some(Boolean);if(any&&!S.activeDates.includes(d))S.activeDates.push(d);if(!any&&!S.history.some(h=>h.date===d))S.activeDates=S.activeDates.filter(x=>x!==d);S.xp=Math.max(0,S.xp+(S.habits[d][t.dataset.habit]?5:-5));S.bestStreak=Math.max(S.bestStreak,computeStreak(S.activeDates))});return}
+  if(t.dataset.habit){const d=todayStr();setS(()=>{S.habits[d]=S.habits[d]||{};S.habits[d][t.dataset.habit]=!S.habits[d][t.dataset.habit];const any=Object.values(S.habits[d]).some(Boolean);if(any&&!S.activeDates.includes(d))S.activeDates.push(d);if(!any&&!S.history.some(h=>h.date===d)&&!(S.nutrition.xpDays||[]).includes(d))S.activeDates=S.activeDates.filter(x=>x!==d);S.xp=Math.max(0,S.xp+(S.habits[d][t.dataset.habit]?5:-5));S.bestStreak=Math.max(S.bestStreak,computeStreak(S.activeDates))});return}
   if(t.dataset.eff){const[id,v]=t.dataset.eff.split(":");setS(()=>{cur().effort[id]=cur().effort[id]===v?null:v});return}
   if(t.dataset.step){const[id,i,field,delta]=t.dataset.step.split(":");setS(()=>{const arr=cur().entries[id];const cell=arr[+i]||{};const ex=prog(S.phase,UI.viewDay).find(x=>x.id===id);const t2=targetFor(ex);let base=cell[field];if(base==null)base=field==="kg"?(t2.kg||0):t2.reps;let nv=Math.max(0,+(base+ +delta).toFixed(2));const patch={};patch[field]=nv;if(field==="reps"&&ex.load==="kg"&&cell.kg==null)patch.kg=t2.kg||0;if(field==="kg"&&cell.reps==null)patch.reps=t2.reps;arr[+i]={...cell,...patch}});return}
 });
@@ -521,6 +672,10 @@ document.body.addEventListener("change",e=>{
   if(imp&&imp.files[0])importBackup(imp.files[0]);
   const tin=e.target.closest("[data-tinput]");
   if(tin){const v=parseFloat(tin.value);UI.testDraft[tin.dataset.tinput]=isNaN(v)?0:v;}
+});
+document.body.addEventListener("input",e=>{
+  const w=e.target.closest("[data-wkg]");
+  if(w)UI.fuelKg=w.value;
 });
 
 /* ───────── PWA: manifest + install + offline ───────── */
