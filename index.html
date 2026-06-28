@@ -141,7 +141,7 @@ const CHANGELOG=[
 ];
 
 /* ───────── STORAGE (durable on device; memory fallback in preview) ───────── */
-const APP_VERSION="v6 · 28 Jun 2026 · setup memory + targets";
+const APP_VERSION="v7 · 28 Jun 2026 · clean card + info-page targets & charts";
 let mem=null;
 const DB={
   read(){ try{const r=localStorage.getItem("scos_v1");return r?JSON.parse(r):null}catch(e){return mem} },
@@ -323,6 +323,67 @@ function presetHTML(ex){
     </div>`;
 }
 
+/* ───────── MINIMAL CARD: Setup + Last combo ───────── */
+function comboHTML(ex){
+  const sv=setupVal(ex.id), editing=UI.setupEdit===ex.id, ll=lastLine(ex);
+  const setupRow = editing
+    ? `<div style="display:flex;gap:6px;padding:9px 11px"><input data-setupinput="${ex.id}" value="${sv.replace(/"/g,'&quot;')}" placeholder="e.g. Pulley 2 · V-grip · seat 4" style="flex:1;border:1px solid var(--blue);border-radius:9px;padding:8px 10px;font-size:13px;outline:none;background:#fff"/><button data-setupsave="${ex.id}" style="background:var(--navy);color:#fff;border:none;border-radius:9px;padding:0 14px;font-weight:700;font-size:13px">Save</button></div>`
+    : `<div style="display:flex;align-items:center;gap:8px;padding:9px 12px"><span style="font-size:9.5px;font-weight:800;color:var(--sub);letter-spacing:.4px;text-transform:uppercase;min-width:40px">Setup</span><span style="font-size:13px;color:${sv?'var(--ink)':'var(--sub)'};font-weight:${sv?600:500};flex:1">${sv||'tap to record pulley / Smith #'}</span><button data-setupedit="${ex.id}" style="font-size:11px;color:var(--blue);font-weight:700;background:none;border:none">${sv?'edit':'set'}</button></div>`;
+  const lastRow=`<div style="display:flex;align-items:center;gap:8px;padding:9px 12px;border-top:1px solid var(--line)"><span style="font-size:9.5px;font-weight:800;color:var(--sub);letter-spacing:.4px;text-transform:uppercase;min-width:40px">Last</span><span class="tnum" style="font-size:13px;color:${ll.dim?'var(--sub)':'var(--ink)'};font-weight:${ll.dim?500:700}">${ll.txt}</span></div>`;
+  return `<div style="margin-top:12px;background:var(--bg);border:1px solid var(--line);border-radius:12px;overflow:hidden">${setupRow}${lastRow}</div>`;
+}
+/* ───────── INFO PAGE: today's target matrix ───────── */
+function targetMatrixHTML(ex){
+  const t=targetFor(ex), unit=ex.unit||"reps", repWord=unit==="trips"?"trips":"clean";
+  let targetTxt;
+  if(ex.load==="kg") targetTxt=(t.kg>0?`${t.kg} kg `:`<span style="font-size:16px">Set your weight</span> `)+`<span style="font-size:13px;color:var(--sub);font-weight:600">× ${ex.reps} ${repWord}</span>`;
+  else targetTxt=`${ex.reps} <span style="font-size:13px;color:var(--sub);font-weight:600">${repWord} reps</span>`;
+  return `<div style="background:#fff;border:1px solid var(--line);border-radius:16px;padding:13px;margin-bottom:14px">
+    <div style="font-size:10px;font-weight:800;color:var(--sub);letter-spacing:.5px;text-transform:uppercase;margin-bottom:8px">🎯 Today's target</div>
+    <div class="tnum" style="font-size:22px;font-weight:800;color:var(--navy)">${targetTxt}</div>
+    <div style="display:flex;gap:8px;margin-top:11px">
+      <div style="flex:1;background:var(--greenSoft);border-radius:12px;padding:10px"><div style="font-size:9.5px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;margin-bottom:4px;color:#3F6F58">✓ Good rep</div><div style="font-size:12px;font-weight:600;line-height:1.35;color:#3F6F58">${ex.d.ok}</div></div>
+      <div style="flex:1;background:var(--amberSoft);border-radius:12px;padding:10px"><div style="font-size:9.5px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;margin-bottom:4px;color:#9A6B28">▲ Progression</div><div style="font-size:12px;font-weight:600;line-height:1.35;color:#9A6B28">${gateLine(ex,t)}</div></div>
+    </div></div>`;
+}
+/* ───────── INFO PAGE: smart per-exercise progress chart ───────── */
+function exChart(ex){
+  if(ex.id==="ext_rot"){const a=(S.assessments&&S.assessments.erPain)||[];const g=(TESTS.find(t=>t.id==="erPain").gates[S.phase])??1;return{title:"Loaded-ER pain",sub:"lower = better",dir:"down",color:"#5B7CB8",unit:"/10",vals:a.map(x=>x.val),target:g,aimLabel:"gate ≤"+g,src:"plan"};}
+  if(ex.id==="ank_rock"){const a=(S.assessments&&S.assessments.squatHeel)||[];const g=(TESTS.find(t=>t.id==="squatHeel").gates[S.phase])??0;return{title:"Heel-lift mm",sub:"lower = better",dir:"down",color:"#5B7CB8",unit:"mm",vals:a.map(x=>x.val),target:g,aimLabel:"gate "+g+"mm",src:"plan"};}
+  const h=(S.exHistory&&S.exHistory[ex.id])||[];
+  if(ex.load==="kg"){const vals=h.map(e=>Math.max(0,...e.sets.filter(s=>s&&s.kg).map(s=>s.kg)));const last=vals.length?vals[vals.length-1]:0;const tg=last>0?+(last+2.5).toFixed(1):5;return{title:"Top weight",sub:"higher = better",dir:"up",color:"#1E2A44",unit:"kg",vals,target:tg,aimLabel:"aim "+tg+"kg",src:"log"};}
+  const vals=h.map(e=>e.sets.filter(s=>s&&s.reps).reduce((a,s)=>a+s.reps,0));const tg=ex.sets*ex.reps;
+  return{title:"Clean reps",sub:"higher = better",dir:"up",color:"#5C9E7E",unit:"",vals,target:tg,aimLabel:"target "+tg,src:"log"};
+}
+function miniLineSVG(c){
+  const vals=c.vals,target=c.target,color=c.color,unit=c.unit||"";
+  const W=400,H=140,P=16; const all=vals.concat([target]); let mn=Math.min(...all),mx=Math.max(...all);
+  if(mn===mx){mn-=1;mx+=1;} const pd=(mx-mn)*0.15||1; mn-=pd;mx+=pd;
+  const X=i=>P+i*(W-2*P)/Math.max(1,vals.length-1), Y=v=>H-P-(v-mn)/(mx-mn)*(H-2*P);
+  const pts=vals.map((v,i)=>X(i)+","+Y(v));
+  const line=pts.map((p,i)=>(i?"L":"M")+p).join(" ");
+  const area="M"+X(0)+","+(H-P)+" L"+pts.join(" L")+" L"+X(vals.length-1)+","+(H-P)+" Z";
+  const gid="cg"+Math.random().toString(36).slice(2,7);
+  let s=`<svg viewBox="0 0 ${W} ${H}" style="width:100%;height:140px" preserveAspectRatio="none"><defs><linearGradient id="${gid}" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="${color}" stop-opacity=".26"/><stop offset="100%" stop-color="${color}" stop-opacity=".02"/></linearGradient></defs>`;
+  s+=`<line x1="${P}" y1="${Y(target)}" x2="${W-P}" y2="${Y(target)}" stroke="${color}" stroke-width="1.5" stroke-dasharray="5 5" opacity=".5"/>`;
+  s+=`<text x="${W-P}" y="${Y(target)-5}" text-anchor="end" font-size="11" font-weight="700" fill="${color}" opacity=".85">${c.aimLabel}</text>`;
+  s+=`<path d="${area}" fill="url(#${gid})"/><path d="${line}" fill="none" stroke="${color}" stroke-width="2.5" stroke-linejoin="round"/>`;
+  vals.forEach((v,i)=>{s+=`<circle cx="${X(i)}" cy="${Y(v)}" r="3.5" fill="${color}"/>`;});
+  const li=vals.length-1; s+=`<text x="${X(li)}" y="${Y(vals[li])-9}" text-anchor="middle" font-size="12" font-weight="800" fill="${color}">${vals[li]}${unit}</text>`;
+  return s+"</svg>";
+}
+function chartCardHTML(ex){
+  const c=exChart(ex), n=c.vals.length;
+  const body = n===0
+    ? `<div style="padding:18px 0;text-align:center;color:var(--sub);font-size:12.5px;line-height:1.5">No data yet — ${c.src==="plan"?'log this test in the Plan tab':'log a session'} and your line starts here.<br><span style="font-size:11px">Aiming for <b>${c.aimLabel}</b></span></div>`
+    : miniLineSVG(c);
+  return `<div style="background:#fff;border:1px solid var(--line);border-radius:16px;padding:13px;margin-bottom:14px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px"><span style="font-size:13px;font-weight:800;color:var(--ink)">Progress · ${c.title}</span><span style="font-size:11px;color:var(--sub);font-weight:600">${c.sub}</span></div>
+    ${body}
+    ${c.src==="plan"?'<div style="font-size:10.5px;color:var(--sub);margin-top:6px">Pulls from your Plan-tab test log.</div>':''}
+  </div>`;
+}
+
 function cardHTML(ex){
   const cells=cur().entries[ex.id], eff=cur().effort[ex.id], unit=ex.unit||"reps";
   const t=targetFor(ex);
@@ -350,13 +411,10 @@ function cardHTML(ex){
       <div style="display:flex;align-items:center;gap:6px"><span style="font-size:16.5px;font-weight:700">${ex.name}</span><span style="color:var(--blue);font-size:13px">ⓘ</span></div>
       <div style="font-size:12.5px;color:var(--sub);margin-top:2px">${ex.sets} × ${ex.reps}${unit==="trips"?" trips":""}${ex.right?' · <b style="color:#C97B3C">right focus</b>':''}</div>
     </button>
-    ${presetHTML(ex)}
+    ${comboHTML(ex)}
     <div style="display:flex;gap:8px;margin-top:12px">${pads}</div>
     ${pad}
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-top:12px;gap:8px">
-      <span style="font-size:11px;color:var(--sub);font-weight:600">After your sets — how did it feel?</span>
-      <div style="display:flex;gap:6px">${[["easy","Easy"],["ok","OK"],["hard","Hard"]].map(([v,l])=>`<button data-eff="${ex.id}:${v}" style="font-size:11.5px;font-weight:700;padding:5px 9px;border-radius:999px;border:1px solid ${eff===v?'var(--navy)':'var(--line)'};background:${eff===v?'var(--navy)':'#fff'};color:${eff===v?'#fff':'var(--sub)'}">${l}</button>`).join("")}</div>
-    </div>
+    ${cells.length&&cells.every(c=>c&&c.reps)?`<div style="display:flex;align-items:center;justify-content:space-between;margin-top:12px;gap:8px"><span style="font-size:11px;color:var(--sub);font-weight:600">How did that feel?</span><div style="display:flex;gap:6px">${[["easy","Easy"],["ok","OK"],["hard","Hard"]].map(([v,l])=>`<button data-eff="${ex.id}:${v}" style="font-size:11.5px;font-weight:700;padding:5px 9px;border-radius:999px;border:1px solid ${eff===v?'var(--navy)':'var(--line)'};background:${eff===v?'var(--navy)':'#fff'};color:${eff===v?'#fff':'var(--sub)'}">${l}</button>`).join("")}</div></div>`:''}
   </div>`;
 }
 function stepperHTML(id,i,field,label,val,step){
@@ -767,6 +825,8 @@ function detailHTML(ex){
         <div style="font-weight:800;font-size:17px">${ex.name}</div></div>
       <div style="padding:16px 18px 40px">
         ${(SPECS[ex.id]||ILLUS[ex.id])?`<div style="background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 12px 6px;margin-bottom:14px"><div style="font-size:11px;font-weight:800;color:var(--sub);text-transform:uppercase;letter-spacing:.6px;margin:0 2px 6px">How it should look · muscle firing & tempo</div>${SPECS[ex.id]?exAnim(SPECS[ex.id]):ILLUS[ex.id]}</div>`:''}
+        ${targetMatrixHTML(ex)}
+        ${chartCardHTML(ex)}
         <div style="background:var(--blueSoft);color:var(--navy);border-radius:14px;padding:14px;font-size:14px;line-height:1.5"><b>Why this exists.</b> ${d.why}</div>
         <div style="margin-top:18px"><div style="font-size:12px;font-weight:800;color:var(--sub);text-transform:uppercase;letter-spacing:.6px;margin-bottom:8px">Setup</div>
           ${d.setup.map(x=>`<div style="display:flex;gap:10px;margin-bottom:7px"><span style="width:6px;height:6px;border-radius:999px;background:var(--blue);margin-top:7px;flex-shrink:0"></span><span style="font-size:14.5px;line-height:1.45">${x}</span></div>`).join("")}</div>
