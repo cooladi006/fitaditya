@@ -1,5 +1,5 @@
 // Strength Code OS service worker — network-first so updates always show.
-const CACHE = "scos-v3";
+const CACHE = "scos-v4";
 
 self.addEventListener("install", () => { self.skipWaiting(); });
 
