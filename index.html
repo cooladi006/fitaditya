@@ -89,7 +89,7 @@ function prog(phase,day){return (PROGRAM[phase]||PROGRAM[2])[day]}
 function findEx(id){for(const p of Object.keys(PROGRAM)){for(const dk of ROTATION){const f=PROGRAM[p][dk].find(x=>x.id===id);if(f)return f}}return null}
 const DAY={Lower:{icon:"🦵",tint:"#5B7CB8",label:"Lower Day"},Upper:{icon:"🫳",tint:"#5C9E7E",label:"Upper Day"},Athletic:{icon:"⚡",tint:"#D99A4E",label:"Athletic Day"}};
 const SESSION_WHY={Lower:"Rebuild right-side stability from the ground up — ankle, knee, hip.",Upper:"Restore the shoulder that anchors your whole right side.",Athletic:"Tie it together — single-leg control, rotation, and carry."};
-const HABITS=[{id:"balance",label:"Balance (R 3 · L 2)",e:"🦩"},{id:"crawl",label:"Crawling 3 min",e:"🐾"},{id:"squat",label:"Deep squat hold 1 min",e:"🧘"},{id:"ankle",label:"Ankle drill",e:"🦶"},{id:"walk",label:"Walk",e:"🚶"}];
+const HABITS=[{id:"balance",label:"Right-leg balance",e:"🦩",sub:"eyes closed · R 3 · L 2 · foot soft"},{id:"crawl",label:"Crawling",e:"🐾",sub:"~3 min · slow, cross-body"},{id:"squat",label:"Deep squat hold",e:"🧘",sub:"~1 min · heels down"},{id:"ankle",label:"Ankle drill",e:"🦶",sub:"knee-to-wall · 10–15 ea · 3D"},{id:"walk",label:"Walk",e:"🚶",sub:"easy · pain-free · build slowly"}];
 const MILES=[{id:"first",l:"First session",n:s=>s.history.length>=1},{id:"st3",l:"3-day streak",n:s=>s.bestStreak>=3},{id:"s5",l:"5 sessions",n:s=>s.history.length>=5},{id:"st7",l:"7-day streak",n:s=>s.bestStreak>=7},{id:"s10",l:"10 sessions",n:s=>s.history.length>=10},{id:"s25",l:"25 sessions",n:s=>s.history.length>=25},{id:"fuel1",l:"First 100g protein day",n:s=>((s.nutrition&&s.nutrition.xpDays)||[]).length>=1},{id:"fuel7",l:"7-day fuel streak",n:s=>((s.nutrition&&s.nutrition.bestFuelStreak)||0)>=7}];
 
 /* ───────── NUTRITION (Fuel) data ───────── */
@@ -113,21 +113,31 @@ const PHASES={
   4:{name:"Sport & Longevity",floor:"Floor 4+",why:"Maintain and periodize for life. Goals can evolve here — power, body composition, sport peaks — without ever losing the base underneath."}
 };
 const TESTS=[
-  {id:"balance",name:"Right-leg balance",unit:"s",goal:"CNS + right-side stability",dir:"up",base:15,step:1,gates:{1:30,2:45,3:60}},
-  {id:"squatHeel",name:"Deep-squat heel lift",unit:"mm",goal:"Ankle / hip mobility",dir:"down",base:25,step:1,gates:{1:15,2:5,3:0}},
-  {id:"pushups",name:"Push-ups",unit:"reps",goal:"Press strength + shoulder",dir:"up",base:4,step:1,gates:{1:8,2:12,3:15}},
-  {id:"walk",name:"Walk tolerance",unit:"min",goal:"Capacity / return to sport",dir:"up",base:20,step:5,gates:{1:25,2:35,3:45}},
-  {id:"pullup",name:"Pull-ups",unit:"reps",goal:"Pull strength",dir:"up",base:0,step:1,gates:{1:0,2:1,3:2}},
-  {id:"erPain",name:"Loaded ER shoulder pain",unit:"/10",goal:"Right shoulder integrity",dir:"down",base:5,step:1,gates:{1:2,2:1,3:0}}
+  {id:"balance",name:"Right-leg balance",unit:"s",goal:"Right-side proprioception & control",dir:"up",base:5,step:1,gates:{1:15,2:25,3:40},
+   checks:["Eyes shut the whole time","Hands stayed at my sides","Foot flat — no toe-clawing","No touchdown, hop, or hip hitch"]},
+  {id:"symmetry",name:"Right vs Left symmetry",unit:"%",goal:"The right side performs like the left",dir:"up",base:0,step:1,gates:{1:85,2:90,3:95},dual:true,
+   checks:["Same eyes-closed test both legs","Each leg tested fresh (rest between)","No toe-clawing or hip-hitch either side"]},
+  {id:"squatHeel",name:"Deep-squat heel lift",unit:"mm",goal:"Ankle / hip mobility",dir:"down",base:25,step:1,gates:{1:15,2:5,3:0},
+   checks:["Heel stayed flat at that lift","Knee tracked over the toes — no cave","Held a 3s bottom, no backward tip"]},
+  {id:"pushups",name:"Push-ups",unit:"reps",goal:"Press strength + shoulder, no right lag",dir:"up",base:4,step:1,gates:{1:8,2:12,3:15},
+   checks:["3-second lowering every rep","Full range — chest to floor/fist","Body one line — no sag/pike","Shoulders level — no right-side lag"]},
+  {id:"walk",name:"Walk tolerance",unit:"min",goal:"Capacity / return to sport",dir:"up",base:20,step:5,gates:{1:25,2:35,3:45},
+   checks:["Pain-free the whole walk","Even gait — no limp or list","No next-day flare"]},
+  {id:"pullup",name:"Pull-ups",unit:"reps",goal:"Pull strength",dir:"up",base:0,step:1,gates:{1:0,2:1,3:2},
+   checks:["Dead hang to chin over the bar","No kip or swing","No right-shoulder shrug/lag"]},
+  {id:"erPain",name:"Loaded-ER shoulder pain",unit:"/10",goal:"Right shoulder integrity",dir:"down",base:5,step:1,gates:{1:2,2:1,3:0},
+   checks:["At my recorded working load (not lighter)","Full pain-free range","No shrug or compensation"]}
 ];
 const TEST_HOW={
-  balance:{title:"Right-leg balance",how:["Barefoot, on a hard flat floor.","Fix your eyes on one point straight ahead.","Stand on the right leg; lift the left foot off the floor.","Start the timer the instant the foot leaves the ground."],stop:["Free foot touches down","You grab support or hop","Standing foot shifts/slides"],tip:"Best of 2 tries, 1 min rest. Same time of day each test for a fair comparison."},
-  squatHeel:{title:"Deep-squat heel lift",how:["Warm up the ankles first.","Feet shoulder-width, toes slightly out.","Squat as deep as is comfortable with heels DOWN and chest tall.","If the heels lift or you tip back, slide a thin object under the heels.","Add thickness until you can sit at depth, heels planted, no pain.","Measure that thickness in mm with a ruler."],stop:["Any knee pain","Heels can't stay down even with the lift"],tip:"Lower mm over time = better mobility. You're finding the smallest lift that lets you hit a clean deep hold."},
-  pushups:{title:"Push-ups",how:["Hands ~shoulder-width, body in one straight line.","Lower until elbows ~90° / chest near the floor.","Press all the way to locked arms = 1 rep.","Count clean reps until your form breaks."],stop:["Hips sag or pike","Half-range reps begin","Any shoulder pain"],tip:"If full push-ups aren't there yet, do them on an incline and note the height so you compare like-for-like."},
-  walk:{title:"Walk tolerance",how:["Walk at a comfortable, steady pace.","Note the longest continuous time you can go pain-free.","Use your normal daily walk to find this number."],stop:["First sign of knee/ankle strain","Any next-day flare (then that was too long)"],tip:"This is pain-free duration, not max effort. Honesty here protects your knee."},
-  pullup:{title:"Pull-ups",how:["Dead hang from the bar, arms straight.","Pull until your chin clears the bar.","Lower to a full hang = 1 rep.","Count clean, unassisted reps."],stop:["Kipping or swinging starts","Half-range reps"],tip:"Zero is a perfectly valid baseline. Log assisted/negative work in your training; this test stays strict."},
-  erPain:{title:"Loaded ER shoulder pain",how:["Set up Cable External Rotation (R): elbow pinned, towel at the side, light load.","Do one slow set in your pain-free range.","Rate the PEAK discomfort during the set, 0 (none) to 10 (sharp)."],stop:["Sharp pain — stop immediately and lower the load"],tip:"This rates discomfort, not effort. A falling number over weeks is the shoulder healing. Never push into sharp pain."}
+  balance:{title:"Right-leg balance",how:["Barefoot, hard flat floor. Stand on the right leg, lift the left foot.","Close your eyes and start the timer at the same moment.","Hands rest at your sides — no flailing for balance.","Stop the instant the foot touches, you hop, a hand reaches, or the torso lurches."],stop:["Eyes open even briefly","Toes claw the floor to cheat stability","A big hip hitch holds you up","Free foot touches down or you hop"],tip:"Eyes-closed is much harder than eyes-open — expect a lower number than you'd guess. Best of 2, 1 min rest, same time of day."},
+  symmetry:{title:"Right vs Left symmetry",how:["Do the eyes-closed balance test on the RIGHT leg — note the seconds.","Rest 1 minute, then do the exact same test on the LEFT leg.","Enter both; the app divides right by left for your symmetry %.","Test each leg fresh — don't pre-fatigue one side."],stop:["Different conditions between sides (one eyes-open)","Toe-clawing or hip-hitch on either side"],tip:"Right within 85% of left clears Phase 1. This is the truest sign the compensation is gone — chase the gap closing, not just the right-leg number rising."},
+  squatHeel:{title:"Deep-squat heel lift",how:["Warm up the ankles. Feet shoulder-width, toes slightly out.","Squat to honest depth (hip crease toward knee), chest tall.","Heels stay flat — slide a thin object under them only as much as needed.","Hold the bottom 3 seconds without tipping back; knee tracks over the toes.","Measure the heel lift used, in mm."],stop:["Heel lifts off even at that thickness","Knee caves inward","You tip backward or lose the 3s hold","Any knee pain"],tip:"You're finding the smallest lift that lets you hold a clean, heel-flat, knee-tracking bottom. Lower mm over weeks = real mobility."},
+  pushups:{title:"Push-ups",how:["Hands ~shoulder-width, body one straight line (incline on a bench if needed — note the height).","Lower over a full 3 seconds.","Full range — chest to the floor (or your fist).","Press to lockout = 1 rep. Count only reps that keep all four quality checks."],stop:["Lowering faster than 3s","Half-range reps","Hips sag or pike","Right shoulder lags or dips below the left"],tip:"Tempo + symmetry is the whole point — 8 honest 3-second reps beat 15 bouncy ones. Note your incline height to compare like-for-like."},
+  walk:{title:"Walk tolerance",how:["Walk at a comfortable, steady pace on your normal route.","Note the longest continuous time you can go fully pain-free.","Watch your gait — even stride, no limp or list to one side.","Check again the NEXT morning for any flare."],stop:["First sign of knee/ankle strain","A limp or list creeps in","Any next-day flare — then that distance was too long"],tip:"Pain-free, even-gait duration confirmed by no next-day flare — not max effort. The next morning is the honesty check."},
+  pullup:{title:"Pull-ups",how:["Dead hang, arms straight.","Pull until the chin clears the bar.","Lower to a full hang = 1 rep.","Count strict, unassisted reps — no kip."],stop:["Kipping or swinging","Half-range reps","Right shoulder shrugs or lags"],tip:"Zero is a fine Phase-1 baseline. The strict standard is what counts from Phase 2 — train negatives/assisted work meanwhile."},
+  erPain:{title:"Loaded-ER shoulder pain",how:["Set up Cable External Rotation (R): elbow pinned, towel at the side, at your RECORDED working load.","Do one slow set through your full pain-free range.","Rate the PEAK discomfort 0 (none) to 10 (sharp).","Use the same load each test — don't drop it to chase a lower score."],stop:["Sharp pain — stop and lower the load","Range shrinks to dodge pain","A shrug or compensation creeps in"],tip:"Same load, full range, no shrug — a falling number then means real healing. Never push into sharp pain. No 90°-abduction loaded ER until physio-cleared."}
 };
+
 const CHANGELOG=[
   {date:"Jun 2026",title:"Added rotator-cuff & serratus work",reason:"Your root cause is the right shoulder, yet the original plan was 2 presses + 2 pulls and zero cuff/scap work. Added Wall Slide + Serratus, Cable External Rotation and Face Pull — placed before pressing. You can't fix a chain while ignoring the keystone at the top."},
   {date:"Jun 2026",title:"Smith RDL → Cable RDL",reason:"A fixed bar path lets the right side cheat invisibly. The cable forces both sides to stabilize honestly — the asymmetry can't hide, so we can actually correct it."},
@@ -141,7 +151,7 @@ const CHANGELOG=[
 ];
 
 /* ───────── STORAGE (durable on device; memory fallback in preview) ───────── */
-const APP_VERSION="v7 · 28 Jun 2026 · clean card + info-page targets & charts";
+const APP_VERSION="v11 · 29 Jun 2026 · daily-movement guides + squat-hold animation";
 let mem=null;
 const DB={
   read(){ try{const r=localStorage.getItem("scos_v1");return r?JSON.parse(r):null}catch(e){return mem} },
@@ -150,10 +160,11 @@ const DB={
 const todayStr=()=>new Date().toISOString().slice(0,10);
 const fmtDay=d=>new Date(d).toLocaleDateString(undefined,{weekday:"short",day:"numeric",month:"short"});
 const fmtShort=d=>new Date(d).toLocaleDateString(undefined,{day:"numeric",month:"short"});
-function blank(){return{v:5,rotationIndex:0,xp:0,history:[],exHistory:{},activeDates:[],bestStreak:0,drafts:{},habits:{},phase:1,assessments:{},setup:{},nutrition:{logs:{},weights:[],xpDays:[],bestFuelStreak:0}}}
-function latestTest(id){const a=(S.assessments&&S.assessments[id])||[];return a.length?a[a.length-1].val:null}
-function testCurrent(t){const v=latestTest(t.id);return v==null?t.base:v}
-function gateMet(t,phase){const g=t.gates[phase];if(g==null)return true;const c=testCurrent(t);return t.dir==="up"?c>=g:c<=g}
+function blank(){return{v:6,rotationIndex:0,xp:0,history:[],exHistory:{},activeDates:[],bestStreak:0,drafts:{},habits:{},phase:1,assessments:{},setup:{},checkins:[],nutrition:{logs:{},weights:[],xpDays:[],bestFuelStreak:0}}}
+function latestEntry(id){const a=(S.assessments&&S.assessments[id])||[];return a.length?a[a.length-1]:null}
+function latestTest(id){const e=latestEntry(id);return e?e.val:null}
+function testCurrent(t){const e=latestEntry(t.id);return e?e.val:t.base}
+function gateMet(t,phase){const g=t.gates[phase];if(g==null)return true;const baseClears=t.dir==="up"?t.base>=g:t.base<=g;if(baseClears)return true;const e=latestEntry(t.id);if(!e)return false;const numOK=t.dir==="up"?e.val>=g:e.val<=g;return numOK&&e.clean===true}
 function phaseProgress(phase){const rel=TESTS.filter(t=>t.gates[phase]!=null);const met=rel.filter(t=>gateMet(t,phase)).length;return{met,total:rel.length,ready:met===rel.length}}
 function freshSession(type){const e={};prog(S.phase,type).forEach(x=>e[x.id]=Array.from({length:x.sets},()=>null));return{type,date:todayStr(),entries:e,effort:{}}}
 function computeStreak(dates){if(!dates.length)return 0;const set=new Set(dates);let cur=todayStr();if(!set.has(cur)){const y=new Date();y.setDate(y.getDate()-1);cur=y.toISOString().slice(0,10);if(!set.has(cur))return 0}let n=0;while(set.has(cur)){n++;const d=new Date(cur);d.setDate(d.getDate()-1);cur=d.toISOString().slice(0,10)}return n}
@@ -189,7 +200,7 @@ if(!S.setup) S.setup={};
 if(!S.nutrition) S.nutrition={logs:{},weights:[],xpDays:[],bestFuelStreak:0};
 S.nutrition.logs=S.nutrition.logs||{}; S.nutrition.weights=S.nutrition.weights||[]; S.nutrition.xpDays=S.nutrition.xpDays||[]; if(S.nutrition.bestFuelStreak==null)S.nutrition.bestFuelStreak=0;
 function draft(type){ if(!S.drafts[type]) S.drafts[type]=freshSession(type); return S.drafts[type]; }
-let UI={tab:"home",activeSet:null,detail:null,viewDay:ROTATION[S.rotationIndex%3],testDraft:{},previewPhase:S.phase,fuelKg:"",fuelWhy:null,setupEdit:null};
+let UI={tab:"home",activeSet:null,detail:null,viewDay:ROTATION[S.rotationIndex%3],testDraft:{},previewPhase:S.phase,fuelKg:"",fuelWhy:null,setupEdit:null,testChecks:{},primer:null,primerChecks:{},check:false,checkDraft:{},habitInfo:null};
 function cur(){ return draft(UI.viewDay); }
 function save(){DB.write(S)}
 function setS(fn){fn(S);save();render()}
@@ -224,7 +235,7 @@ function render(){
     : UI.tab==="plan" ? planHTML() : progressHTML(streak,level,levelPct);
   app().className="rise";
   renderTabbar();
-  ov().innerHTML = UI.detail ? detailHTML(UI.detail) : UI.testHow ? testSheetHTML(UI.testHow) : UI.fuelWhy ? fuelWhyHTML() : "";
+  ov().innerHTML = UI.detail ? detailHTML(UI.detail) : UI.testHow ? testSheetHTML(UI.testHow) : UI.primer ? primerHTML(UI.primer) : UI.check ? checkHTML() : UI.habitInfo ? habitHTML(UI.habitInfo) : UI.fuelWhy ? fuelWhyHTML() : "";
 }
 
 function renderTabbar(){
@@ -260,15 +271,21 @@ function todayHTML(type,meta,ex,streak,level,levelPct,logged,total){
     <div style="margin-top:14px;display:flex;align-items:center;gap:10px">
       <div style="flex:1;height:8px;background:var(--line);border-radius:999px;overflow:hidden"><div style="width:${total?logged/total*100:0}%;height:100%;background:${meta.tint};transition:width .3s"></div></div>
       <span class="tnum" style="font-size:12px;color:var(--sub);font-weight:600">${logged}/${total} sets</span></div>
+    <button data-prime="${type}" style="width:100%;margin-top:12px;padding:11px;border-radius:12px;border:1px dashed var(--blue);background:var(--blueSoft);color:var(--navy);font-weight:700;font-size:13px">✦ Prime first · 2 min — free, open & wake the chain</button>
   </div>
   <div style="padding:6px 14px">${ex.map(cardHTML).join("")}</div>
   <div style="padding:6px 18px 4px">
     <div style="font-size:12px;font-weight:700;color:var(--sub);text-transform:uppercase;letter-spacing:.6px;margin:10px 2px">Daily — every day counts</div>
+    <div style="font-size:12.5px;color:var(--sub);line-height:1.5;margin:0 2px 10px"><b>Consistency, not max effort.</b> Tap any ⓘ for how &amp; how much. The Plan tests measure progress — the dailies you just do.</div>
     <div style="background:#fff;border:1px solid var(--line);border-radius:18px">${HABITS.map((h,i)=>{const on=(S.habits[todayStr()]||{})[h.id];return `
-      <button data-habit="${h.id}" style="width:100%;display:flex;align-items:center;gap:12px;padding:13px 16px;background:none;border:none;${i?'border-top:1px solid var(--line)':''}">
-        <span style="font-size:18px">${h.e}</span><span style="flex:1;text-align:left;font-size:15px">${h.label}</span>
-        <span style="width:26px;height:26px;border-radius:999px;border:2px solid ${on?'var(--green)':'var(--line)'};background:${on?'var(--green)':'transparent'};display:grid;place-items:center;color:#fff;font-weight:900">${on?'✓':''}</span>
-      </button>`}).join("")}</div>
+      <div style="display:flex;align-items:center;gap:12px;padding:11px 14px;${i?'border-top:1px solid var(--line)':''}">
+        <span style="font-size:18px">${h.e}</span>
+        <button data-habitinfo="${h.id}" style="flex:1;text-align:left;background:none;border:none;padding:0">
+          <div style="font-size:15px;font-weight:600;display:flex;align-items:center;gap:6px">${h.label} <span style="color:var(--blue);font-size:13px">ⓘ</span></div>
+          <div style="font-size:12px;color:var(--sub);margin-top:1px">${h.sub||''}</div>
+        </button>
+        <button data-habit="${h.id}" style="width:28px;height:28px;border-radius:999px;border:2px solid ${on?'var(--green)':'var(--line)'};background:${on?'var(--green)':'transparent'};display:grid;place-items:center;color:#fff;font-weight:900;flex-shrink:0">${on?'✓':''}</button>
+      </div>`}).join("")}</div>
   </div>
   <div style="padding:16px 18px 4px">
     <button data-finish style="width:100%;padding:16px;border-radius:16px;border:none;font-size:16px;font-weight:800;${logged?'background:var(--navy);color:#fff;box-shadow:0 8px 20px rgba(30,42,68,.22)':'background:var(--line);color:var(--sub)'}">${logged?'Finish session →':'Log a set to finish'}</button>
@@ -825,6 +842,7 @@ function detailHTML(ex){
         <div style="font-weight:800;font-size:17px">${ex.name}</div></div>
       <div style="padding:16px 18px 40px">
         ${(SPECS[ex.id]||ILLUS[ex.id])?`<div style="background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 12px 6px;margin-bottom:14px"><div style="font-size:11px;font-weight:800;color:var(--sub);text-transform:uppercase;letter-spacing:.6px;margin:0 2px 6px">How it should look · muscle firing & tempo</div>${SPECS[ex.id]?exAnim(SPECS[ex.id]):ILLUS[ex.id]}</div>`:''}
+        ${footCue(ex)}
         ${targetMatrixHTML(ex)}
         ${chartCardHTML(ex)}
         <div style="background:var(--blueSoft);color:var(--navy);border-radius:14px;padding:14px;font-size:14px;line-height:1.5"><b>Why this exists.</b> ${d.why}</div>
@@ -841,50 +859,212 @@ function detailHTML(ex){
 
 function ring(pct,top,bot,size,stroke,color){const r=(size-stroke)/2,c=2*Math.PI*r,off=c*(1-Math.max(0,Math.min(100,pct))/100);return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" style="flex-shrink:0"><circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="#ECE9E4" stroke-width="${stroke}"/><circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="${color}" stroke-width="${stroke}" stroke-linecap="round" stroke-dasharray="${c}" stroke-dashoffset="${off}" transform="rotate(-90 ${size/2} ${size/2})"/><text x="50%" y="47%" text-anchor="middle" font-size="${size*0.24}" font-weight="800" fill="#1B2333">${top}</text><text x="50%" y="65%" text-anchor="middle" font-size="${size*0.1}" fill="#8C8881" font-weight="700">${bot}</text></svg>`}
 function miniStat(ic,val,label){return `<div style="flex:1;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 10px;text-align:center"><div style="font-size:17px">${ic}</div><div class="tnum" style="font-size:21px;font-weight:800;margin-top:2px">${val}</div><div style="font-size:11px;color:var(--sub);font-weight:600">${label}</div></div>`}
-function homeHTML(){
-  const ph=S.phase,P=PHASES[ph],pp=phaseProgress(ph);
-  const streak=computeStreak(S.activeDates),sessions=S.history.length;
-  const now=new Date(),wk=new Date(now);wk.setDate(now.getDate()-now.getDay());
-  const week=S.history.filter(h=>new Date(h.date)>=wk).length;
-  const type=ROTATION[S.rotationIndex%3],meta=DAY[type];
-  const balT=TESTS.find(t=>t.id==="balance"),bal=testCurrent(balT);
-  const pct=pp.total?pp.met/pp.total*100:0;
-  const hr=now.getHours(),greet=hr<12?"Good morning":hr<17?"Good afternoon":"Good evening";
-  const HEROES=["Build what lasts.","Small reps, long arc.","Move with intent.","Earn the next floor.","Strong — and staying that way.","The work compounds.","Forward, one set at a time."];
-  const doy=Math.floor((Date.now()-new Date(now.getFullYear(),0,0))/864e5);
-  const hero=HEROES[doy%HEROES.length];
-  const fg=fuelGrams(todayStr()),fhit=fuelHit(todayStr()),fstreak=fuelStreak();
-  return `<div class="rise">
-    <div style="padding:40px 22px 14px">
-      <div style="font-size:12.5px;font-weight:600;color:var(--sub);letter-spacing:.2px">${greet}</div>
-      <div style="margin-top:13px;font-size:38px;font-weight:800;letter-spacing:-1.6px;line-height:1.02;background:linear-gradient(118deg,#171F30 0%,#46698F 78%);-webkit-background-clip:text;background-clip:text;color:transparent">${hero}</div>
-      <div style="margin-top:11px;font-size:13px;font-weight:500;color:var(--sub)">${fmtDay(todayStr())}<span style="opacity:.45"> · </span>${P.name}<span style="opacity:.45"> · </span>Floor ${ph} of 4</div>
-    </div>
-    <div style="margin:14px 16px;background:#fff;border:1px solid var(--line);border-radius:22px;padding:20px;display:flex;align-items:center;gap:18px;box-shadow:0 1px 3px rgba(0,0,0,.03)">
-      ${ring(pct,'P'+ph,pp.met+'/'+pp.total+' gates',112,11,'#1E2A44')}
+/* ───────── CORRECTIVE PRIMER (NASM continuum × Gray 3D, day-specific) ───────── */
+/* ───────── SOFT-FOOT in-lift cue (knee/foot-loaded lifts) ───────── */
+const FOOT_IDS=new Set(["cb_squat","cable_rdl","split_squat","farmer","box_squat","sl_rdl","step_up","lat_lunge","lat_stepdown","p2_goblet","p2_dbrdl","p2_bulgarian","p2_loadstep","ank_rock"]);
+function footCue(ex){
+  if(!FOOT_IDS.has(ex.id))return "";
+  return `<div style="background:linear-gradient(135deg,#2C3E2F,#1d2a20);color:#fff;border-radius:16px;padding:16px;margin-bottom:14px">
+    <div style="font-size:10px;font-weight:800;letter-spacing:1px;opacity:.7">🦶 YOUR KEY CUE — READ EVERY SET</div>
+    <div style="font-size:16.5px;font-weight:800;margin:7px 0 7px;line-height:1.3">Soft foot, toes relaxed → feel the right glute → <i>then</i> drive.</div>
+    <div style="font-size:12.5px;opacity:.92;line-height:1.45">A braced, gripping foot switches the right glute off and hands the load to your knee. Release the foot first and the glute leads — exactly what dropped your strain getting out of the chair.</div>
+  </div>`;
+}
+/* ───────── DAILY KNEE / FOOT / SEAT CHECK ───────── */
+function checkChartSVG(rows){
+  if(rows.length<1)return `<div style="padding:18px 0;text-align:center;color:var(--sub);font-size:12.5px;line-height:1.5">No checks yet — log a few days and your two lines appear here.<br><span style="font-size:11px">The test: knee strain ↓ and foot-relax ↑ should <b>converge</b>.</span></div>`;
+  const W=400,H=150,P=16,n=rows.length;
+  const X=i=>P+i*(W-2*P)/Math.max(1,n-1), Y=v=>H-P-(v/10)*(H-2*P);
+  const mk=(key,col)=>{const pts=rows.map((r,i)=>X(i)+","+Y(r[key]??0));const line=pts.map((p,i)=>(i?"L":"M")+p).join(" ");let s=`<path d="${line}" fill="none" stroke="${col}" stroke-width="2.6" stroke-linejoin="round"/>`;s+=`<circle cx="${X(n-1)}" cy="${Y(rows[n-1][key]??0)}" r="3.5" fill="${col}"/>`;return s;};
+  return `<svg viewBox="0 0 ${W} ${H}" style="width:100%;height:150px"><line x1="${P}" y1="${H-P}" x2="${W-P}" y2="${H-P}" stroke="#ECE9E4"/>${mk("knee","#D17C6E")}${mk("foot","#5C9E7E")}</svg>
+  <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--sub);margin-top:2px"><span>${rows.length>1?fmtDay(rows[0].date).slice(0,6):''}</span><span>today</span></div>`;
+}
+function checkHTML(){
+  const rows=(S.checkins||[]).slice(-14);
+  const last=(S.checkins||[]).slice(-1)[0]||{};
+  const d=UI.checkDraft;
+  const val=(k,def)=>d[k]??(last[k]??def);
+  const metric=(k,title,hint,lowGood,def)=>`<div style="margin:16px 18px 0">
+    <div style="font-size:14px;font-weight:700">${title}</div><div style="font-size:12px;color:var(--sub);margin-top:2px">${hint}</div>
+    <div style="display:flex;align-items:center;gap:12px;margin-top:10px">
+      <div style="display:flex;align-items:center;background:var(--bg);border:1px solid var(--line);border-radius:12px;overflow:hidden">
+        <button data-checkstep="${k}:-1" style="width:44px;height:48px;border:none;background:none;color:var(--navy);font-size:22px">−</button>
+        <div class="tnum" style="width:50px;text-align:center;font-size:24px;font-weight:800;color:${lowGood?(val(k,def)<=3?'var(--green)':val(k,def)>=6?'var(--red)':'var(--ink)'):(val(k,def)>=7?'var(--green)':val(k,def)<=3?'var(--red)':'var(--ink)')}">${val(k,def)}</div>
+        <button data-checkstep="${k}:1" style="width:44px;height:48px;border:none;background:none;color:var(--navy);font-size:22px">+</button>
+      </div>
+      <div style="flex:1;font-size:11.5px;color:var(--sub);font-weight:600">${lowGood?'0 none · 10 bad':'0 gripped · 10 soft'}<br><span style="color:${lowGood?'var(--green)':'var(--green)'}">${lowGood?'lower is better':'higher is better'}</span></div>
+    </div></div>`;
+  return `<div data-close="1" style="position:fixed;inset:0;background:rgba(20,24,34,.4);z-index:50;display:flex;flex-direction:column;justify-content:flex-end">
+    <div class="rise" data-stop="1" style="background:var(--bg);border-radius:24px 24px 0 0;max-height:92dvh;overflow-y:auto;max-width:480px;margin:0 auto;width:100%">
+      <div style="position:sticky;top:0;background:var(--bg);padding:14px 18px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--line)">
+        <button data-close="1" style="background:#fff;border:1px solid var(--line);border-radius:10px;padding:6px 10px;font-size:16px">‹</button>
+        <div style="font-weight:800;font-size:17px">Daily check · knee · foot · seat</div></div>
+      <div style="padding:6px 0 30px">
+        ${metric("knee","Right knee strain","standing · stairs · walk",true,0)}
+        ${metric("foot","Could you keep the foot relaxed?","through the day / in your lifts",false,5)}
+        ${metric("seat","Seated right-glute strain","after a long sit — optional, log on sitting days",true,0)}
+        <div style="background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;margin:18px 18px 0">
+          <div style="font-size:13px;font-weight:800;margin-bottom:8px">Your convergence test</div>
+          <div style="display:flex;gap:14px;margin-bottom:8px;font-size:11.5px;font-weight:700"><span style="color:#9A4B3D"><span style="display:inline-block;width:9px;height:9px;border-radius:999px;background:var(--red);margin-right:5px"></span>Knee strain ↓</span><span style="color:#3F6F58"><span style="display:inline-block;width:9px;height:9px;border-radius:999px;background:var(--green);margin-right:5px"></span>Foot relaxed ↑</span></div>
+          ${checkChartSVG(rows)}
+        </div>
+        <div style="margin:12px 18px 0;background:var(--blueSoft);color:var(--navy);border-radius:14px;padding:13px;font-size:12.5px;line-height:1.5"><b>What this proves.</b> If strain falls as relaxation rises — the lines converging — your ankle-guarding → knee-strain link is real. If the foot frees but the knee doesn't settle over a few weeks, that's your signal it's something else — see a physio with this chart.</div>
+        <div style="margin:12px 18px 0;background:var(--navy);color:#fff;border-radius:16px;padding:15px">
+          <div style="font-size:10px;font-weight:800;letter-spacing:1px;opacity:.7">🪑 SEATED RESET — LONG SITS / THE CAR</div>
+          <div style="font-size:14px;font-weight:800;margin:7px 0 8px">Don't let the right side collapse.</div>
+          <div style="font-size:12px;opacity:.92;line-height:1.5">1 · Even sit-bones — share the weight with the left.<br>2 · Stack tall through the right — don't let the shoulder drop.<br>3 · Move every ~40 min — static load is the enemy, not sitting.</div>
+        </div>
+        <div style="margin:10px 18px 0;font-size:11px;color:var(--sub);line-height:1.5"><b>Why no pelvic-correction drill:</b> your right-only waistband fold suggests a real pelvic asymmetry, but fixing it depends on which way it sits — guessing wrong can entrench it. The app trains the shoulder driving it and tracks the trend. Tripwire: if the seated strain / fold hasn't eased in ~6–8 weeks, that's the cue for one hands-on assessment.</div>
+        <button data-checklog="1" style="display:block;margin:16px auto 0;width:calc(100% - 36px);padding:15px;border-radius:14px;border:none;background:var(--navy);color:#fff;font-weight:800;font-size:15.5px">Log today's check</button>
+      </div></div></div>`;
+}
+/* ───────── DAILY MOVEMENT — info pages (Why / How / dose / track) ───────── */
+const HABIT_INFO={
+ balance:{e:"🦩",name:"Right-leg balance",
+   why:"Rebuilds the right-side proprioception and control behind your wobble — and part of the knee picture. Daily reps teach your nervous system to trust the right leg.",
+   how:["Barefoot on a hard floor. Stand on the right leg, lift the left foot.","Eyes closed. Hands rest at your sides — no flailing.","Keep the foot SOFT — if the toes claw to balance, that's the guard. Ease off and let the ankle and hip do the work.","Then switch to the left leg."],
+   dose:"R 3× · L 2× · hold as long as you stay clean · ~2–3 min",
+   track:"Just check it off daily — that's the win. The measured version is the balance + symmetry tests in Plan, every 2–4 weeks.",
+   cue:"Foot soft, eyes closed — same lesson as the chair: stop gripping and let the right side learn to stabilise."},
+ crawl:{e:"🐾",name:"Crawling",
+   why:"Cross-body crawling re-links your right arm with your left hip and vice-versa — it integrates shoulder, core and hip into one coordinated chain. Exactly the 'team working together' your right side is missing.",
+   how:["Hands under shoulders, knees under hips, knees hovering ~an inch off the floor.","Move OPPOSITE hand and knee together — slow and deliberate.","Flat back, braced core, foot and toes relaxed.","Crawl forward, then back."],
+   dose:"~3 min · slow · quality over speed",
+   track:"Check it off. Informally: does the right side move as smoothly as the left? That gap closing is the progress.",
+   cue:"Slow and contralateral — opposite limbs together. If it feels jerky on the right, slow down further."},
+ squat:{e:"🧘",name:"Deep squat hold",specId:"daily_squat",
+   why:"Your heels-down full-squat dream, trained a little every day. It opens the ankle and hips and teaches the knee to TOLERATE its end range — gently, so it stops fearing depth.",
+   how:["Feet shoulder-width, toes slightly out. Sit into your deepest comfortable squat.","Heels down as much as you can — yoga blocks under the heels, or hold a door frame / the rack for support.","Chest tall, foot soft, breathe. Knee tracks over the toes — no cave."],
+   dose:"2–3 × 20s · ~1 min total · daily",
+   track:"Check it off daily. Measured version = the heel-lift test in Plan — over weeks you'll need less block under the heels.",
+   flag:"Mobility, not a max test. If the knee strains, reduce the depth or hold more support. Never sink into pain."},
+ ankle:{e:"🦶",name:"Ankle drill (knee-to-wall)",specId:"ank_rock",
+   why:"Your 25 mm heel-lift is the bottom-of-the-chain restriction that hands load to your knee. More dorsiflexion is the single biggest unlock for both the knee strain and your squat — the exact range that took strain off your knee in the leg-raise test.",
+   how:["Foot a few inches from a wall, heel planted.","Drive the knee forward over the toes to tap the wall — heel stays DOWN. If it taps easily, slide the foot back.","Do it three ways: knee inside the toe, over it, outside it (all 3 planes).","Keep the foot soft — no toe-gripping."],
+   dose:"10–15 reps × 3 directions · ~1–2 min · daily",
+   track:"Check it off. Measured version = the heel-lift test in Plan. Informal gauge: how far back can the foot sit with the heel still down?",
+   cue:"This is your dorsiflexion — the lever you found. Train it daily and the knee gets protected in every squat and step."},
+ walk:{e:"🚶",name:"Walk",
+   why:"Capacity and knee tolerance — your return-to-sport base. Easy daily walking keeps the joint moving and builds tolerance without strain.",
+   how:["Comfortable, steady pace.","Even gait — no limp or list to one side.","Foot relaxed, fully pain-free."],
+   dose:"Start at your pain-free duration · add a few minutes over weeks · daily",
+   track:"Check it off. Measured version = the walk-tolerance test (pain-free minutes) + your knee/foot check.",
+   flag:"Stop at the first knee/ankle strain, and watch for next-day flare — that means the distance was too long."}
+};
+SPECS["daily_squat"]={"tempo":{"down":3,"pause":2,"up":2,"hold":0.5},"tempoLabel":"SINK · HOLD · RISE","legendLabel":"WHAT OPENS & HOLDS (mobility hold)","equip":["<line x1=\"30\" y1=\"300\" x2=\"330\" y2=\"300\" stroke=\"#D9D5CE\" stroke-width=\"3.5\" stroke-linecap=\"round\"/>","<rect x=\"144\" y=\"292\" width=\"30\" height=\"8\" rx=\"2\" fill=\"#EFE2C7\" stroke=\"#D99A4E\" stroke-width=\"1.2\"/>"],"joints":{"head":{"t":[150,120],"b":[150,150]},"neck":{"t":[152,136],"b":[152,166]},"hip":{"t":[160,196],"b":[150,230]},"knee":{"t":[160,244],"b":[210,232]},"ankle":{"t":[158,290],"b":[158,290]},"sh":{"t":[152,148],"b":[152,176]},"wr":{"t":[180,176],"b":[176,210]}},"bones":[{"j":["neck","hip"],"w":15},{"j":["hip","knee","ankle"],"w":14},{"j":["sh","wr"],"w":11}],"overlay":["<path d=\"M150 300 L240 300 L240 292 L158 292 Z\" fill=\"#2B3550\"/>"],"head":{"joint":"head","r":15},"muscles":[{"c":"blue","hold":true,"hi":0.9,"label":"Ankles open","t":[158,276],"b":[158,276],"rx":8,"ry":12},{"c":"amber","hold":true,"hi":0.8,"label":"Hips open","t":[160,206],"b":[150,222],"rx":13,"ry":11},{"c":"green","hold":true,"hi":0.8,"label":"Quads hold","t":[166,224],"b":[190,228],"rx":11,"ry":15}],"cues":[{"text":"① SINK — deep as comfortable, heels DOWN","from":0,"to":0.4},{"text":"② HOLD — chest tall, foot soft, breathe","color":"#3F6F58","from":0.4,"to":0.84}],"arrowDown":{"x":262,"y1":160,"y2":208,"label":"sink"},"footer":"Mobility hold — open the ankle & hips with heels down · your full-squat goal"};
+function habitHTML(id){
+  const h=HABIT_INFO[id]; if(!h)return "";
+  const spec=h.specId&&SPECS[h.specId]?SPECS[h.specId]:null;
+  return `<div data-close="1" style="position:fixed;inset:0;background:rgba(20,24,34,.4);z-index:50;display:flex;flex-direction:column;justify-content:flex-end">
+    <div class="rise" data-stop="1" style="background:var(--bg);border-radius:24px 24px 0 0;max-height:92dvh;overflow-y:auto;max-width:480px;margin:0 auto;width:100%">
+      <div style="position:sticky;top:0;background:var(--bg);padding:14px 18px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--line)">
+        <button data-close="1" style="background:#fff;border:1px solid var(--line);border-radius:10px;padding:6px 10px;font-size:16px">‹</button>
+        <div style="font-weight:800;font-size:17px">${h.e} ${h.name}</div></div>
+      <div style="padding:16px 18px 40px">
+        ${spec?`<div style="background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 12px 6px;margin-bottom:14px"><div style="font-size:11px;font-weight:800;color:var(--sub);text-transform:uppercase;letter-spacing:.6px;margin:0 2px 6px">How it should look · tempo &amp; what works</div>${exAnim(spec)}</div>`:''}
+        <div style="background:var(--blueSoft);color:var(--navy);border-radius:14px;padding:14px;font-size:14px;line-height:1.5"><b>Why this matters.</b> ${h.why}</div>
+        <div style="margin-top:18px"><div style="font-size:12px;font-weight:800;color:var(--sub);text-transform:uppercase;letter-spacing:.6px;margin-bottom:8px">How to do it</div>
+          ${h.how.map((x,i)=>`<div style="display:flex;gap:10px;margin-bottom:8px"><span class="tnum" style="width:22px;height:22px;flex-shrink:0;border-radius:999px;background:var(--navy);color:#fff;font-size:12px;font-weight:800;display:grid;place-items:center">${i+1}</span><span style="font-size:14.5px;line-height:1.45">${x}</span></div>`).join("")}</div>
+        <div style="margin-top:16px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px 15px"><div style="font-size:11px;font-weight:800;color:var(--sub);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px">How much</div><div style="font-size:15px;font-weight:700;color:var(--navy)">${h.dose}</div></div>
+        <div style="background:var(--greenSoft);border-radius:14px;padding:14px;margin-top:14px"><div style="font-size:13px;font-weight:800;color:var(--green);margin-bottom:4px">What to track</div><div style="font-size:14px;color:#3F6F58;line-height:1.5">${h.track}</div></div>
+        ${h.cue?`<div style="background:#EFF4FB;border:1px dashed var(--blue);border-radius:12px;padding:12px;margin-top:12px;font-size:13.5px;color:var(--navy);line-height:1.45">🦶 ${h.cue}</div>`:''}
+        ${h.flag?`<div style="background:#FBEEEA;border:1px solid #F0D7D0;border-radius:12px;padding:12px;margin-top:12px;font-size:13.5px;color:#9A4B3D;line-height:1.45">⚠️ ${h.flag}</div>`:''}
+        <button data-close="1" style="width:100%;margin-top:20px;padding:15px;border-radius:14px;border:none;background:var(--navy);color:#fff;font-weight:800;font-size:15px">Got it</button>
+      </div></div></div>`;
+}
+const PRIMERS={
+ Lower:{why:"Settle the guarded right foot, free the ankle and wake the quiet glute — so the session trains the real movement, not the compensation around it.",
+  moves:[
+   {ph:"Reset",name:"Foot Reset (R)",tag:"teaches the foot to let go",cue:"Seated, foot flat. Grip the floor hard — toes, arch, the whole foot — for 3 seconds. Then let it ALL go: toes soft, arch melts, ankle heavy. Slow exhale. Then stand and take a few steps keeping the foot soft.",dose:"4 rounds + soft-foot walk",note:"This is the move you found — release first, and the glute comes online on its own, so the knee stops covering for it."},
+   {ph:"Free",name:"Calf Release (R)",gear:"roller / ball",tag:"frees the right ankle",cue:"Right calf on the foam roller — or the lacrosse ball for deeper spots. Roll slowly, pause and breathe on the tender knots.",dose:"30–40 sec"},
+   {ph:"Open",name:"3D Ankle Glide (R)",tag:"ankle · all planes",cue:"Knee-to-wall, heel down: drive the knee inside the toe, over it, then outside it — every plane the ankle uses in sport.",dose:"5 each direction"},
+   {ph:"Wake",name:"Right Glute-Med Wake",gear:"mat",tag:"wakes the right hip",cue:"Side-lying on the mat, top leg lifts and opens (clam → side raise). Feel the side of the right hip working, not the low back.",dose:"10 slow"}
+  ]},
+ Upper:{why:"Release the pec that pulls the right shoulder forward and switch on the muscles that anchor the blade — so pressing and pulling run on a stable base.",
+  moves:[
+   {ph:"Free",name:"Pec Release (R)",gear:"lacrosse ball",tag:"releases the pec pulling you forward",cue:"Pin the lacrosse ball on the right pec (just below the collarbone) against a wall. Gentle pressure, arm stays DOWN at your side. Breathe into the tender spots.",dose:"30 sec",flag:"Arm stays low — this never goes near the overhead apprehension position your surgery addressed. Safer than a doorway stretch. Physio still clears your range."},
+   {ph:"Open",name:"T-spine Extension",gear:"foam roller",tag:"opens a rounded upper back",cue:"Roller across the mid-back, hands cradling the head. Gently arch back over it, breathe, shift up a segment. This opens the posture that rounds your shoulder forward.",dose:"6–8 slow"},
+   {ph:"Wake",name:"Serratus + Lower-Trap Wake",gear:"mat",tag:"anchors the shoulder blade",cue:"A few wall serratus punches (blades wrap forward), then prone Y-raises on the mat. Light — you're switching them on, not training them.",dose:"8 each"}
+  ]},
+ Athletic:{why:"Settle the foot, open the ankle and hips, wake the right stabilizers — before single-leg, rotation and carry work.",
+  moves:[
+   {ph:"Reset",name:"Foot Reset (R)",tag:"teaches the foot to let go",cue:"Grip the foot hard 3s, then release fully — toes soft, ankle heavy. A couple of rounds, then a few soft-foot steps before you load.",dose:"3 rounds",note:"Settle the guarded foot first — the glute switches on and the knee stops over-loading."},
+   {ph:"Free",name:"Calf Release (R)",gear:"roller / ball",tag:"frees the right ankle",cue:"Quick pass on the right calf with the roller or ball — hunt the tight spots, breathe.",dose:"30 sec"},
+   {ph:"Open",name:"World's Greatest Stretch",gear:"mat",tag:"hip · t-spine · 3D",cue:"Lunge, same-side hand down, rotate the top arm open to the sky, then switch. Opens hip and mid-back together in every plane.",dose:"4 each side"},
+   {ph:"Wake",name:"Glute-Med + Brace Wake",gear:"mat",tag:"hip + anti-rotation core",cue:"Right-leg stance hip drops to wake the hip, then a few slow dead-bugs to switch on the anti-rotation core that protects your rotation work.",dose:"10 + 6"}
+  ]}
+};
+function nearestGate(ph){const unmet=TESTS.filter(t=>t.gates[ph]!=null&&!gateMet(t,ph));if(!unmet.length)return null;unmet.sort((a,b)=>testPct(b,ph)-testPct(a,ph));return unmet[0];}
+function primerHTML(type){
+  const P=PRIMERS[type]||PRIMERS.Lower, meta=DAY[type];
+  const col={Reset:"#7C6BAF",Free:"var(--amber)",Open:"var(--blue)",Wake:"var(--green)"}, psub={Reset:"switch off the guard",Free:"release what's locked",Open:"mobilize in 3D",Wake:"switch on what's quiet"};
+  const tagBg={Reset:"#ECE7F6",Free:"var(--amberSoft)",Open:"var(--blueSoft)",Wake:"var(--greenSoft)"}, tagC={Reset:"#5B4B8A",Free:"#9A6B28",Open:"var(--navy)",Wake:"#3F6F58"};
+  const moves=P.moves.map((m,i)=>{const on=UI.primerChecks[i];return `<div style="margin:0 18px 4px">
+    <div style="display:flex;align-items:center;gap:8px;margin:14px 2px 8px"><span style="width:24px;height:24px;border-radius:999px;display:grid;place-items:center;color:#fff;font-weight:800;font-size:12px;background:${col[m.ph]}">${i+1}</span><span style="font-size:13px;font-weight:800;letter-spacing:.3px;text-transform:uppercase;color:${col[m.ph]}">${m.ph}</span><span style="font-size:11.5px;color:var(--sub);font-weight:600;margin-left:auto">${psub[m.ph]}</span></div>
+    <div data-primerchk="${i}" style="background:#fff;border:1px solid var(--line);border-radius:16px;padding:13px;display:flex;gap:12px;align-items:flex-start">
       <div style="flex:1">
-        <div style="font-size:11px;font-weight:700;color:var(--sub);text-transform:uppercase;letter-spacing:.6px">${P.floor} of 4</div>
-        <div style="font-size:18px;font-weight:800;margin:2px 0 8px">${P.name}</div>
-        <div style="display:flex;gap:6px;margin-bottom:9px">${[1,2,3,4].map(k=>`<div style="flex:1;height:4px;border-radius:999px;background:${k<ph?'var(--green)':k===ph?'var(--navy)':'var(--line)'}"></div>`).join("")}</div>
-        <div style="font-size:12px;color:var(--sub);line-height:1.4">${pp.ready?'Foundation proven — ready to level up.':'Pass all gates to unlock Phase '+(ph+1)+'.'}</div>
+        <div style="font-size:15px;font-weight:700">${m.name}${m.gear?`<span style="display:inline-block;font-size:10px;font-weight:800;background:var(--ink);color:#fff;border-radius:999px;padding:2px 8px;margin-left:6px">🧰 ${m.gear}</span>`:''}</div>
+        <span style="display:inline-block;font-size:10.5px;font-weight:800;border-radius:999px;padding:2px 8px;margin-top:4px;background:${tagBg[m.ph]};color:${tagC[m.ph]}">${m.tag}</span>
+        <div style="font-size:12.5px;line-height:1.4;margin-top:6px">${m.cue}</div>
+        <div style="font-size:11.5px;color:var(--sub);font-weight:700;margin-top:5px">${m.dose}</div>
+        ${m.note?`<div style="background:#EFF4FB;border:1px dashed var(--blue);border-radius:10px;padding:8px 10px;margin-top:8px;font-size:11.5px;color:var(--navy);line-height:1.4">✦ ${m.note}</div>`:''}
+        ${m.flag?`<div style="background:#FBEEEA;border:1px solid #F0D7D0;border-radius:10px;padding:9px 11px;margin-top:8px"><div style="font-size:11px;font-weight:800;color:var(--red);margin-bottom:3px">⛔ Shoulder rule</div><div style="font-size:12px;color:#9A4B3D;line-height:1.4">${m.flag}</div></div>`:''}
+      </div>
+      <span style="width:28px;height:28px;border-radius:999px;border:2px solid ${on?'var(--green)':'var(--line)'};background:${on?'var(--green)':'transparent'};flex-shrink:0;display:grid;place-items:center;color:#fff;font-weight:900">${on?'✓':''}</span>
+    </div></div>`;}).join("");
+  return `<div data-close="1" style="position:fixed;inset:0;background:rgba(20,24,34,.4);z-index:50;display:flex;flex-direction:column;justify-content:flex-end">
+    <div class="rise" data-stop="1" style="background:var(--bg);border-radius:24px 24px 0 0;max-height:92dvh;overflow-y:auto;max-width:480px;margin:0 auto;width:100%">
+      <div style="position:sticky;top:0;background:var(--bg);padding:14px 18px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--line)">
+        <button data-close="1" style="background:#fff;border:1px solid var(--line);border-radius:10px;padding:6px 10px;font-size:16px">‹</button>
+        <div style="font-weight:800;font-size:17px">Prime · ${meta.label.replace(' Day','')}</div><div style="margin-left:auto;font-size:12px;color:var(--sub);font-weight:600">~2 min</div></div>
+      <div style="padding:14px 0 30px">
+        <div style="margin:0 18px;background:var(--blueSoft);color:var(--navy);border-radius:14px;padding:13px;font-size:13px;line-height:1.5"><b>Why first.</b> ${P.why}</div>
+        ${moves}
+        <div style="margin:8px 18px 0;font-size:11.5px;color:var(--sub);line-height:1.5;padding:10px 0;border-top:1px solid var(--line)"><b>Honest scope.</b> These target the compensation directly, but they're inferred from your described pattern — not a hands-on exam. Your physio confirms the exact list, especially the shoulder work.</div>
+        <button data-primerstart="${type}" style="display:block;margin:12px auto 0;width:calc(100% - 36px);padding:15px;border-radius:14px;border:none;background:var(--navy);color:#fff;font-weight:800;font-size:15.5px">Primed — start ${meta.label} →</button>
+      </div></div></div>`;
+}
+
+function homeHTML(){
+  const ph=S.phase,P=PHASES[ph];
+  const streak=computeStreak(S.activeDates);
+  const now=new Date();
+  const type=ROTATION[S.rotationIndex%3],meta=DAY[type];
+  const hr=now.getHours(),greet=hr<12?"Good morning":hr<17?"Good afternoon":"Good evening";
+  const ng=nearestGate(ph);
+  const fg=fuelGrams(todayStr()),fhit=fuelHit(todayStr());
+  const checkedToday=(S.checkins||[]).some(c=>c.date===todayStr());
+  return `<div class="rise">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;padding:30px 20px 0">
+      <div><div style="font-size:13px;color:var(--sub);font-weight:600">${greet}</div><div style="font-size:13px;color:var(--sub);font-weight:500;margin-top:2px">${fmtDay(todayStr())}</div></div>
+      <div style="display:flex;gap:7px">
+        <span style="display:flex;align-items:center;gap:5px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:12px;font-weight:800">🔥 <span class="tnum">${streak}</span></span>
+        <span data-tab="plan" style="display:flex;align-items:center;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:12px;font-weight:800;color:var(--navy)">P${ph}</span>
       </div>
     </div>
-    <div style="display:flex;gap:10px;padding:0 16px">
-      ${miniStat('🔥',streak,'streak')}${miniStat('🗓️',sessions,'sessions')}${miniStat('✅',week+'/3','this week')}
+    <div style="margin:20px 16px 0;border-radius:22px;padding:24px 22px;background:linear-gradient(135deg,#243355,#171F30);color:#fff;box-shadow:0 14px 30px rgba(23,31,48,.30)">
+      <div style="font-size:11px;font-weight:800;letter-spacing:1.2px;opacity:.6">TODAY</div>
+      <div style="font-size:30px;font-weight:800;letter-spacing:-.5px;margin:8px 0 7px">${meta.icon} ${meta.label}</div>
+      <div style="font-size:14px;opacity:.9;line-height:1.5">${SESSION_WHY[type]}</div>
+      <div style="display:flex;gap:10px;margin-top:20px">
+        <button data-prime="${type}" style="flex:1;padding:14px 8px;border-radius:14px;background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.28);font-weight:700;font-size:14px;line-height:1.15">Prime<br><span style="font-size:11px;opacity:.8">2 min</span></button>
+        <button data-start="1" style="flex:1.5;padding:14px;border-radius:14px;background:#fff;color:var(--navy);border:none;font-weight:800;font-size:16px">Start session →</button>
+      </div>
     </div>
-    <div style="margin:16px;border-radius:22px;padding:20px;background:linear-gradient(135deg,#243355,#171F30);color:#fff;box-shadow:0 14px 30px rgba(23,31,48,.30)">
-      <div style="font-size:11px;font-weight:800;letter-spacing:1px;opacity:.65">TODAY · NEXT IN ROTATION</div>
-      <div style="font-size:24px;font-weight:800;margin:6px 0 5px">${meta.icon} ${meta.label}</div>
-      <div style="font-size:13.5px;opacity:.9;line-height:1.45">${SESSION_WHY[type]}</div>
-      <button data-start="1" style="width:100%;margin-top:16px;padding:15px;border:none;border-radius:14px;background:#fff;color:var(--navy);font-weight:800;font-size:15.5px">Start ${meta.label} →</button>
-    </div>
-    <div data-tab="fuel" style="margin:0 16px 8px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 16px;display:flex;align-items:center;gap:12px;box-shadow:0 1px 3px rgba(0,0,0,.03)">
-      <span style="font-size:20px">🥗</span>
-      <div style="flex:1"><div style="font-size:14px;font-weight:700">Fuel · <span class="tnum">${fg}g</span> / ${PROTEIN_TARGET}g protein</div>
-      <div style="font-size:12px;color:var(--sub)">${fhit?'Target hit — muscle protected today 💪':'Tap to log anchors · '+fstreak+'-day fuel streak'}</div></div>
-      <span style="color:var(--sub);font-size:18px">›</span>
-    </div>
-    <div style="text-align:center;font-size:12px;color:var(--sub);padding:0 24px 8px;line-height:1.5">Right-leg balance ${bal}s today → ${balT.gates[ph]}s clears this floor.</div>
+    <div data-check="1" style="margin:16px 16px 8px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 16px;display:flex;align-items:center;gap:12px">
+      <span style="width:38px;height:38px;border-radius:11px;background:#FBEEEA;display:grid;place-items:center;font-size:18px;flex-shrink:0">🦵</span>
+      <div style="flex:1"><div style="font-size:13.5px;font-weight:700">Today's check · knee · foot · seat</div><div style="font-size:12px;color:var(--sub);margin-top:1px">${checkedToday?'Logged today ✓':'10 seconds — track what matters most'}</div></div>
+      <span style="color:var(--sub);font-size:18px">›</span></div>
+    ${ng?`<div data-tab="plan" style="margin:16px 16px 8px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 16px;display:flex;align-items:center;gap:12px">
+      <span style="width:38px;height:38px;border-radius:11px;background:var(--blueSoft);display:grid;place-items:center;font-size:18px;flex-shrink:0">🎯</span>
+      <div style="flex:1"><div style="font-size:13.5px;font-weight:700">Next gate: ${ng.name}</div><div style="font-size:12px;color:var(--sub);margin-top:1px">${ng.dir==="up"?"Reach":"Get to"} ${ng.dir==="down"?"≤":""}${ng.gates[ph]} ${ng.unit} to clear Floor ${ph}</div></div>
+      <span style="color:var(--sub);font-size:18px">›</span></div>`
+    :`<div style="margin:16px 16px 8px;background:var(--greenSoft);border:1px solid #BFE0CE;border-radius:16px;padding:14px 16px;font-size:13.5px;font-weight:700;color:#3F6F58">🎯 Every gate clear — you've proven Floor ${ph}. Open the Plan to level up.</div>`}
+    <div data-tab="fuel" style="margin:0 16px 10px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 16px;display:flex;align-items:center;gap:12px">
+      <span style="width:38px;height:38px;border-radius:11px;background:var(--greenSoft);display:grid;place-items:center;font-size:18px;flex-shrink:0">🥗</span>
+      <div style="flex:1"><div style="font-size:13.5px;font-weight:700">Fuel · <span class="tnum">${fg}g</span> / ${PROTEIN_TARGET}g protein</div><div style="font-size:12px;color:var(--sub);margin-top:1px">${fhit?'Target hit — muscle protected today 💪':'Tap to log your anchors'}</div></div>
+      <span style="color:var(--sub);font-size:18px">›</span></div>
+    <div style="text-align:center;font-size:11.5px;color:var(--sub);padding:6px 30px 16px;line-height:1.5">Your stats, plan and history live in the tabs — the home stays quiet so the one thing that matters is obvious.</div>
   </div>`;
 }
 
@@ -992,7 +1172,7 @@ function testSheetHTML(id){
         <div style="background:var(--blueSoft);color:var(--navy);border-radius:14px;padding:14px;font-size:14px;line-height:1.5"><b>What it proves.</b> ${t.goal}. Baseline ${t.base}${t.unit} → clear this floor at ${t.gates[S.phase]}${t.unit} (${t.dir==="up"?"higher":"lower"} is better).</div>
         <div style="margin-top:18px"><div style="font-size:12px;font-weight:800;color:var(--sub);text-transform:uppercase;letter-spacing:.6px;margin-bottom:8px">How to perform</div>
           ${h.how.map((x,i)=>`<div style="display:flex;gap:10px;margin-bottom:8px"><span class="tnum" style="width:22px;height:22px;flex-shrink:0;border-radius:999px;background:var(--navy);color:#fff;font-size:12px;font-weight:800;display:grid;place-items:center">${i+1}</span><span style="font-size:14.5px;line-height:1.45">${x}</span></div>`).join("")}</div>
-        <div style="background:#FBEEEA;border:1px solid #F0D7D0;border-radius:14px;padding:14px;margin-top:14px"><div style="font-size:13px;font-weight:800;color:var(--red);margin-bottom:6px">Stop / don't count when</div>${h.stop.map(x=>`<div style="font-size:14px;color:#9A4B3D;margin-bottom:4px">· ${x}</div>`).join("")}</div>
+        <div style="background:#FBEEEA;border:1px solid #F0D7D0;border-radius:14px;padding:14px;margin-top:14px"><div style="font-size:13px;font-weight:800;color:var(--red);margin-bottom:6px">Doesn't count if</div>${h.stop.map(x=>`<div style="font-size:14px;color:#9A4B3D;margin-bottom:4px">· ${x}</div>`).join("")}</div>
         <div style="background:var(--greenSoft);border-radius:14px;padding:14px;margin-top:14px"><div style="font-size:13px;font-weight:800;color:var(--green);margin-bottom:4px">For a trustworthy number</div><div style="font-size:14.5px;color:#3F6F58">${h.tip}</div></div>
         <button data-close="1" style="width:100%;margin-top:20px;padding:15px;border-radius:14px;border:none;background:var(--navy);color:#fff;font-weight:800;font-size:15px">Got it — back to the Plan</button>
       </div></div></div>`;
@@ -1003,6 +1183,12 @@ function planHTML(){
   const tests=TESTS.map(t=>{
     const c=testCurrent(t), g=t.gates[ph], met=gateMet(t,ph), pct=testPct(t,ph);
     const v=UI.testDraft[t.id]??c;
+    const chk=UI.testChecks[t.id]||{};
+    const allChecked=(t.checks||[]).every((_,i)=>chk[i]);
+    const checklist=(t.checks||[]).map((cx,i)=>`<div data-tcheck="${t.id}:${i}" style="display:flex;align-items:center;gap:10px;padding:6px 0"><span style="width:21px;height:21px;border-radius:6px;border:2px solid ${chk[i]?'var(--green)':'var(--line)'};background:${chk[i]?'var(--green)':'transparent'};display:grid;place-items:center;color:#fff;font-weight:900;font-size:12px;flex-shrink:0">${chk[i]?'✓':''}</span><span style="font-size:13px;line-height:1.3">${cx}</span></div>`).join("");
+    const entry=t.dual
+      ? `<div style="display:flex;gap:8px;margin-top:12px">${["L","R"].map(side=>`<div style="flex:1"><div style="font-size:10px;font-weight:800;color:var(--sub);text-transform:uppercase;text-align:center;margin-bottom:4px">${side==="L"?"Left":"Right"} (s)</div><div style="display:flex;align-items:center;background:var(--bg);border:1px solid var(--line);border-radius:10px;overflow:hidden"><button data-tstep="${t.id}_${side}:-1" style="width:32px;height:40px;border:none;background:none;color:var(--navy);font-size:18px">−</button><input data-tinput="${t.id}_${side}" class="tnum" inputmode="decimal" value="${UI.testDraft[t.id+'_'+side]??''}" placeholder="0" style="width:40px;text-align:center;border:none;outline:none;font-size:17px;font-weight:800;background:transparent;color:var(--ink)"/><button data-tstep="${t.id}_${side}:1" style="width:32px;height:40px;border:none;background:none;color:var(--navy);font-size:18px">+</button></div></div>`).join("")}</div>`
+      : `<div style="display:flex;align-items:center;gap:8px;margin-top:12px"><div style="display:flex;align-items:center;background:var(--bg);border:1px solid var(--line);border-radius:10px;overflow:hidden"><button data-tstep="${t.id}:-${t.step}" style="width:36px;height:40px;border:none;background:none;color:var(--navy);font-size:18px">−</button><input data-tinput="${t.id}" class="tnum" inputmode="decimal" value="${v}" style="width:54px;text-align:center;border:none;outline:none;font-size:17px;font-weight:800;background:transparent;color:var(--ink)"/><button data-tstep="${t.id}:${t.step}" style="width:36px;height:40px;border:none;background:none;color:var(--navy);font-size:18px">+</button></div><span style="font-size:11.5px;color:var(--sub);font-weight:600">enter today's number</span></div>`;
     return `<div style="background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:10px">
       <div style="display:flex;justify-content:space-between;align-items:flex-start">
         <div><div style="font-size:15px;font-weight:700">${t.name}</div><div style="font-size:12px;color:var(--sub)">${t.goal}</div><button data-howtest="${t.id}" style="margin-top:7px;background:var(--blueSoft);color:var(--navy);border:none;border-radius:999px;padding:5px 11px;font-size:11.5px;font-weight:700">ⓘ How to test</button></div>
@@ -1013,14 +1199,13 @@ function planHTML(){
         <div style="flex:1;height:7px;background:var(--line);border-radius:999px;overflow:hidden"><div style="width:${pct}%;height:100%;background:${met?'var(--green)':'var(--blue)'}"></div></div>
         <span class="tnum" style="font-size:12px;color:var(--sub);font-weight:700">target ${g} ${t.unit}</span>
       </div>
-      <div style="display:flex;align-items:center;gap:8px;margin-top:12px">
-        <div style="display:flex;align-items:center;background:var(--bg);border:1px solid var(--line);border-radius:10px;overflow:hidden">
-          <button data-tstep="${t.id}:-${t.step}" style="width:36px;height:40px;border:none;background:none;color:var(--navy);font-size:18px">−</button>
-          <input data-tinput="${t.id}" class="tnum" inputmode="decimal" value="${v}" style="width:54px;text-align:center;border:none;outline:none;font-size:17px;font-weight:800;background:transparent;color:var(--ink)"/>
-          <button data-tstep="${t.id}:${t.step}" style="width:36px;height:40px;border:none;background:none;color:var(--navy);font-size:18px">+</button>
-        </div>
-        <button data-logtest="${t.id}" style="flex:1;height:42px;border:none;border-radius:10px;background:var(--navy);color:#fff;font-weight:700;font-size:13px">Log today's result</button>
+      ${entry}
+      <div style="margin-top:12px;border-top:1px solid var(--line);padding-top:10px">
+        <div style="font-size:10px;font-weight:800;color:var(--sub);letter-spacing:.4px;text-transform:uppercase;margin-bottom:4px">Clean-rep checklist — all required</div>
+        ${checklist}
       </div>
+      <button data-logtest="${t.id}" style="width:100%;height:42px;margin-top:11px;border:none;border-radius:10px;background:var(--navy);color:#fff;font-weight:700;font-size:13px">${allChecked?'Log clean result ✓':'Log result'}</button>
+      ${allChecked?'':`<div style="font-size:11px;color:var(--sub);text-align:center;margin-top:6px">Tick all checks for this to count as a clean pass.</div>`}
     </div>`;
   }).join("");
   return `<div style="padding:22px 18px">
@@ -1043,7 +1228,7 @@ function planHTML(){
       ${PROGRAM[ph+1]?`<button data-advance="1" style="width:100%;margin-top:12px;padding:14px;border:none;border-radius:12px;background:var(--green);color:#fff;font-weight:800;font-size:15px">Begin Phase ${ph+1} →</button>`:""}</div>`:""}
 
     <div style="font-size:12px;font-weight:800;color:var(--sub);text-transform:uppercase;letter-spacing:.6px;margin:6px 2px 10px">Your tests — measurable proof</div>
-    <div style="font-size:12.5px;color:var(--sub);margin-bottom:12px;line-height:1.5">Re-test every 2–4 weeks. These numbers — not how long you've trained — decide when you level up.</div>
+    <div style="font-size:12.5px;color:var(--sub);margin-bottom:12px;line-height:1.5">Re-test every 2–4 weeks. These numbers — not how long you've trained — decide when you level up. A floor clears only when the number AND every clean-rep check are met.</div>
     ${tests}
 
     <div style="font-size:12px;font-weight:800;color:var(--sub);text-transform:uppercase;letter-spacing:.6px;margin:18px 2px 10px">The staircase — tap a phase to preview</div>
@@ -1142,18 +1327,25 @@ function importBackup(file){
 
 /* ───────── EVENTS (delegation) ───────── */
 document.body.addEventListener("click",e=>{
-  const t=e.target.closest("[data-tab],[data-day],[data-set],[data-step],[data-clear],[data-done],[data-eff],[data-habit],[data-detail],[data-finish],[data-export],[data-close],[data-stop],[data-tstep],[data-logtest],[data-pphase],[data-advance],[data-start],[data-howtest],[data-add],[data-undo],[data-logw],[data-fuelwhy],[data-setupedit],[data-setupsave]");
+  const t=e.target.closest("[data-tab],[data-day],[data-set],[data-step],[data-clear],[data-done],[data-eff],[data-habit],[data-detail],[data-finish],[data-export],[data-close],[data-stop],[data-tstep],[data-logtest],[data-pphase],[data-advance],[data-start],[data-howtest],[data-add],[data-undo],[data-logw],[data-fuelwhy],[data-setupedit],[data-setupsave],[data-tcheck],[data-prime],[data-primerchk],[data-primerstart],[data-check],[data-checkstep],[data-checklog],[data-habitinfo]");
   if(!t)return;
   if(t.dataset.stop!==undefined&&t===e.target)return;
   if(t.dataset.tab){UI.tab=t.dataset.tab;UI.activeSet=null;render();return}
   if(t.dataset.start!==undefined){UI.viewDay=ROTATION[S.rotationIndex%3];UI.tab="today";UI.activeSet=null;render();return}
+  if(t.dataset.prime){UI.primer=t.dataset.prime;UI.primerChecks={};render();return}
+  if(t.dataset.primerchk!==undefined){const i=+t.dataset.primerchk;UI.primerChecks[i]=!UI.primerChecks[i];render();return}
+  if(t.dataset.primerstart){UI.primer=null;UI.viewDay=t.dataset.primerstart;UI.tab="today";UI.activeSet=null;render();return}
+  if(t.dataset.check!==undefined){UI.check=true;UI.checkDraft={};render();return}
+  if(t.dataset.habitinfo){UI.habitInfo=t.dataset.habitinfo;render();return}
+  if(t.dataset.checkstep){const[k,delta]=t.dataset.checkstep.split(":");const last=(S.checkins||[]).slice(-1)[0]||{};const def=k==="foot"?5:0;const base=UI.checkDraft[k]??(last[k]??def);UI.checkDraft[k]=Math.max(0,Math.min(10,base+ +delta));render();return}
+  if(t.dataset.checklog){const last=(S.checkins||[]).slice(-1)[0]||{};const e={date:todayStr(),knee:UI.checkDraft.knee??(last.knee??0),foot:UI.checkDraft.foot??(last.foot??5),seat:UI.checkDraft.seat??(last.seat??0)};S.checkins=S.checkins||[];const i=S.checkins.findIndex(c=>c.date===todayStr());if(i>=0)S.checkins[i]=e;else S.checkins.push(e);UI.check=false;UI.checkDraft={};save();render();return}
   if(t.dataset.howtest){UI.testHow=t.dataset.howtest;render();return}
   if(t.dataset.fuelwhy){UI.fuelWhy=t.dataset.fuelwhy;render();return}
   if(t.dataset.pphase){UI.previewPhase=+t.dataset.pphase;render();return}
   if(t.dataset.advance){const np=S.phase+1;if(PROGRAM[np]){S.phase=np;S.drafts={};UI.viewDay=ROTATION[S.rotationIndex%3];UI.previewPhase=np;UI.tab="today";save();render();}return}
   if(t.dataset.day){UI.viewDay=t.dataset.day;UI.activeSet=null;render();return}
   if(t.dataset.detail){UI.detail=findEx(t.dataset.detail);render();return}
-  if(t.dataset.close!==undefined){UI.detail=null;UI.testHow=null;UI.fuelWhy=null;render();return}
+  if(t.dataset.close!==undefined){UI.detail=null;UI.testHow=null;UI.fuelWhy=null;UI.primer=null;UI.check=false;UI.habitInfo=null;render();return}
   if(t.dataset.set){UI.activeSet=UI.activeSet===t.dataset.set?null:t.dataset.set;render();return}
   if(t.dataset.done){UI.activeSet=null;render();return}
   if(t.dataset.finish!==undefined){finish();return}
@@ -1161,8 +1353,9 @@ document.body.addEventListener("click",e=>{
   if(t.dataset.add){const d=todayStr();nut().logs[d]=nut().logs[d]||[];nut().logs[d].push(t.dataset.add);recomputeFuelXP(d);save();render();return}
   if(t.dataset.undo!==undefined){const d=todayStr();(nut().logs[d]||[]).splice(+t.dataset.undo,1);recomputeFuelXP(d);save();render();return}
   if(t.dataset.logw!==undefined){const inp=document.querySelector("[data-wkg]");const v=parseFloat(inp&&inp.value);if(isNaN(v)||v<=0){if(inp)inp.focus();return}const d=todayStr();nut().weights=(nut().weights||[]).filter(w=>w.date!==d);nut().weights.push({date:d,kg:+v.toFixed(1)});nut().weights.sort((a,b)=>a.date<b.date?-1:1);UI.fuelKg="";save();render();return}
-  if(t.dataset.tstep){const[id,delta]=t.dataset.tstep.split(":");const tt=TESTS.find(x=>x.id===id);const base=UI.testDraft[id]??testCurrent(tt);UI.testDraft[id]=Math.max(0,+(base+ +delta).toFixed(2));render();return}
-  if(t.dataset.logtest){const id=t.dataset.logtest;const tt=TESTS.find(x=>x.id===id);const val=UI.testDraft[id]??testCurrent(tt);S.assessments[id]=S.assessments[id]||[];S.assessments[id].push({date:todayStr(),val});delete UI.testDraft[id];save();render();return}
+  if(t.dataset.tcheck){const[id,i]=t.dataset.tcheck.split(":");UI.testChecks[id]=UI.testChecks[id]||{};UI.testChecks[id][i]=!UI.testChecks[id][i];render();return}
+  if(t.dataset.tstep){const[id,delta]=t.dataset.tstep.split(":");const tt=TESTS.find(x=>x.id===id);const base=UI.testDraft[id]??(tt?testCurrent(tt):0);UI.testDraft[id]=Math.max(0,+(base+ +delta).toFixed(2));render();return}
+  if(t.dataset.logtest){const id=t.dataset.logtest;const tt=TESTS.find(x=>x.id===id);const chk=UI.testChecks[id]||{};const clean=(tt.checks||[]).every((_,i)=>chk[i]);let entry;if(tt.dual){const L=parseFloat(UI.testDraft[id+"_L"]),R=parseFloat(UI.testDraft[id+"_R"]);if(!(L>0)||!(R>0)){return}entry={date:todayStr(),val:Math.round(R/L*100),L,R,clean};}else{entry={date:todayStr(),val:UI.testDraft[id]??testCurrent(tt),clean};}S.assessments[id]=S.assessments[id]||[];S.assessments[id].push(entry);delete UI.testDraft[id];delete UI.testDraft[id+"_L"];delete UI.testDraft[id+"_R"];if(UI.testChecks)delete UI.testChecks[id];save();render();return}
   if(t.dataset.clear){const[id,i]=t.dataset.clear.split(":");setS(()=>{cur().entries[id][+i]=null});return}
   if(t.dataset.habit){const d=todayStr();setS(()=>{S.habits[d]=S.habits[d]||{};S.habits[d][t.dataset.habit]=!S.habits[d][t.dataset.habit];const any=Object.values(S.habits[d]).some(Boolean);if(any&&!S.activeDates.includes(d))S.activeDates.push(d);if(!any&&!S.history.some(h=>h.date===d)&&!(S.nutrition.xpDays||[]).includes(d))S.activeDates=S.activeDates.filter(x=>x!==d);S.xp=Math.max(0,S.xp+(S.habits[d][t.dataset.habit]?5:-5));S.bestStreak=Math.max(S.bestStreak,computeStreak(S.activeDates))});return}
   if(t.dataset.setupedit){UI.setupEdit=t.dataset.setupedit;render();return}
